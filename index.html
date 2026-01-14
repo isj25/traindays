@@ -1,64 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RailDate - Smart Calendar</title>
+    <title>RailBookingDate - Indian Railway Booking Date Calculator</title>
+    <meta name="description"
+        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date. Smart calendar for IRCTC booking.">
+    <meta name="keywords"
+        content="indian railways, irctc booking date, tatkal booking time, train ticket booking calculator, railway reservation date">
+    <meta name="author" content="RailBookingDate">
+    <link rel="canonical" href="https://railbookingdate.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://railbookingdate.com/">
+    <meta property="og:title" content="RailBookingDate - Indian Railway Booking Date Calculator">
+    <meta property="og:description"
+        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date.">
+    <meta property="og:image" content="https://railbookingdate.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://railbookingdate.com/">
+    <meta property="twitter:title" content="RailBookingDate - Indian Railway Booking Date Calculator">
+    <meta property="twitter:description"
+        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date.">
+    <meta property="twitter:image" content="https://railbookingdate.com/og-image.jpg">
+
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "RailBookingDate",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "description": "A smart calendar application to calculate Indian Railways booking dates including Tatkal and advance reservation periods.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
 </head>
 
 <body>
     <div class="app-container">
         <header class="app-header">
             <div id="current-date-display" class="current-date-display"></div>
-            <h1>RailDate</h1>
+            <h1>RailBookingDate</h1>
             <p class="subtitle">Plan your journey with ease</p>
         </header>
 
         <main class="main-content">
-            <div class="booking-status-card">
+            <section class="booking-status-card" aria-label="Current Travel Status">
                 <div id="booking-info" class="booking-info-text"></div>
-            </div>
+            </section>
 
-            <div class="date-selector-card">
+            <section class="date-selector-card" aria-label="Select Date">
                 <label for="travel-date" class="input-label">Select your Travel Date</label>
                 <div class="input-wrapper">
-                    <input type="text" id="travel-date" class="modern-input" readonly placeholder="Select a date">
+                    <input type="text" id="travel-date" class="modern-input" readonly placeholder="Select a date"
+                        aria-label="Select travel date to check booking status">
                     <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
                 </div>
-                <div id="booking-message" class="booking-message"></div>
+                <div id="booking-message" class="booking-message" role="status" aria-live="polite"></div>
                 <div id="custom-calendar" class="custom-calendar-popup"></div>
-            </div>
+            </section>
 
 
 
-            <div class="calendar-legend-minimal">
+            <div class="calendar-legend-minimal" aria-hidden="true">
                 <div class="legend-item"><span class="dot tatkal-dot"></span> Tatkal</div>
                 <div class="legend-item"><span class="dot open-dot"></span> Open</div>
                 <div class="legend-item"><span class="dot closed-dot"></span> Closed</div>
             </div>
 
-            <h2 class="section-title">You can book tickets for these days</h2>
-            <div id="calendar-container" class="calendar-container"></div>
+            <section aria-labelledby="calendar-title">
+                <h2 id="calendar-title" class="section-title">You can book tickets for these days</h2>
+                <div id="calendar-container" class="calendar-container"></div>
+            </section>
 
-            <div class="booking-rules-card">
-                <h3 class="rules-title">
+            <section class="booking-partners-card" aria-labelledby="partners-title">
+                <h3 id="partners-title" class="rules-title" style="justify-content: center;">Book Tickets Via</h3>
+                <div class="booking-partners-grid">
+                    <a href="https://www.makemytrip.com/railways/" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-mmt">MakeMyTrip</a>
+                    <a href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-irctc">IRCTC</a>
+                    <a href="https://www.railyatri.in/train-ticket" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-railyatri">RailYatri</a>
+                    <a href="https://www.confirmtkt.com/" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-confirmtkt">Confirm Ticket</a>
+                    <a href="https://www.easemytrip.com/railways/" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-easemytrip">EaseMyTrip</a>
+                    <a href="https://www.goibibo.com/trains/" target="_blank" rel="noopener noreferrer"
+                        class="partner-link partner-goibibo">Goibibo</a>
+                </div>
+            </section>
+
+            <section class="booking-rules-card" aria-labelledby="rules-title">
+                <h3 id="rules-title" class="rules-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="rules-icon">
+                        class="rules-icon" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="16" x2="12" y2="12"></line>
                         <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -66,13 +128,20 @@
                     Booking Rules
                 </h3>
                 <ul class="rules-list">
-                    <li>Booking opens for current day + 60 days</li>
                     <li>Tatkal for AC opens at 10:00 AM</li>
                     <li>Tatkal for Sleeper Opens at 11:00 AM</li>
                     <li>60 days prior booking opens at 8:00 AM</li>
                 </ul>
-            </div>
+            </section>
         </main>
+
+        <footer
+            style="margin-top: 3rem; text-align: center; color: var(--text-tertiary); font-size: 0.8rem; padding-bottom: 2rem;">
+            <p>&copy;
+                <script>document.write(new Date().getFullYear())</script> RailBookingDate. All rights reserved.<br>
+                Created by Ishwar Joshi
+            </p>
+        </footer>
     </div>
 
     <script>
