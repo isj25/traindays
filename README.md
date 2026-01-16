@@ -64,7 +64,6 @@ https://railbookingdate.com
 - Planning train travel in advance  
 - Avoiding missed booking dates  
 - Quick IRCTC booking reference  
-- Travel blogs and railway guides  
 
 ---
 
@@ -77,16 +76,7 @@ Always verify on the official IRCTC website before booking.
 
 ---
 
-## Contributing
 
-Suggestions, improvements, and feedback are welcome.
-
-Possible enhancements:
-- Tatkal booking date calculation  
-- UI improvements  
-- Regional language support  
-
----
 
 ## Contact
 
