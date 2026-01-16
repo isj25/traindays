@@ -1,74 +1,74 @@
-# 🚆 Rail Booking Date Calculator
+# Rail Booking Date Calculator
 
-A simple and fast **IRCTC rail booking date calculator** that tells you **exactly when ticket booking opens** based on your travel date.
+A simple and fast IRCTC rail booking date calculator that tells you exactly when ticket booking opens based on your travel date.
 
-🔗 **Live Tool:** https://railbookingdate.com
+Live Tool: https://railbookingdate.com
 
 ---
 
-## 📌 What This Tool Does
+## What This Tool Does
 
-IRCTC opens general train ticket bookings **60 days before the travel date**.  
+IRCTC opens general train ticket bookings 60 days before the travel date.  
 This calculator removes confusion by instantly showing:
 
-- 📅 Exact booking opening date
-- ⏰ Day and date clarity
-- 🚀 No login, no ads, no tracking
+- Exact booking opening date  
+- Clear day and date information  
+- No login, no ads, no tracking  
 
-Just enter your **travel date** and get the booking date instantly.
+Just enter your travel date and get the booking date instantly.
 
 ---
 
-## 🔧 How It Works
+## How It Works
 
-1. User selects a **travel date**
-2. Tool subtracts **60 days**
-3. Displays the **exact booking open date**
+1. User selects a travel date  
+2. Tool subtracts 60 days  
+3. Displays the exact booking open date  
 
 This follows standard IRCTC booking rules.
 
 ---
 
-## 🌐 Why This Tool?
+## Why This Tool?
 
-- ❌ No need to manually count days
-- ❌ No confusion about booking windows
-- ✅ Accurate & instant results
-- ✅ Mobile-friendly
-- ✅ Free to use
+- No need to manually count days  
+- No confusion about booking windows  
+- Accurate and instant results  
+- Mobile-friendly  
+- Free to use  
 
-Perfect for frequent train travelers in India 🇮🇳
-
----
-
-## 🛠 Tech Stack
-
-- HTML
-- CSS
-- JavaScript
-- Static hosting
-
-No backend, no database, super fast.
+Useful for frequent train travelers in India.
 
 ---
 
-## 📷 Preview
+## Tech Stack
 
-You can visit the live site to see the tool in action:  
-👉 https://railbookingdate.com
+- HTML  
+- CSS  
+- JavaScript  
+- Static hosting  
 
----
-
-## 📚 Use Cases
-
-- Planning train travel in advance
-- Avoiding missed booking dates
-- Quick IRCTC booking reference
-- Travel blogs & railway guides
+No backend, no database, fast and lightweight.
 
 ---
 
-## ⚠️ Disclaimer
+## Preview
+
+Visit the live site to see the tool in action:  
+https://railbookingdate.com
+
+---
+
+## Use Cases
+
+- Planning train travel in advance  
+- Avoiding missed booking dates  
+- Quick IRCTC booking reference  
+- Travel blogs and railway guides  
+
+---
+
+## Disclaimer
 
 This tool is for informational purposes only.  
 Booking rules are based on publicly available IRCTC guidelines and may change.
@@ -77,23 +77,23 @@ Always verify on the official IRCTC website before booking.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Suggestions, improvements, and feedback are welcome!
+Suggestions, improvements, and feedback are welcome.
 
-If you’d like to enhance the tool:
-- Improve UI
-- Add Tatkal booking calculation
-- Add regional language support
+Possible enhancements:
+- Tatkal booking date calculation  
+- UI improvements  
+- Regional language support  
 
 ---
 
-## 📬 Contact
+## Contact
 
 If you find this tool useful or have suggestions, feel free to reach out.
 
-🔗 Website: https://railbookingdate.com
+Website: https://railbookingdate.com
 
 ---
 
-⭐ If you found this helpful, consider starring the repository!
+If you found this useful, consider starring the repository.
