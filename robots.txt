@@ -1,0 +1,12 @@
+# robots.txt for TrainDays
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://traindays.in/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+# Uncomment if needed:
+# Crawl-delay: 1
