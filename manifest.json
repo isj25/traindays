@@ -1,20 +1,36 @@
 {
-    "name": "RailBookingDate",
+    "name": "RailBookingDate - Indian Railway Booking Calculator",
     "short_name": "RailDate",
+    "description": "Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date.",
     "start_url": "./index.html",
     "display": "standalone",
-    "background_color": "#f8fafc",
-    "theme_color": "#4f46e5",
+    "background_color": "#fef7ed",
+    "theme_color": "#ff6b00",
+    "orientation": "portrait-primary",
+    "scope": "./",
+    "lang": "en-IN",
+    "categories": ["travel", "utilities"],
     "icons": [
         {
             "src": "icon-192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "icon-512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Check Booking Date",
+            "short_name": "Check Date",
+            "description": "Calculate your train booking date",
+            "url": "./index.html",
+            "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
         }
     ]
 }
