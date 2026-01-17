@@ -1,0 +1,30 @@
+# Train Booking Date Calculator - llms.txt
+
+## Project Overview
+Train Booking Date Calculator is a free tool that helps users determine when Indian Railways IRCTC booking opens for their desired travel dates. The calculator provides accurate timing for 60-day advance reservations and Tatkal bookings across different classes (AC and Sleeper).
+
+## Purpose
+This tool simplifies the process of finding exact booking dates and times for Indian Railways tickets, eliminating confusion about when bookings become available for specific travel dates.
+
+## Key Features
+- Calculate 60-day advance booking dates (opens at 8 AM)
+- Tatkal booking times (AC at 10 AM, Sleeper at 11 AM)
+- Support for multiple Indian languages (Hindi, Marathi, Telugu, Tamil, Kannada, Malayalam, Gujarati, Bengali)
+- Progressive Web App (PWA) for offline access
+- Mobile-responsive interface
+
+## Main Pages
+- Homepage: https://railbookingdate.com/
+- GitHub Repository: [Link to repository if available]
+
+## Technology Stack
+- HTML5, CSS3, JavaScript
+- Service Worker for offline functionality
+- Responsive Web Design
+- Multi-language support
+
+## Content Guidelines
+This site provides informational content about Indian Railways booking procedures. The calculator is based on official IRCTC booking rules and timing windows. Users should verify current booking dates with official IRCTC sources.
+
+## Contact & Support
+For more information or support, please visit the main website.
