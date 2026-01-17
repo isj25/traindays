@@ -53,7 +53,7 @@ function getIndianDate() {
     if (cachedToday && (now - cachedTodayTimestamp) < 60000) {
         return new Date(cachedToday);
     }
-    
+
     const date = new Date();
     const indianDateStr = date.toLocaleDateString('en-IN', {
         timeZone: 'Asia/Kolkata',
@@ -106,16 +106,16 @@ function getNextBookingTime(hour, minute = 0) {
     const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30
     const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
     const istTime = new Date(utcTime + istOffset);
-    
+
     // Create target time for today
     const target = new Date(istTime);
     target.setHours(hour, minute, 0, 0);
-    
+
     // If target time has passed today, move to tomorrow
     if (istTime >= target) {
         target.setDate(target.getDate() + 1);
     }
-    
+
     return target;
 }
 
@@ -128,8 +128,9 @@ function getGeneralBookingDate(targetTime) {
 
 function getTatkalTravelDate(targetTime) {
     // Tatkal booking done today is for tomorrow's train
-    // The travel date is the same as the booking date (when the window opens)
-    return new Date(targetTime);
+    const travelDate = new Date(targetTime);
+    travelDate.setDate(travelDate.getDate() + 1);
+    return travelDate;
 }
 
 function getTomorrowDate() {
@@ -153,65 +154,110 @@ function updateCountdowns() {
     const istOffset = 5.5 * 60 * 60 * 1000;
     const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
     const istNow = new Date(utcTime + istOffset);
-    
-    // General Booking (8:00 AM)
+
+    const currentHour = istNow.getHours();
+    const currentMinute = istNow.getMinutes();
+
+    // Hide all countdowns before 6 AM
+    const countdownSection = document.querySelector('.countdown-section');
+    if (currentHour < 6) {
+        if (countdownSection) {
+            countdownSection.style.display = 'none';
+        }
+        return;
+    } else {
+        if (countdownSection) {
+            countdownSection.style.display = 'block';
+        }
+    }
+
+    // General Booking (8:00 AM) - always show countdown
     const generalTarget = getNextBookingTime(8, 0);
     const generalTravelDate = getGeneralBookingDate(generalTarget);
-    updateCountdownDisplay('general', generalTarget, istNow, generalTravelDate);
-    
+    updateCountdownDisplay('general', generalTarget, istNow, generalTravelDate, false);
+
     // Tatkal AC (10:00 AM)
     const tatkalACTarget = getNextBookingTime(10, 0);
     const tatkalACTravelDate = getTatkalTravelDate(tatkalACTarget);
-    updateCountdownDisplay('tatkal-ac', tatkalACTarget, istNow, tatkalACTravelDate);
-    
+    const showACCountdown = currentHour < 10;
+    updateCountdownDisplay('tatkal-ac', tatkalACTarget, istNow, tatkalACTravelDate, !showACCountdown);
+
     // Tatkal Sleeper (11:00 AM)
     const tatkalSleeperTarget = getNextBookingTime(11, 0);
     const tatkalSleeperTravelDate = getTatkalTravelDate(tatkalSleeperTarget);
-    updateCountdownDisplay('tatkal-sleeper', tatkalSleeperTarget, istNow, tatkalSleeperTravelDate);
+    const showSleeperCountdown = currentHour < 11;
+    updateCountdownDisplay('tatkal-sleeper', tatkalSleeperTarget, istNow, tatkalSleeperTravelDate, !showSleeperCountdown);
 }
 
-function updateCountdownDisplay(type, target, now, travelDate) {
+function updateCountdownDisplay(type, target, now, travelDate, showOpenMessage) {
+    const card = document.querySelector(`.countdown-${type}`);
+    if (!card) return;
+
+    // If showing "open" message instead of countdown
+    if (showOpenMessage) {
+        const dateEl = document.getElementById(`${type === 'general' ? 'general-booking' : type}-date`);
+        const timerEl = card.querySelector('.countdown-timer');
+
+        if (dateEl) {
+            if (type === 'tatkal-ac') {
+                dateEl.innerHTML = `<strong style="color: var(--accent-open); font-size: 1.1rem;">✅ Tatkal AC Booking is OPEN!</strong>`;
+            } else if (type === 'tatkal-sleeper') {
+                dateEl.innerHTML = `<strong style="color: var(--accent-open); font-size: 1.1rem;">✅ Tatkal Sleeper Booking is OPEN!</strong>`;
+            }
+        }
+
+        if (timerEl) {
+            timerEl.style.display = 'none';
+        }
+
+        card.classList.remove('countdown-urgent');
+        return;
+    }
+
+    // Show countdown timer
+    const timerEl = card.querySelector('.countdown-timer');
+    if (timerEl) {
+        timerEl.style.display = 'flex';
+    }
+
     const diff = target.getTime() - now.getTime();
-    
+
     if (diff <= 0) {
         // Time reached - will reset on next tick
         return;
     }
-    
+
     const totalSeconds = Math.floor(diff / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-    
+
     // Update display elements
     const hoursEl = document.getElementById(`${type}-hours`);
     const minutesEl = document.getElementById(`${type}-minutes`);
     const secondsEl = document.getElementById(`${type}-seconds`);
     const dateEl = document.getElementById(`${type === 'general' ? 'general-booking' : type}-date`);
-    
+
     if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
     if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
     if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-    
+
     if (dateEl) {
         dateEl.innerHTML = `🚂 Travel: <strong>${formatCountdownDate(travelDate)}</strong>`;
     }
-    
+
     // Add urgency class when less than 5 minutes
-    const card = document.querySelector(`.countdown-${type}`);
-    if (card) {
-        if (totalSeconds <= 300) { // 5 minutes
-            card.classList.add('countdown-urgent');
-        } else {
-            card.classList.remove('countdown-urgent');
-        }
+    if (totalSeconds <= 300) { // 5 minutes
+        card.classList.add('countdown-urgent');
+    } else {
+        card.classList.remove('countdown-urgent');
     }
 }
 
 function startCountdowns() {
     // Initial update
     updateCountdowns();
-    
+
     // Update every second
     if (countdownInterval) {
         clearInterval(countdownInterval);
@@ -254,7 +300,7 @@ function generate90DayCalendar() {
     while (currentTime <= endTime) {
         const currentDate = new Date(currentTime);
         const monthKey = currentDate.getFullYear() * 12 + currentDate.getMonth();
-        
+
         let monthData = months.find(m => m.key === monthKey);
         if (!monthData) {
             monthData = {
@@ -268,7 +314,7 @@ function generate90DayCalendar() {
             };
             months.push(monthData);
         }
-        
+
         monthData.days.push({
             date: currentDate.getDate(),
             time: currentTime,
@@ -285,7 +331,7 @@ function generate90DayCalendar() {
     months.forEach((monthData, monthIndex) => {
         const monthDiv = document.createElement('div');
         monthDiv.className = 'month-section';
-        
+
         // Only add animation delay on non-mobile
         if (window.innerWidth > 600) {
             monthDiv.style.animationDelay = `${monthIndex * 40}ms`;
@@ -376,7 +422,7 @@ function generateCustomCalendar() {
     while (currentTime <= endTime) {
         const currentDate = new Date(currentTime);
         const monthKey = currentDate.getFullYear() * 12 + currentDate.getMonth();
-        
+
         let monthData = months.find(m => m.key === monthKey);
         if (!monthData) {
             monthData = {
@@ -387,11 +433,11 @@ function generateCustomCalendar() {
             };
             months.push(monthData);
         }
-        
+
         if (monthData.firstDayOfWeek === null) {
             monthData.firstDayOfWeek = currentDate.getDay();
         }
-        
+
         monthData.days.push({
             date: currentDate.getDate(),
             time: currentTime,
@@ -413,37 +459,37 @@ function generateCustomCalendar() {
         html += '<div class="calendar-picker-month">';
         html += `<h4 class="calendar-picker-month-header">${monthData.name}</h4>`;
         html += '<div class="calendar-picker-grid">';
-        
+
         // Headers
         dayHeaders.forEach(d => {
             html += `<div class="calendar-picker-header">${d}</div>`;
         });
-        
+
         // Empty cells
         for (let i = 0; i < monthData.firstDayOfWeek; i++) {
             html += '<div class="calendar-picker-day disabled empty"></div>';
         }
-        
+
         // Days
         monthData.days.forEach(dayData => {
             const classes = ['calendar-picker-day'];
             if (dayData.disabled) classes.push('disabled');
             if (dayData.isToday) classes.push('today');
-            
+
             if (!dayData.disabled) {
                 html += `<div class="${classes.join(' ')}" data-time="${dayData.time}" tabindex="0" role="button">${dayData.date}</div>`;
             } else {
                 html += `<div class="${classes.join(' ')}">${dayData.date}</div>`;
             }
         });
-        
+
         // Fill remaining
         const totalCells = 7 + monthData.firstDayOfWeek + monthData.days.length;
         const remainingCells = (7 - (totalCells % 7)) % 7;
         for (let i = 0; i < remainingCells; i++) {
             html += '<div class="calendar-picker-day disabled empty"></div>';
         }
-        
+
         html += '</div></div>';
     });
 
@@ -550,7 +596,7 @@ function handleDateSelection() {
 
         elements.bookingMessage.innerHTML = `Booking opens on <strong>${bookingDay} ${bookingMonth}</strong> (${bookingWeekday}) at ${BOOKING_CONFIG.BOOKING_OPEN_TIME}`;
         elements.bookingMessage.className = 'booking-message booking-future';
-        
+
         // Show calendar button for future booking dates
         bookingDateForCalendar = bookingDate;
         if (elements.calendarBtn) {
@@ -559,7 +605,7 @@ function handleDateSelection() {
         // Update WhatsApp link
         updateWhatsAppLink();
     }
-    
+
     elements.bookingActions.classList.add('show');
 }
 
@@ -569,7 +615,7 @@ function handleDateSelection() {
 
 function copyBookingInfo() {
     if (!selectedTravelDate) return;
-    
+
     const today = getIndianDate();
     const todayTime = today.getTime();
     const sixtyDaysTime = todayTime + (BOOKING_CONFIG.ADVANCE_DAYS * 86400000);
@@ -594,7 +640,7 @@ function copyBookingInfo() {
 
 function shareBookingInfo() {
     if (!selectedTravelDate) return;
-    
+
     const today = getIndianDate();
     const todayTime = today.getTime();
     const sixtyDaysTime = todayTime + (BOOKING_CONFIG.ADVANCE_DAYS * 86400000);
@@ -615,7 +661,7 @@ function shareBookingInfo() {
             title: 'Train Booking Date',
             text: text,
             url: window.location.href
-        }).catch(() => {});
+        }).catch(() => { });
     } else {
         copyBookingInfo();
     }
@@ -624,7 +670,7 @@ function shareBookingInfo() {
 function updateWhatsAppLink() {
     const elements = getElements();
     if (!elements.whatsappBtn || !selectedTravelDate) return;
-    
+
     const today = getIndianDate();
     const todayTime = today.getTime();
     const sixtyDaysTime = todayTime + (BOOKING_CONFIG.ADVANCE_DAYS * 86400000);
@@ -670,26 +716,26 @@ function addToCalendar() {
     if (!bookingDateForCalendar || !selectedTravelDate) return;
 
     const travelDateStr = formatDateLong(selectedTravelDate);
-    
+
     // Set event time to 7:55 AM IST on booking date
     const eventDate = new Date(bookingDateForCalendar);
-    
+
     // Format date for calendar (YYYYMMDD)
     const year = eventDate.getFullYear();
     const month = String(eventDate.getMonth() + 1).padStart(2, '0');
     const day = String(eventDate.getDate()).padStart(2, '0');
-    
+
     // Event at 7:55 AM IST (formatted as 075500)
     // End time 8:05 AM IST (10 min event)
     const startDateTime = `${year}${month}${day}T075500`;
     const endDateTime = `${year}${month}${day}T080500`;
-    
+
     const eventTitle = `🚂 IRCTC Booking Opens - ${travelDateStr}`;
     const eventDescription = `Train ticket booking for ${travelDateStr} opens at 8:00 AM IST.\\n\\nBe ready at 7:55 AM to book your tickets!\\n\\nBook at: https://www.irctc.co.in\\n\\nCalculated via RailBookingDate.com`;
-    
+
     // Try to detect if mobile and use appropriate method
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
+
     if (isMobile) {
         // For mobile, download .ics file which opens in default calendar
         downloadICSFile(eventTitle, eventDescription, startDateTime, endDateTime);
@@ -733,7 +779,7 @@ function downloadICSFile(title, description, startDateTime, endDateTime) {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    
+
     showToast('Calendar event downloaded! 📅');
 }
 
@@ -741,7 +787,7 @@ function showCalendarOptions(title, description, startDateTime, endDateTime) {
     // Create modal
     let modal = document.getElementById('calendar-modal');
     if (modal) modal.remove();
-    
+
     modal = document.createElement('div');
     modal.id = 'calendar-modal';
     modal.className = 'calendar-modal';
@@ -764,9 +810,9 @@ function showCalendarOptions(title, description, startDateTime, endDateTime) {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
-    
+
     // Add event listeners
     modal.querySelector('.calendar-modal-close').onclick = () => modal.remove();
     modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
@@ -777,7 +823,7 @@ function showCalendarOptions(title, description, startDateTime, endDateTime) {
     modal.querySelector('.google').onclick = () => {
         setTimeout(() => modal.remove(), 100);
     };
-    
+
     // Show modal
     requestAnimationFrame(() => modal.classList.add('show'));
 }
@@ -793,7 +839,7 @@ function getGoogleCalendarUrl(title, description, startDateTime, endDateTime) {
         details: description.replace(/\\n/g, '\n'),
         location: 'https://www.irctc.co.in'
     });
-    
+
     return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
@@ -805,7 +851,7 @@ let toastTimeout = null;
 
 function showToast(message, isError = false) {
     let toast = document.getElementById('app-toast');
-    
+
     if (!toast) {
         toast = document.createElement('div');
         toast.id = 'app-toast';
@@ -817,7 +863,7 @@ function showToast(message, isError = false) {
 
     toast.textContent = message;
     toast.className = `toast ${isError ? 'toast-error' : 'toast-success'}`;
-    
+
     // Force reflow for animation
     toast.offsetHeight;
     toast.classList.add('show');
@@ -841,7 +887,7 @@ function initDarkMode() {
 
     toggle.addEventListener('click', () => {
         const currentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        
+
         if (currentlyDark) {
             document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
@@ -860,7 +906,7 @@ function initDarkMode() {
 
 function init() {
     const elements = getElements();
-    
+
     // Critical path - update immediately
     updateCurrentDate();
     initDarkMode();
@@ -882,7 +928,7 @@ function init() {
     // Close calendar on outside click
     document.addEventListener('click', (event) => {
         const customCalendar = elements.customCalendar;
-        if (!customCalendar.contains(event.target) && 
+        if (!customCalendar.contains(event.target) &&
             !elements.travelDateInput.contains(event.target) &&
             customCalendar.classList.contains('show')) {
             customCalendar.classList.remove('show');
@@ -900,20 +946,20 @@ function init() {
     if (elements.copyBtn) {
         elements.copyBtn.addEventListener('click', copyBookingInfo);
     }
-    
+
     if (elements.shareBtn) {
         elements.shareBtn.addEventListener('click', shareBookingInfo);
         if (!navigator.share) {
             elements.shareBtn.style.display = 'none';
         }
     }
-    
+
     if (elements.calendarBtn) {
         elements.calendarBtn.addEventListener('click', addToCalendar);
         // Initially hidden, shown only for future booking dates
         elements.calendarBtn.style.display = 'none';
     }
-    
+
     // Book Now button - initially hidden, shown only when booking is open
     if (elements.bookNowBtn) {
         elements.bookNowBtn.style.display = 'none';
@@ -922,7 +968,7 @@ function init() {
     // Register Service Worker (non-blocking)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js').catch(() => {});
+            navigator.serviceWorker.register('./sw.js').catch(() => { });
         });
     }
 }
