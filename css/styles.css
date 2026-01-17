@@ -286,11 +286,14 @@ body {
 }
 
 @keyframes trainMove {
-    0%, 100% { 
-        transform: translateX(-5px); 
+
+    0%,
+    100% {
+        transform: translateX(-5px);
     }
-    50% { 
-        transform: translateX(5px); 
+
+    50% {
+        transform: translateX(5px);
     }
 }
 
@@ -300,15 +303,20 @@ body {
 }
 
 @keyframes trainMoveSmoke {
-    0%, 100% { 
-        transform: translateX(-3px) scale(1); 
+
+    0%,
+    100% {
+        transform: translateX(-3px) scale(1);
     }
+
     25% {
         transform: translateX(0) scale(1.05);
     }
-    50% { 
-        transform: translateX(5px) scale(1); 
+
+    50% {
+        transform: translateX(5px) scale(1);
     }
+
     75% {
         transform: translateX(2px) scale(1.02);
     }
@@ -385,9 +393,14 @@ body {
     display: none;
 }
 
+.booking-message-hero:not(:empty) {
+    min-height: 48px;
+    /* Prevent layout shift when content loads */
+}
+
 .booking-message-hero.booking-open {
     background-color: var(--accent-open-light);
-    color: #065f46;
+    color: #064e3b;
 }
 
 [data-theme="dark"] .booking-message-hero.booking-open {
@@ -396,7 +409,7 @@ body {
 
 .booking-message-hero.booking-future {
     background-color: var(--accent-tatkal-light);
-    color: #92400e;
+    color: #7c2d12;
 }
 
 [data-theme="dark"] .booking-message-hero.booking-future {
@@ -464,11 +477,11 @@ body {
     .date-selector-hero {
         padding: 1.25rem 1rem;
     }
-    
+
     .hero-title {
         font-size: 1.1rem;
     }
-    
+
     .modern-input-hero {
         font-size: 0.95rem;
     }
@@ -493,7 +506,7 @@ body {
 
 .booking-message.booking-open {
     background-color: var(--accent-open-light);
-    color: #065f46;
+    color: #064e3b;
 }
 
 [data-theme="dark"] .booking-message.booking-open {
@@ -502,7 +515,7 @@ body {
 
 .booking-message.booking-future {
     background-color: var(--accent-tatkal-light);
-    color: #92400e;
+    color: #7c2d12;
 }
 
 [data-theme="dark"] .booking-message.booking-future {
@@ -589,9 +602,12 @@ body {
 }
 
 @keyframes pulse-glow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
     }
+
     50% {
         box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
     }
@@ -769,6 +785,8 @@ body {
 
 .countdown-section {
     margin-bottom: 0.5rem;
+    min-height: 200px;
+    /* Prevent layout shift */
 }
 
 .countdown-section-title {
@@ -830,7 +848,7 @@ body {
 
 .badge-tatkal-ac {
     background: var(--accent-tatkal-light);
-    color: var(--accent-tatkal-dark);
+    color: #991b1b;
 }
 
 [data-theme="dark"] .badge-tatkal-ac {
@@ -945,9 +963,12 @@ body {
 }
 
 @keyframes urgentPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
     }
+
     50% {
         box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
     }
@@ -958,15 +979,15 @@ body {
     .countdown-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .countdown-card {
         padding: 1rem;
     }
-    
+
     .countdown-value {
         font-size: 1.5rem;
     }
-    
+
     .countdown-unit {
         min-width: 40px;
     }
@@ -1129,6 +1150,7 @@ body {
     color: #e43e38;
     border-color: rgba(228, 62, 56, 0.2);
 }
+
 .partner-mmt:hover {
     background: rgba(228, 62, 56, 0.05);
 }
@@ -1137,9 +1159,11 @@ body {
     color: #213d77;
     border-color: rgba(33, 61, 119, 0.2);
 }
+
 [data-theme="dark"] .partner-irctc {
     color: #6b8cce;
 }
+
 .partner-irctc:hover {
     background: rgba(33, 61, 119, 0.05);
 }
@@ -1148,6 +1172,7 @@ body {
     color: #ea580c;
     border-color: rgba(234, 88, 12, 0.2);
 }
+
 .partner-railyatri:hover {
     background: rgba(234, 88, 12, 0.05);
 }
@@ -1156,9 +1181,11 @@ body {
     color: #2e7d32;
     border-color: rgba(46, 125, 50, 0.2);
 }
+
 [data-theme="dark"] .partner-confirmtkt {
     color: #66bb6a;
 }
+
 .partner-confirmtkt:hover {
     background: rgba(46, 125, 50, 0.05);
 }
@@ -1167,6 +1194,7 @@ body {
     color: #2f81ed;
     border-color: rgba(47, 129, 237, 0.2);
 }
+
 .partner-easemytrip:hover {
     background: rgba(47, 129, 237, 0.05);
 }
@@ -1175,6 +1203,7 @@ body {
     color: #2274e0;
     border-color: rgba(34, 116, 224, 0.2);
 }
+
 .partner-goibibo:hover {
     background: rgba(34, 116, 224, 0.05);
 }
@@ -1203,6 +1232,8 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
     align-content: start;
+    min-height: 400px;
+    /* Prevent layout shift */
 }
 
 .skeleton-loader {
@@ -1223,7 +1254,8 @@ body {
     padding: 1rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-light);
-    contain: content; /* Performance: isolate layout/paint */
+    contain: content;
+    /* Performance: isolate layout/paint */
 }
 
 /* Animation only on desktop */
@@ -1300,7 +1332,7 @@ body {
 /* Booking Open */
 .day-cell.next-60-days {
     background-color: var(--accent-open-light);
-    color: #047857;
+    color: #065f46;
 }
 
 [data-theme="dark"] .day-cell.next-60-days {
@@ -1580,6 +1612,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -1636,6 +1669,7 @@ body {
    ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -1650,6 +1684,7 @@ body {
    ========================================== */
 
 @media print {
+
     .dark-mode-toggle,
     .booking-actions,
     .booking-partners-card,

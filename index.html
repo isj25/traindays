@@ -40,54 +40,271 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="RailBookingDate">
 
+    <!-- Preconnect to external domains for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Preload critical resources -->
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" href="js/app.js" as="script">
-    
+
     <!-- Critical CSS - Inlined for fast first paint -->
     <style>
-        :root{--bg-app:#fef7ed;--bg-card:#fff;--text-primary:#1a365d;--text-secondary:#4a5568;--primary:#ff6b00;--primary-light:#fff3e6;--primary-dark:#e55a00;--border-light:#fed7aa;--font-heading:'DM Sans',system-ui,-apple-system,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif}
-        [data-theme="dark"]{--bg-app:#0f1729;--bg-card:#1a2744;--text-primary:#f7fafc;--text-secondary:#cbd5e0;--primary:#ff8533;--primary-light:#2d1f0f;--primary-dark:#ff6b00;--border-light:#3d4f6f}
-        *{box-sizing:border-box;margin:0;padding:0}
-        body{background-color:var(--bg-app);color:var(--text-primary);font-family:var(--font-body);line-height:1.6;min-height:100vh}
-        .app-container{max-width:1200px;margin:0 auto;padding:1rem}
-        .app-header{margin-bottom:2rem}
-        .header-top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;flex-wrap:wrap;gap:.5rem}
-        .current-date-display{font-size:.85rem;color:var(--primary);font-weight:600;background:var(--primary-light);padding:.5rem 1rem;border-radius:99px}
-        .app-header h1{font-family:var(--font-heading);font-weight:700;font-size:2rem;color:var(--text-primary)}
-        .subtitle{color:var(--text-secondary);font-size:.95rem}
-        .dark-mode-toggle{background:var(--bg-card);border:1px solid var(--border-light);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-secondary)}
-        .dark-mode-toggle svg{width:20px;height:20px}
-        .dark-mode-toggle .sun-icon{display:none}
-        [data-theme="dark"] .dark-mode-toggle .sun-icon{display:block}
-        [data-theme="dark"] .dark-mode-toggle .moon-icon{display:none}
-        .booking-status-card{background:linear-gradient(135deg,#1a365d 0%,#2c5282 100%);color:#fff;border-radius:16px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
-        .booking-info-text{font-size:1.1rem;font-weight:500}
-        .booking-info-text .highlight{font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#ff6b00}
-        .date-selector-card{background:var(--bg-card);border-radius:16px;padding:1.5rem;text-align:center;border:1px solid var(--border-light);margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem}
-        .input-label{font-size:.9rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em}
-        .input-wrapper{position:relative;width:100%;max-width:320px}
-        .modern-input{width:100%;padding:.75rem 1rem .75rem 2.75rem;font-size:1rem;color:var(--text-primary);background:var(--bg-app);border:1px solid var(--border-light);border-radius:12px;cursor:pointer;text-align:center}
-        .calendar-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-secondary);pointer-events:none}
-        .skeleton-loader{grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-secondary)}
-        .action-btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}
-        .hero-title{position:relative;display:inline-flex;align-items:center;gap:.5rem}
-        .train-icon{display:inline-block;animation:trainMove 3s ease-in-out infinite}
-        @keyframes trainMove{0%,100%{transform:translateX(-5px)}50%{transform:translateX(5px)}}
-        @media(max-width:600px){.app-header h1{font-size:1.5rem}.current-date-display{flex:1 1 100%;text-align:center;order:-1}}
+        :root {
+            --bg-app: #fef7ed;
+            --bg-card: #fff;
+            --text-primary: #1a365d;
+            --text-secondary: #4a5568;
+            --primary: #ff6b00;
+            --primary-light: #fff3e6;
+            --primary-dark: #e55a00;
+            --border-light: #fed7aa;
+            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif
+        }
+
+        [data-theme="dark"] {
+            --bg-app: #0f1729;
+            --bg-card: #1a2744;
+            --text-primary: #f7fafc;
+            --text-secondary: #cbd5e0;
+            --primary: #ff8533;
+            --primary-light: #2d1f0f;
+            --primary-dark: #ff6b00;
+            --border-light: #3d4f6f
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            min-height: 100vh
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem
+        }
+
+        .calendar-container {
+            min-height: 400px
+        }
+
+        .countdown-section {
+            min-height: 200px
+        }
+
+        .skeleton-loader {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem
+        }
+
+        .app-header {
+            margin-bottom: 2rem
+        }
+
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .5rem;
+            flex-wrap: wrap;
+            gap: .5rem
+        }
+
+        .current-date-display {
+            font-size: .85rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: var(--primary-light);
+            padding: .5rem 1rem;
+            border-radius: 99px
+        }
+
+        .app-header h1 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--text-primary)
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: .95rem
+        }
+
+        .dark-mode-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary)
+        }
+
+        .dark-mode-toggle svg {
+            width: 20px;
+            height: 20px
+        }
+
+        .dark-mode-toggle .sun-icon {
+            display: none
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .sun-icon {
+            display: block
+        }
+
+        [data-theme="dark"] .dark-mode-toggle .moon-icon {
+            display: none
+        }
+
+        .booking-status-card {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem
+        }
+
+        .booking-info-text {
+            font-size: 1.1rem;
+            font-weight: 500
+        }
+
+        .booking-info-text .highlight {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-color: #ff6b00
+        }
+
+        .date-selector-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .75rem
+        }
+
+        .input-label {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 320px
+        }
+
+        .modern-input {
+            width: 100%;
+            padding: .75rem 1rem .75rem 2.75rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--bg-app);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center
+        }
+
+        .calendar-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none
+        }
+
+        .skeleton-loader {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary)
+        }
+
+        .action-btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary)
+        }
+
+        .hero-title {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .train-icon {
+            display: inline-block;
+            animation: trainMove 3s ease-in-out infinite
+        }
+
+        @keyframes trainMove {
+
+            0%,
+            100% {
+                transform: translateX(-5px)
+            }
+
+            50% {
+                transform: translateX(5px)
+            }
+        }
+
+        @media(max-width:600px) {
+            .app-header h1 {
+                font-size: 1.5rem
+            }
+
+            .current-date-display {
+                flex: 1 1 100%;
+                text-align: center;
+                order: -1
+            }
+        }
     </style>
 
-    <!-- Load full CSS asynchronously -->
-    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+    <!-- Load full CSS synchronously for better CLS -->
+    <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Fonts - Load asynchronously to prevent render blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <!-- Fonts - Load with font-display swap for better performance -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+        media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
     </noscript>
 
     <!-- JSON-LD Structured Data - WebApplication -->
@@ -223,7 +440,7 @@
 
     <!-- Apply dark mode immediately to prevent flash -->
     <script>
-        (function(){var t=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(!t&&d))document.documentElement.setAttribute('data-theme','dark')})();
+        (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
     </script>
 </head>
 
@@ -232,11 +449,14 @@
         <header class="app-header">
             <div class="header-top-row">
                 <div id="current-date-display" class="current-date-display">Loading...</div>
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode"
+                    aria-pressed="false">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -262,37 +482,44 @@
                     <div class="hero-input-wrapper">
                         <div class="input-wrapper-hero">
                             <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true">
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                                 <line x1="16" y1="2" x2="16" y2="6"></line>
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
-                            <input type="text" id="travel-date" class="modern-input-hero" readonly placeholder="Select a date"
+                            <input type="text" id="travel-date" class="modern-input-hero" readonly
+                                placeholder="Select a date"
                                 aria-label="Select travel date to check IRCTC booking availability">
                         </div>
                     </div>
-                    <div id="booking-message" class="booking-message booking-message-hero" role="status" aria-live="polite"></div>
-                    
+                    <div id="booking-message" class="booking-message booking-message-hero" role="status"
+                        aria-live="polite"></div>
+
                     <!-- Action Buttons -->
                     <div id="booking-actions" class="booking-actions">
-                        <a id="book-now-btn" href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-book" aria-label="Book train tickets on IRCTC">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <a id="book-now-btn" href="https://www.irctc.co.in/nget/train-search" target="_blank"
+                            rel="noopener noreferrer" class="action-btn action-btn-book"
+                            aria-label="Book train tickets on IRCTC">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
                             </svg>
                             Book Now on IRCTC
                         </a>
                         <button id="copy-btn" class="action-btn" aria-label="Copy train booking information">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
                             Copy
                         </button>
                         <button id="share-btn" class="action-btn" aria-label="Share train booking date">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="18" cy="5" r="3"></circle>
                                 <circle cx="6" cy="12" r="3"></circle>
                                 <circle cx="18" cy="19" r="3"></circle>
@@ -301,14 +528,18 @@
                             </svg>
                             Share
                         </button>
-                        <a id="whatsapp-btn" class="action-btn action-btn-whatsapp" aria-label="Share on WhatsApp" target="_blank" rel="noopener noreferrer">
+                        <a id="whatsapp-btn" class="action-btn action-btn-whatsapp" aria-label="Share on WhatsApp"
+                            target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                             </svg>
                             WhatsApp
                         </a>
-                        <button id="calendar-btn" class="action-btn action-btn-primary" aria-label="Add booking reminder to calendar">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <button id="calendar-btn" class="action-btn action-btn-primary"
+                            aria-label="Add booking reminder to calendar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                                 <line x1="16" y1="2" x2="16" y2="6"></line>
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -468,31 +699,55 @@
 
                 <article class="seo-article">
                     <h3>What is the IRCTC Booking Date Calculator?</h3>
-                    <p>RailBookingDate is a free <strong>IRCTC booking date calculator</strong> that helps you find exactly when <strong>train ticket booking opens</strong> for your journey. Whether you need to book through the <strong>60 days advance reservation period (ARP)</strong> or need last-minute <strong>Tatkal tickets</strong>, our calculator shows you the exact date and time when booking starts on the <strong>Indian Railways reservation system</strong>.</p>
+                    <p>RailBookingDate is a free <strong>IRCTC booking date calculator</strong> that helps you find
+                        exactly when <strong>train ticket booking opens</strong> for your journey. Whether you need to
+                        book through the <strong>60 days advance reservation period (ARP)</strong> or need last-minute
+                        <strong>Tatkal tickets</strong>, our calculator shows you the exact date and time when booking
+                        starts on the <strong>Indian Railways reservation system</strong>.
+                    </p>
 
                     <h3>When Does Train Booking Open on IRCTC?</h3>
-                    <p>The <strong>IRCTC booking window</strong> for regular advance reservation opens exactly <strong>60 days before your travel date at 8:00 AM IST</strong>. This is known as the <strong>Advance Reservation Period (ARP)</strong>. For example, if you want to travel on March 15th, you can start booking from January 14th at 8 AM. Our <strong>train booking date finder</strong> automatically calculates this for any travel date.</p>
+                    <p>The <strong>IRCTC booking window</strong> for regular advance reservation opens exactly
+                        <strong>60 days before your travel date at 8:00 AM IST</strong>. This is known as the
+                        <strong>Advance Reservation Period (ARP)</strong>. For example, if you want to travel on March
+                        15th, you can start booking from January 14th at 8 AM. Our <strong>train booking date
+                            finder</strong> automatically calculates this for any travel date.
+                    </p>
 
                     <h3>Tatkal Booking Time - AC and Sleeper Class</h3>
-                    <p><strong>Tatkal booking</strong> is for last-minute train travel and opens <strong>one day before the journey</strong>:</p>
+                    <p><strong>Tatkal booking</strong> is for last-minute train travel and opens <strong>one day before
+                            the journey</strong>:</p>
                     <ul>
-                        <li><strong>AC Tatkal (1A, 2A, 3A, CC, EC, 3E):</strong> Booking opens at <strong>10:00 AM IST</strong></li>
-                        <li><strong>Sleeper Tatkal (SL) and Second Sitting (2S):</strong> Booking opens at <strong>11:00 AM IST</strong></li>
-                        <li><strong>Premium Tatkal:</strong> Same timing as regular Tatkal with dynamic (higher) pricing</li>
+                        <li><strong>AC Tatkal (1A, 2A, 3A, CC, EC, 3E):</strong> Booking opens at <strong>10:00 AM
+                                IST</strong></li>
+                        <li><strong>Sleeper Tatkal (SL) and Second Sitting (2S):</strong> Booking opens at <strong>11:00
+                                AM IST</strong></li>
+                        <li><strong>Premium Tatkal:</strong> Same timing as regular Tatkal with dynamic (higher) pricing
+                        </li>
                     </ul>
-                    <p>Tatkal tickets have additional charges and limited quota, so you need to be quick. Being logged into IRCTC a few minutes before the opening time increases your chances of getting a <strong>confirmed train ticket</strong>.</p>
+                    <p>Tatkal tickets have additional charges and limited quota, so you need to be quick. Being logged
+                        into IRCTC a few minutes before the opening time increases your chances of getting a
+                        <strong>confirmed train ticket</strong>.
+                    </p>
 
                     <h3>How to Use the Railway Booking Calendar</h3>
-                    <p>Our <strong>Indian Railways booking calendar</strong> shows all dates with color-coded status:</p>
+                    <p>Our <strong>Indian Railways booking calendar</strong> shows all dates with color-coded status:
+                    </p>
                     <ul>
-                        <li><strong>Green dates:</strong> <strong>Advance booking is open</strong> - you can book tickets now</li>
-                        <li><strong>Orange dates:</strong> Only <strong>Tatkal booking available</strong> (today and tomorrow)</li>
-                        <li><strong>Grey dates:</strong> <strong>Booking not yet open</strong> - check when it opens using our calculator</li>
+                        <li><strong>Green dates:</strong> <strong>Advance booking is open</strong> - you can book
+                            tickets now</li>
+                        <li><strong>Orange dates:</strong> Only <strong>Tatkal booking available</strong> (today and
+                            tomorrow)</li>
+                        <li><strong>Grey dates:</strong> <strong>Booking not yet open</strong> - check when it opens
+                            using our calculator</li>
                     </ul>
-                    <p>Simply select your <strong>travel date</strong> and the calculator instantly shows when <strong>IRCTC booking opens</strong> for that date.</p>
+                    <p>Simply select your <strong>travel date</strong> and the calculator instantly shows when
+                        <strong>IRCTC booking opens</strong> for that date.
+                    </p>
 
                     <h3>Why Use a Train Ticket Booking Calculator?</h3>
-                    <p>Manually counting 60 days can be confusing and error-prone. Our <strong>railway reservation date calculator</strong> eliminates guesswork by:</p>
+                    <p>Manually counting 60 days can be confusing and error-prone. Our <strong>railway reservation date
+                            calculator</strong> eliminates guesswork by:</p>
                     <ul>
                         <li>Instantly calculating the <strong>exact booking opening date</strong></li>
                         <li>Showing <strong>Tatkal availability</strong> with proper timings</li>
@@ -528,13 +783,19 @@
             <!-- About Section -->
             <section class="seo-content-section about-section lazy-section" aria-labelledby="about-title">
                 <h2 id="about-title" class="section-title">About RailBookingDate</h2>
-                
+
                 <article class="seo-article">
                     <h3>Who Created This Tool?</h3>
-                    <p>RailBookingDate was built by <strong>Ishwar Joshi</strong>, a developer who understands the challenges millions of Indians face when trying to book train tickets. This <strong>free IRCTC booking calculator</strong> was created to simplify the process of finding when booking opens for your journey.</p>
+                    <p>RailBookingDate was built by <strong>Ishwar Joshi</strong>, a developer who understands the
+                        challenges millions of Indians face when trying to book train tickets. This <strong>free IRCTC
+                            booking calculator</strong> was created to simplify the process of finding when booking
+                        opens for your journey.</p>
 
                     <h3>Why This Tool Exists</h3>
-                    <p>With over 23 million passengers traveling daily on <strong>Indian Railways</strong>, getting a confirmed ticket can be challenging. The <strong>60-day advance booking</strong> system and different <strong>Tatkal timings</strong> for AC and Sleeper classes make planning complicated. RailBookingDate solves this by providing:</p>
+                    <p>With over 23 million passengers traveling daily on <strong>Indian Railways</strong>, getting a
+                        confirmed ticket can be challenging. The <strong>60-day advance booking</strong> system and
+                        different <strong>Tatkal timings</strong> for AC and Sleeper classes make planning complicated.
+                        RailBookingDate solves this by providing:</p>
                     <ul>
                         <li>Instant <strong>booking date calculation</strong> for any travel date</li>
                         <li>Clear visualization of <strong>available booking windows</strong></li>
@@ -544,7 +805,10 @@
                     </ul>
 
                     <h3>Frequently Searched Questions</h3>
-                    <p>Our users commonly search for: "<strong>when to book train tickets</strong>", "<strong>IRCTC 60 days advance booking</strong>", "<strong>Tatkal booking time</strong>", "<strong>train ticket availability next 60 days</strong>", and "<strong>railway booking calendar</strong>". This tool answers all these queries instantly.</p>
+                    <p>Our users commonly search for: "<strong>when to book train tickets</strong>", "<strong>IRCTC 60
+                            days advance booking</strong>", "<strong>Tatkal booking time</strong>", "<strong>train
+                            ticket availability next 60 days</strong>", and "<strong>railway booking calendar</strong>".
+                        This tool answers all these queries instantly.</p>
                 </article>
             </section>
 
@@ -560,9 +824,10 @@
                     Contact & Feedback
                 </h3>
                 <div class="contact-info">
-                    <p>Have suggestions to improve this <strong>train booking calculator</strong>? Found a bug? We'd love to hear from you!</p>
+                    <p>Have suggestions to improve this <strong>train booking calculator</strong>? Found a bug? We'd
+                        love to hear from you!</p>
                     <p>
-                        <strong>Email:</strong> 
+                        <strong>Email:</strong>
                         <a href="mailto:ishwarj515@gmail.com" class="contact-link">ishwarj515@gmail.com</a>
                     </p>
                 </div>
@@ -578,9 +843,9 @@
 
     <!-- Main Application Script - Deferred for performance -->
     <script src="js/app.js" defer></script>
-    
+
     <!-- Set current year -->
-    <script>document.getElementById('current-year').textContent=new Date().getFullYear();</script>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>
