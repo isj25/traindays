@@ -1,31 +1,85 @@
-/* Modern Minimalist Design System */
+/* ==========================================
+   RailBookingDate - Modern Design System
+   Performance Optimized
+   ========================================== */
+
 :root {
-    /* Color Palette */
-    --bg-app: #f8fafc;
+    /* Color Palette - Light Mode (Indian Railways Inspired) */
+    --bg-app: #fef7ed;
     --bg-card: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-tertiary: #94a3b8;
+    --text-primary: #1a365d;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
 
-    --primary: #4f46e5;
-    --primary-light: #e0e7ff;
+    /* Saffron/Orange Primary */
+    --primary: #ff6b00;
+    --primary-light: #fff3e6;
+    --primary-dark: #e55a00;
 
-    --accent-tatkal: #f59e0b;
-    --accent-tatkal-light: #fef3c7;
+    /* Deep Blue Secondary */
+    --secondary: #1a365d;
+    --secondary-light: #e6eef7;
+    --secondary-dark: #0f2744;
 
-    --accent-open: #10b981;
-    --accent-open-light: #d1fae5;
+    --accent-tatkal: #dc2626;
+    --accent-tatkal-light: #fee2e2;
+    --accent-tatkal-dark: #b91c1c;
 
-    --accent-closed: #e2e8f0;
+    --accent-open: #16a34a;
+    --accent-open-light: #dcfce7;
+    --accent-open-dark: #15803d;
 
-    --border-light: #e2e8f0;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --accent-closed: #e5e7eb;
 
-    /* Typography */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --border-light: #fed7aa;
+    --shadow-sm: 0 1px 3px 0 rgb(26 54 93 / 0.08);
+    --shadow-md: 0 4px 8px -1px rgb(26 54 93 / 0.12);
+
+    /* Typography - Distinctive Fonts */
+    --font-heading: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Optimized transitions */
+    --transition-fast: 0.1s ease-out;
+    --transition-normal: 0.15s ease-out;
 }
+
+/* ==========================================
+   Dark Mode Theme
+   ========================================== */
+
+[data-theme="dark"] {
+    --bg-app: #0f1729;
+    --bg-card: #1a2744;
+    --text-primary: #f7fafc;
+    --text-secondary: #cbd5e0;
+    --text-tertiary: #a0aec0;
+
+    /* Orange stays vibrant in dark mode */
+    --primary: #ff8533;
+    --primary-light: #2d1f0f;
+    --primary-dark: #ff6b00;
+
+    --secondary: #3182ce;
+    --secondary-light: #1a365d;
+    --secondary-dark: #2c5282;
+
+    --accent-tatkal: #f87171;
+    --accent-tatkal-light: #450a0a;
+    --accent-tatkal-dark: #ef4444;
+
+    --accent-open: #4ade80;
+    --accent-open-light: #052e16;
+    --accent-open-dark: #22c55e;
+
+    --accent-closed: #3d4f6f;
+
+    --border-light: #3d4f6f;
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
 
 * {
     box-sizing: border-box;
@@ -33,46 +87,60 @@
     padding: 0;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     background-color: var(--bg-app);
     color: var(--text-primary);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
+    line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* App Structure */
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   App Structure
+   ========================================== */
+
 .app-container {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     padding: 1rem;
 }
 
+/* ==========================================
+   Header
+   ========================================== */
+
 .app-header {
-    text-align: left;
     margin-bottom: 2rem;
-    flex-shrink: 0;
-    position: relative;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .current-date-display {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--primary);
     font-weight: 600;
     background: var(--primary-light);
     padding: 0.5rem 1rem;
     border-radius: 99px;
-    border: 1px solid var(--primary-light);
-    box-shadow: none;
 }
 
 .app-header h1 {
@@ -86,32 +154,83 @@ body {
 .subtitle {
     color: var(--text-secondary);
     font-size: 0.95rem;
-    margin-top: 0.25rem;
 }
 
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.dark-mode-toggle:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.dark-mode-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.dark-mode-toggle .sun-icon {
+    display: none;
+}
+
+.dark-mode-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="dark"] .dark-mode-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] .dark-mode-toggle .moon-icon {
+    display: none;
+}
+
+/* ==========================================
+   Main Content
+   ========================================== */
+
 .main-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Cards */
+/* ==========================================
+   Cards
+   ========================================== */
+
 .booking-status-card,
 .date-selector-card,
-.booking-partners-card {
+.booking-partners-card,
+.booking-rules-card {
     background: var(--bg-card);
     border-radius: 16px;
     box-shadow: var(--shadow-sm);
     padding: 1.5rem;
     text-align: center;
     border: 1px solid var(--border-light);
-    flex-shrink: 0;
 }
 
 .booking-status-card {
-    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
     color: white;
+    border: none;
+}
+
+[data-theme="dark"] .booking-status-card {
+    background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
 }
 
 .booking-info-text {
@@ -125,26 +244,180 @@ body {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-decoration-color: #ff6b00;
 }
 
-/* Date Selector */
+/* ==========================================
+   Hero Date Selector (Primary Feature)
+   ========================================== */
+
+.date-selector-hero {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Train Animation */
+.train-icon {
+    display: inline-block;
+    font-size: 1.3em;
+    animation: trainMove 3s ease-in-out infinite;
+}
+
+@keyframes trainMove {
+    0%, 100% { 
+        transform: translateX(-5px); 
+    }
+    50% { 
+        transform: translateX(5px); 
+    }
+}
+
+/* Smoke effect on hover */
+.hero-title:hover .train-icon {
+    animation: trainMoveSmoke 1.5s ease-in-out infinite;
+}
+
+@keyframes trainMoveSmoke {
+    0%, 100% { 
+        transform: translateX(-3px) scale(1); 
+    }
+    25% {
+        transform: translateX(0) scale(1.05);
+    }
+    50% { 
+        transform: translateX(5px) scale(1); 
+    }
+    75% {
+        transform: translateX(2px) scale(1.02);
+    }
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.hero-input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.input-wrapper-hero {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+}
+
+.modern-input-hero {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-app);
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.modern-input-hero::placeholder {
+    color: var(--text-secondary);
+}
+
+.modern-input-hero:hover {
+    border-color: var(--primary);
+}
+
+.modern-input-hero:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.input-wrapper-hero .calendar-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.booking-message-hero {
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.booking-message-hero:empty {
+    display: none;
+}
+
+.booking-message-hero.booking-open {
+    background-color: var(--accent-open-light);
+    color: #065f46;
+}
+
+[data-theme="dark"] .booking-message-hero.booking-open {
+    color: var(--accent-open);
+}
+
+.booking-message-hero.booking-future {
+    background-color: var(--accent-tatkal-light);
+    color: #92400e;
+}
+
+[data-theme="dark"] .booking-message-hero.booking-future {
+    color: var(--accent-tatkal);
+}
+
+/* Date Selector Card */
 .date-selector-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
     position: relative;
-    /* For popup positioning context if needed */
 }
 
 .input-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
 }
 
 .input-wrapper {
@@ -156,26 +429,25 @@ body {
 .modern-input {
     width: 100%;
     padding: 0.75rem 1rem 0.75rem 2.75rem;
-    /* Space for icon */
     font-family: var(--font-body);
     font-size: 1rem;
     color: var(--text-primary);
     background: var(--bg-app);
     border: 1px solid var(--border-light);
     border-radius: 12px;
-    transition: all 0.2s ease;
     cursor: pointer;
     text-align: center;
+    transition: border-color var(--transition-fast);
 }
 
-.modern-input:hover {
-    border-color: var(--primary);
+.modern-input::placeholder {
+    color: var(--text-tertiary);
 }
 
+.modern-input:hover,
 .modern-input:focus {
-    outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-light);
+    outline: none;
 }
 
 .calendar-icon {
@@ -187,15 +459,36 @@ body {
     pointer-events: none;
 }
 
-/* Booking Message */
+/* Hero section responsive */
+@media (max-width: 600px) {
+    .date-selector-hero {
+        padding: 1.25rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.1rem;
+    }
+    
+    .modern-input-hero {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================================
+   Booking Message
+   ========================================== */
+
 .booking-message {
     font-size: 0.95rem;
     font-weight: 500;
-    margin-top: 0.5rem;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
+}
+
+.booking-message:empty {
+    display: none;
 }
 
 .booking-message.booking-open {
@@ -203,23 +496,488 @@ body {
     color: #065f46;
 }
 
+[data-theme="dark"] .booking-message.booking-open {
+    color: var(--accent-open);
+}
+
 .booking-message.booking-future {
     background-color: var(--accent-tatkal-light);
     color: #92400e;
 }
 
-/* Booking Rules Card */
-.booking-rules-card {
+[data-theme="dark"] .booking-message.booking-future {
+    color: var(--accent-tatkal);
+}
+
+/* ==========================================
+   Action Buttons
+   ========================================== */
+
+.booking-actions {
+    display: none;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.booking-actions.show {
+    display: flex;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-app);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.action-btn:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Primary action button (Add to Calendar) */
+.action-btn-primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.action-btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: white;
+}
+
+/* Book Now button - prominent CTA */
+.action-btn-book {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #059669;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.625rem 1.25rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.action-btn-book:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    border-color: #047857;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.action-btn-book svg {
+    width: 18px;
+    height: 18px;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+}
+
+/* Dark mode adjustment for Book Now */
+[data-theme="dark"] .action-btn-book {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    border-color: #10b981;
+}
+
+[data-theme="dark"] .action-btn-book:hover {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* WhatsApp Share button */
+.action-btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border-color: #25D366;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.action-btn-whatsapp:hover {
+    background: #128C7E;
+    border-color: #128C7E;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.action-btn-whatsapp svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================
+   Calendar Modal
+   ========================================== */
+
+.calendar-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+}
+
+.calendar-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.calendar-modal-content {
     background: var(--bg-card);
     border-radius: 16px;
-    box-shadow: var(--shadow-sm);
-    padding: 1.25rem 1.5rem;
+    width: 90%;
+    max-width: 340px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-light);
-    width: 100%;
-    margin: 0 auto;
-    /* Center it */
-    text-align: left;
+    transform: scale(0.95);
+    transition: transform 0.15s ease-out;
+}
+
+.calendar-modal.show .calendar-modal-content {
+    transform: scale(1);
+}
+
+.calendar-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.calendar-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.calendar-modal-close:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.calendar-modal-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.calendar-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.calendar-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+    border: 1px solid var(--border-light);
+    background: var(--bg-app);
+    font-family: var(--font-body);
+}
+
+.calendar-option:hover {
+    transform: translateY(-1px);
+}
+
+.calendar-option svg {
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
+}
+
+.calendar-option.google {
+    color: var(--text-primary);
+    border-color: rgba(66, 133, 244, 0.3);
+}
+
+.calendar-option.google:hover {
+    background: rgba(66, 133, 244, 0.08);
+}
+
+.calendar-option.google svg {
+    width: 22px;
+    height: 22px;
+}
+
+.calendar-option.ics {
+    color: var(--text-primary);
+}
+
+.calendar-option.ics:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+/* ==========================================
+   Countdown Timers Section
+   ========================================== */
+
+.countdown-section {
+    margin-bottom: 0.5rem;
+}
+
+.countdown-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.countdown-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.countdown-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.countdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.countdown-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+}
+
+.badge-general {
+    background: #e6eef7;
+    color: #1a365d;
+}
+
+[data-theme="dark"] .badge-general {
+    background: #1a365d;
+    color: #90cdf4;
+}
+
+.badge-tatkal-ac {
+    background: var(--accent-tatkal-light);
+    color: var(--accent-tatkal-dark);
+}
+
+[data-theme="dark"] .badge-tatkal-ac {
+    color: var(--accent-tatkal);
+}
+
+.badge-tatkal-sleeper {
+    background: #fff3e6;
+    color: #e55a00;
+}
+
+[data-theme="dark"] .badge-tatkal-sleeper {
+    background: #2d1f0f;
+    color: #ff8533;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.countdown-date {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.tatkal-note {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent-tatkal) 0%, var(--accent-tatkal-dark) 100%);
+    padding: 0.4rem 0.875rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.general-note {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+    padding: 0.4rem 0.875rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 48px;
+}
+
+.countdown-value {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-text {
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+}
+
+.countdown-separator {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin-bottom: 1rem;
+}
+
+/* Card-specific accent colors */
+.countdown-general {
+    border-top: 3px solid #1a365d;
+}
+
+.countdown-tatkal-ac {
+    border-top: 3px solid var(--accent-tatkal);
+}
+
+.countdown-tatkal-sleeper {
+    border-top: 3px solid #ff6b00;
+}
+
+/* Urgent state - less than 5 minutes */
+.countdown-urgent {
+    animation: urgentPulse 1s ease-in-out infinite;
+}
+
+.countdown-urgent .countdown-value {
+    color: #dc2626;
+}
+
+@keyframes urgentPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .countdown-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-card {
+        padding: 1rem;
+    }
+    
+    .countdown-value {
+        font-size: 1.5rem;
+    }
+    
+    .countdown-unit {
+        min-width: 40px;
+    }
+}
+
+/* ==========================================
+   Booking Rules Card
+   ========================================== */
+
+.booking-rules-card {
+    text-align: left;
 }
 
 .rules-title {
@@ -235,6 +993,7 @@ body {
 
 .rules-icon {
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .rules-list {
@@ -259,17 +1018,43 @@ body {
     top: 8px;
     width: 4px;
     height: 4px;
-    background-color: var(--text-tertiary);
+    background-color: var(--primary);
     border-radius: 50%;
 }
 
-/* Minimal Legend */
+/* Contact info */
+.contact-info {
+    padding: 1rem 0;
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.contact-info p:first-child {
+    margin-bottom: 0.5rem;
+}
+
+.contact-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   Calendar Legend
+   ========================================== */
+
 .calendar-legend-minimal {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 0.5rem;
-    flex-shrink: 0;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .legend-item {
@@ -299,16 +1084,23 @@ body {
     background-color: var(--accent-closed);
 }
 
-/* Booking Partners */
+/* ==========================================
+   Booking Partners
+   ========================================== */
+
 .booking-partners-card {
     display: flex;
     flex-direction: column;
 }
 
+.booking-partners-card .rules-title {
+    justify-content: center;
+}
+
 .booking-partners-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 1rem;
+    gap: 0.75rem;
     width: 100%;
 }
 
@@ -323,82 +1115,73 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s ease;
     text-align: center;
     color: var(--text-secondary);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .partner-link:hover {
-    transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
 }
 
 /* Brand Colors */
-/* MakeMyTrip - Red */
 .partner-mmt {
     color: #e43e38;
     border-color: rgba(228, 62, 56, 0.2);
 }
-
 .partner-mmt:hover {
     background: rgba(228, 62, 56, 0.05);
-    border-color: #e43e38;
 }
 
-/* IRCTC - Blue */
 .partner-irctc {
     color: #213d77;
     border-color: rgba(33, 61, 119, 0.2);
 }
-
+[data-theme="dark"] .partner-irctc {
+    color: #6b8cce;
+}
 .partner-irctc:hover {
     background: rgba(33, 61, 119, 0.05);
-    border-color: #213d77;
 }
 
-/* RailYatri - Orange */
 .partner-railyatri {
     color: #ea580c;
     border-color: rgba(234, 88, 12, 0.2);
 }
-
 .partner-railyatri:hover {
     background: rgba(234, 88, 12, 0.05);
-    border-color: #ea580c;
 }
 
-/* ConfirmTkt - Green */
 .partner-confirmtkt {
     color: #2e7d32;
     border-color: rgba(46, 125, 50, 0.2);
 }
-
+[data-theme="dark"] .partner-confirmtkt {
+    color: #66bb6a;
+}
 .partner-confirmtkt:hover {
     background: rgba(46, 125, 50, 0.05);
-    border-color: #2e7d32;
 }
 
-/* EaseMyTrip - Blue */
 .partner-easemytrip {
     color: #2f81ed;
     border-color: rgba(47, 129, 237, 0.2);
 }
-
 .partner-easemytrip:hover {
     background: rgba(47, 129, 237, 0.05);
-    border-color: #2f81ed;
 }
 
-/* Goibibo - Blue/Orange */
 .partner-goibibo {
     color: #2274e0;
     border-color: rgba(34, 116, 224, 0.2);
 }
-
 .partner-goibibo:hover {
     background: rgba(34, 116, 224, 0.05);
-    border-color: #2274e0;
 }
+
+/* ==========================================
+   Section Title
+   ========================================== */
 
 .section-title {
     font-family: var(--font-heading);
@@ -410,70 +1193,83 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Calendar Container */
+/* ==========================================
+   Calendar Container
+   ========================================== */
+
 .calendar-container {
     padding: 4px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
     align-content: start;
 }
 
-/* Month Section */
+.skeleton-loader {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   Month Section
+   ========================================== */
+
 .month-section {
     background: var(--bg-card);
     border-radius: 12px;
-    padding: 1.25rem;
+    padding: 1rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-light);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    contain: content; /* Performance: isolate layout/paint */
 }
 
-.month-section:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+/* Animation only on desktop */
+@media (min-width: 601px) {
+    .month-section {
+        animation: fadeIn 0.3s ease-out backwards;
+    }
 }
 
 .month-header {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-light);
-    text-transform: capitalize;
 }
 
-/* Grid */
+/* ==========================================
+   Calendar Grid
+   ========================================== */
+
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
+    gap: 4px;
 }
 
 .day-header {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-tertiary);
     text-align: center;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
 }
 
 .day-cell {
     aspect-ratio: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    /* Rounded cells */
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
-    position: relative;
-    cursor: default;
-    transition: all 0.2s ease;
 }
 
 .day-cell.empty {
@@ -487,67 +1283,69 @@ body {
     background-color: var(--primary-light);
 }
 
-/* Tatkal (Next 2 days) - Subtle Ring */
+/* Tatkal */
 .day-cell.tatkal {
     box-shadow: 0 0 0 2px var(--accent-tatkal) inset;
-    color: #b45309;
+    color: var(--accent-tatkal-dark);
+}
+
+[data-theme="dark"] .day-cell.tatkal {
+    color: var(--accent-tatkal);
 }
 
 .day-cell.tatkal .day-number {
     font-weight: 700;
 }
 
-/* Booking Open (Next 60 days) - Very subtle bg */
+/* Booking Open */
 .day-cell.next-60-days {
     background-color: var(--accent-open-light);
     color: #047857;
 }
 
-/* Today + Tatkal overlap */
+[data-theme="dark"] .day-cell.next-60-days {
+    color: var(--accent-open);
+}
+
+/* Today + Tatkal */
 .day-cell.today.tatkal {
     background-color: var(--accent-tatkal-light);
     box-shadow: 0 0 0 2px var(--accent-tatkal) inset;
-    color: #b45309;
+    color: var(--accent-tatkal-dark);
 }
 
-.day-cell:hover:not(.empty) {
-    transform: scale(1.1);
-    z-index: 2;
-    background-color: var(--bg-app);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+[data-theme="dark"] .day-cell.today.tatkal {
+    color: var(--accent-tatkal);
 }
 
-/* Remove explicit 'Tatkal open' text inside cells, we use the legend */
-.tatkal-text {
-    display: none;
-}
+/* ==========================================
+   Popup Calendar
+   ========================================== */
 
-/* Popup Calendar */
 .custom-calendar-popup {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%);
     background: var(--bg-card);
     width: 90%;
     max-width: 380px;
     max-height: 80vh;
     border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.2);
     z-index: 1000;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s ease-in-out;
+    visibility: hidden;
     border: 1px solid var(--border-light);
+    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
 }
 
 .custom-calendar-popup.show {
     opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
 }
 
 .custom-calendar-wrapper {
@@ -589,20 +1387,19 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    transition: background 0.2s;
 }
 
 .calendar-close-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-primary);
+    background: var(--primary-light);
+    color: var(--primary);
 }
 
 .calendar-scroll-content {
     flex: 1;
     overflow-y: auto;
     padding-bottom: 1rem;
-    min-height: 0;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .calendar-picker-month {
@@ -620,11 +1417,11 @@ body {
 .calendar-picker-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+    gap: 3px;
 }
 
 .calendar-picker-header {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-tertiary);
     text-align: center;
@@ -636,11 +1433,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s;
     color: var(--text-primary);
+    transition: background var(--transition-fast);
 }
 
 .calendar-picker-day.empty {
@@ -656,37 +1453,218 @@ body {
 .calendar-picker-day.disabled {
     color: var(--text-tertiary);
     cursor: not-allowed;
-    background: transparent;
+    opacity: 0.4;
 }
 
 .calendar-picker-day.today {
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
     color: var(--primary);
     font-weight: 600;
 }
 
-/* Mobile Adjustments */
+/* ==========================================
+   SEO Content Section
+   ========================================== */
+
+.seo-content-section {
+    margin-top: 2rem;
+}
+
+/* Lazy load off-screen sections */
+.lazy-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 400px;
+}
+
+.seo-article {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+}
+
+.seo-article h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 1.25rem 0 0.5rem 0;
+}
+
+.seo-article h3:first-child {
+    margin-top: 0;
+}
+
+.seo-article p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.seo-article ul {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.seo-article li {
+    margin-bottom: 0.25rem;
+}
+
+.about-section {
+    margin-top: 3rem;
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+
+.site-footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+    padding-bottom: 2rem;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* ==========================================
+   Toast Notifications
+   ========================================== */
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text-primary);
+    color: var(--bg-app);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-md);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    pointer-events: none;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background: var(--accent-open-dark);
+    color: white;
+}
+
+.toast-error {
+    background: #dc2626;
+    color: white;
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   Mobile Adjustments
+   ========================================== */
+
 @media (max-width: 600px) {
     .app-header h1 {
         font-size: 1.5rem;
     }
 
     .current-date-display {
-        position: static;
-        display: inline-block;
-        margin-bottom: 1rem;
+        flex: 1 1 100%;
+        text-align: center;
+        order: -1;
     }
 
     .calendar-container {
         grid-template-columns: 1fr;
-        /* Stack vertically on mobile */
     }
 
     .month-section {
-        padding: 1rem;
+        padding: 0.875rem;
     }
 
     .day-cell {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .booking-partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .action-btn {
+        justify-content: center;
+    }
+
+    /* Reduce layout complexity on mobile */
+    .lazy-section {
+        contain-intrinsic-size: 0 300px;
+    }
+}
+
+/* ==========================================
+   Reduced Motion
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+
+@media print {
+    .dark-mode-toggle,
+    .booking-actions,
+    .booking-partners-card,
+    .custom-calendar-popup {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .month-section {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
     }
 }

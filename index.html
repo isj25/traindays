@@ -4,118 +4,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RailBookingDate - Indian Railway Booking Date Calculator</title>
+    <title>IRCTC Booking Date Calculator | When to Book Train Tickets - 60 Days Advance & Tatkal Timing</title>
     <meta name="description"
-        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date. Smart calendar for IRCTC booking.">
+        content="Free IRCTC booking date calculator for Indian Railways. Find when train booking opens - 60 days advance reservation at 8 AM, Tatkal AC at 10 AM, Sleeper at 11 AM. Plan your journey with our smart railway booking calendar.">
     <meta name="keywords"
-        content="indian railways, irctc booking date, tatkal booking time, train ticket booking calculator, railway reservation date">
+        content="irctc booking date calculator, indian railways booking date, tatkal booking time, when to book train tickets, 60 days advance booking, train ticket booking calculator, railway reservation date, irctc advance booking, tatkal ticket booking time, train booking window, arp booking date, irctc booking opens at, railway booking calendar, train reservation date calculator, sleeper tatkal timing, ac tatkal timing, irctc 8 am booking, confirm train ticket, railway ticket availability, next 60 days train booking, when does train booking open, advance reservation period">
     <meta name="author" content="RailBookingDate">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://railbookingdate.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://railbookingdate.com/">
-    <meta property="og:title" content="RailBookingDate - Indian Railway Booking Date Calculator">
+    <meta property="og:title" content="IRCTC Booking Date Calculator - When to Book Train Tickets in India">
     <meta property="og:description"
-        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date.">
+        content="Calculate your Indian Railways booking date instantly. 60 days advance booking opens at 8 AM, Tatkal at 10-11 AM. Never miss your train ticket booking window!">
     <meta property="og:image" content="https://railbookingdate.com/og-image.jpg">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="RailBookingDate">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://railbookingdate.com/">
-    <meta property="twitter:title" content="RailBookingDate - Indian Railway Booking Date Calculator">
+    <meta property="twitter:title" content="IRCTC Booking Date Calculator - 60 Days Advance & Tatkal Timing">
     <meta property="twitter:description"
-        content="Calculate Indian Railways booking dates easily. Find out when Tatkal and general booking opens for your travel date.">
+        content="Free tool to calculate Indian Railways booking dates. Find when booking opens for your travel date - advance reservation & Tatkal timings.">
     <meta property="twitter:image" content="https://railbookingdate.com/og-image.jpg">
 
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#ff6b00">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RailBookingDate">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/app.js" as="script">
+    
+    <!-- Critical CSS - Inlined for fast first paint -->
+    <style>
+        :root{--bg-app:#fef7ed;--bg-card:#fff;--text-primary:#1a365d;--text-secondary:#4a5568;--primary:#ff6b00;--primary-light:#fff3e6;--primary-dark:#e55a00;--border-light:#fed7aa;--font-heading:'DM Sans',system-ui,-apple-system,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif}
+        [data-theme="dark"]{--bg-app:#0f1729;--bg-card:#1a2744;--text-primary:#f7fafc;--text-secondary:#cbd5e0;--primary:#ff8533;--primary-light:#2d1f0f;--primary-dark:#ff6b00;--border-light:#3d4f6f}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{background-color:var(--bg-app);color:var(--text-primary);font-family:var(--font-body);line-height:1.6;min-height:100vh}
+        .app-container{max-width:1200px;margin:0 auto;padding:1rem}
+        .app-header{margin-bottom:2rem}
+        .header-top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;flex-wrap:wrap;gap:.5rem}
+        .current-date-display{font-size:.85rem;color:var(--primary);font-weight:600;background:var(--primary-light);padding:.5rem 1rem;border-radius:99px}
+        .app-header h1{font-family:var(--font-heading);font-weight:700;font-size:2rem;color:var(--text-primary)}
+        .subtitle{color:var(--text-secondary);font-size:.95rem}
+        .dark-mode-toggle{background:var(--bg-card);border:1px solid var(--border-light);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-secondary)}
+        .dark-mode-toggle svg{width:20px;height:20px}
+        .dark-mode-toggle .sun-icon{display:none}
+        [data-theme="dark"] .dark-mode-toggle .sun-icon{display:block}
+        [data-theme="dark"] .dark-mode-toggle .moon-icon{display:none}
+        .booking-status-card{background:linear-gradient(135deg,#1a365d 0%,#2c5282 100%);color:#fff;border-radius:16px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
+        .booking-info-text{font-size:1.1rem;font-weight:500}
+        .booking-info-text .highlight{font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#ff6b00}
+        .date-selector-card{background:var(--bg-card);border-radius:16px;padding:1.5rem;text-align:center;border:1px solid var(--border-light);margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+        .input-label{font-size:.9rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em}
+        .input-wrapper{position:relative;width:100%;max-width:320px}
+        .modern-input{width:100%;padding:.75rem 1rem .75rem 2.75rem;font-size:1rem;color:var(--text-primary);background:var(--bg-app);border:1px solid var(--border-light);border-radius:12px;cursor:pointer;text-align:center}
+        .calendar-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-secondary);pointer-events:none}
+        .skeleton-loader{grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-secondary)}
+        .action-btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .hero-title{position:relative;display:inline-flex;align-items:center;gap:.5rem}
+        .train-icon{display:inline-block;animation:trainMove 3s ease-in-out infinite}
+        @keyframes trainMove{0%,100%{transform:translateX(-5px)}50%{transform:translateX(5px)}}
+        @media(max-width:600px){.app-header h1{font-size:1.5rem}.current-date-display{flex:1 1 100%;text-align:center;order:-1}}
+    </style>
+
+    <!-- Load full CSS asynchronously -->
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+
+    <!-- Fonts - Load asynchronously to prevent render blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+    </noscript>
 
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data - WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "RailBookingDate",
+      "name": "RailBookingDate - IRCTC Booking Date Calculator",
+      "alternateName": ["Indian Railways Booking Calculator", "Train Booking Date Finder", "IRCTC Date Calculator"],
       "applicationCategory": "TravelApplication",
       "operatingSystem": "All",
-      "description": "A smart calendar application to calculate Indian Railways booking dates including Tatkal and advance reservation periods.",
+      "description": "Free online calculator to find Indian Railways booking dates. Calculate when IRCTC advance booking opens (60 days at 8 AM) and Tatkal booking times (AC at 10 AM, Sleeper at 11 AM) for your travel date.",
+      "url": "https://railbookingdate.com",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "INR"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ishwar Joshi"
+      },
+      "keywords": "IRCTC booking date, Indian Railways, Tatkal timing, 60 days advance booking, train ticket calculator"
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - FAQ (Expanded) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When does Tatkal booking open for Indian Railways?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tatkal booking for AC classes (1A, 2A, 3A, CC, EC, 3E) opens at 10:00 AM IST, one day before the journey date. For Non-AC Sleeper class (SL) and Second Sitting (2S), Tatkal booking opens at 11:00 AM IST, one day before journey. You need to be ready on IRCTC exactly at these times to book Tatkal tickets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many days in advance can I book a train ticket on IRCTC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IRCTC allows booking train tickets 60 days in advance (excluding the date of journey). This is called the Advance Reservation Period (ARP). The booking window opens daily at 8:00 AM IST. For example, if today is January 1st, you can book tickets for travel up to March 1st starting at 8 AM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What time does IRCTC advance booking open?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IRCTC advance booking (ARP booking) opens at 8:00 AM IST every day for tickets 60 days ahead of the travel date. For Tatkal booking, AC classes open at 10:00 AM and Sleeper/2S classes open at 11:00 AM, one day before journey."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to calculate train booking date for my journey?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To calculate your train booking date, count back 60 days from your travel date. For example, if you want to travel on March 15th, your booking opens on January 14th at 8:00 AM. Use our free IRCTC booking date calculator to instantly find the exact date and time when booking opens for your journey."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Tatkal and Premium Tatkal booking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both Tatkal and Premium Tatkal open one day before journey at the same time (10 AM for AC, 11 AM for Sleeper). Regular Tatkal has fixed extra charges, while Premium Tatkal has dynamic pricing based on demand. Premium Tatkal tickets are non-refundable and cannot be cancelled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I book train tickets for next 60 days?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Indian Railways allows booking tickets up to 60 days in advance through IRCTC. The booking window for each date opens at 8:00 AM IST. Our calendar shows all dates available for booking and when future dates will open for reservation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my train showing no availability even at 8 AM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular trains on busy routes get booked very quickly. Some trains fill up within minutes of booking opening at 8 AM. To increase your chances, be logged into IRCTC before 8 AM, have your journey details ready, and use a fast internet connection. Consider Tatkal booking as a backup option."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ARP in Indian Railways booking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ARP stands for Advance Reservation Period. It is the number of days in advance you can book a train ticket. Currently, Indian Railways ARP is 60 days, meaning you can book tickets up to 60 days before your journey date. The booking window opens at 8:00 AM IST daily."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://railbookingdate.com/"
+      }]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "RailBookingDate",
+      "url": "https://railbookingdate.com",
+      "logo": "https://railbookingdate.com/icon-512.png",
+      "description": "Free IRCTC booking date calculator for Indian Railways travelers",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "ishwarj515@gmail.com",
+        "contactType": "customer service"
       }
     }
+    </script>
+
+    <!-- Apply dark mode immediately to prevent flash -->
+    <script>
+        (function(){var t=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(!t&&d))document.documentElement.setAttribute('data-theme','dark')})();
     </script>
 </head>
 
 <body>
-    <div class="app-container">
+    <div class="app-container" itemscope itemtype="https://schema.org/WebApplication">
         <header class="app-header">
-            <div id="current-date-display" class="current-date-display"></div>
-            <h1>RailBookingDate</h1>
-            <p class="subtitle">Plan your journey with ease</p>
+            <div class="header-top-row">
+                <div id="current-date-display" class="current-date-display">Loading...</div>
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+            <h1 itemprop="name">RailBookingDate</h1>
+            <p class="subtitle" itemprop="description">IRCTC Booking Date Calculator - Find when train booking opens</p>
         </header>
 
         <main class="main-content">
-            <section class="booking-status-card" aria-label="Current Travel Status">
-                <div id="booking-info" class="booking-info-text"></div>
-            </section>
-
-            <section class="date-selector-card" aria-label="Select Date">
-                <label for="travel-date" class="input-label">Select your Travel Date</label>
-                <div class="input-wrapper">
-                    <input type="text" id="travel-date" class="modern-input" readonly placeholder="Select a date"
-                        aria-label="Select travel date to check booking status">
-                    <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" aria-hidden="true">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
+            <!-- Hero Date Selector - Primary Feature -->
+            <section class="date-selector-hero" aria-label="Select Travel Date for Booking">
+                <div class="hero-content">
+                    <h2 class="hero-title"><span class="train-icon">🚂</span> When does your train booking open?</h2>
+                    <p class="hero-subtitle">Select your travel date to find out instantly</p>
+                    <div class="hero-input-wrapper">
+                        <div class="input-wrapper-hero">
+                            <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <input type="text" id="travel-date" class="modern-input-hero" readonly placeholder="Select a date"
+                                aria-label="Select travel date to check IRCTC booking availability">
+                        </div>
+                    </div>
+                    <div id="booking-message" class="booking-message booking-message-hero" role="status" aria-live="polite"></div>
+                    
+                    <!-- Action Buttons -->
+                    <div id="booking-actions" class="booking-actions">
+                        <a id="book-now-btn" href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener noreferrer" class="action-btn action-btn-book" aria-label="Book train tickets on IRCTC">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                            Book Now on IRCTC
+                        </a>
+                        <button id="copy-btn" class="action-btn" aria-label="Copy train booking information">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                        <button id="share-btn" class="action-btn" aria-label="Share train booking date">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            Share
+                        </button>
+                        <a id="whatsapp-btn" class="action-btn action-btn-whatsapp" aria-label="Share on WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <button id="calendar-btn" class="action-btn action-btn-primary" aria-label="Add booking reminder to calendar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                <line x1="12" y1="14" x2="12" y2="18"></line>
+                                <line x1="10" y1="16" x2="14" y2="16"></line>
+                            </svg>
+                            Add to Calendar
+                        </button>
+                    </div>
                 </div>
-                <div id="booking-message" class="booking-message" role="status" aria-live="polite"></div>
                 <div id="custom-calendar" class="custom-calendar-popup"></div>
             </section>
 
+            <section class="booking-status-card" aria-label="Current Train Booking Status">
+                <div id="booking-info" class="booking-info-text">Calculating IRCTC booking window...</div>
+            </section>
+
+            <!-- Countdown Timers Section -->
+            <section class="countdown-section" aria-label="Booking Countdown Timers">
+                <h2 class="countdown-section-title">⏰ Next Booking Windows</h2>
+                <div class="countdown-grid">
+                    <!-- General Booking Countdown -->
+                    <div class="countdown-card countdown-general">
+                        <div class="countdown-header">
+                            <span class="countdown-badge badge-general">8:00 AM</span>
+                            <span class="countdown-label">General Booking</span>
+                        </div>
+                        <div class="general-note">60 days advance booking</div>
+                        <div class="countdown-date" id="general-booking-date">Loading...</div>
+                        <div class="countdown-timer" id="general-countdown">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="general-hours">--</span>
+                                <span class="countdown-text">hrs</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="general-minutes">--</span>
+                                <span class="countdown-text">min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="general-seconds">--</span>
+                                <span class="countdown-text">sec</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tatkal AC Countdown -->
+                    <div class="countdown-card countdown-tatkal-ac">
+                        <div class="countdown-header">
+                            <span class="countdown-badge badge-tatkal-ac">10:00 AM</span>
+                            <span class="countdown-label">Tatkal AC</span>
+                        </div>
+                        <div class="tatkal-note">Book today → Travel tomorrow</div>
+                        <div class="countdown-date" id="tatkal-ac-date">Tomorrow's Train</div>
+                        <div class="countdown-timer" id="tatkal-ac-countdown">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-ac-hours">--</span>
+                                <span class="countdown-text">hrs</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-ac-minutes">--</span>
+                                <span class="countdown-text">min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-ac-seconds">--</span>
+                                <span class="countdown-text">sec</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tatkal Sleeper Countdown -->
+                    <div class="countdown-card countdown-tatkal-sleeper">
+                        <div class="countdown-header">
+                            <span class="countdown-badge badge-tatkal-sleeper">11:00 AM</span>
+                            <span class="countdown-label">Tatkal Sleeper</span>
+                        </div>
+                        <div class="tatkal-note">Book today → Travel tomorrow</div>
+                        <div class="countdown-date" id="tatkal-sleeper-date">Tomorrow's Train</div>
+                        <div class="countdown-timer" id="tatkal-sleeper-countdown">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-sleeper-hours">--</span>
+                                <span class="countdown-text">hrs</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-sleeper-minutes">--</span>
+                                <span class="countdown-text">min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="tatkal-sleeper-seconds">--</span>
+                                <span class="countdown-text">sec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
-            <div class="calendar-legend-minimal" aria-hidden="true">
-                <div class="legend-item"><span class="dot tatkal-dot"></span> Tatkal</div>
-                <div class="legend-item"><span class="dot open-dot"></span> Open</div>
-                <div class="legend-item"><span class="dot closed-dot"></span> Closed</div>
+            <div class="calendar-legend-minimal" aria-label="Calendar color legend">
+                <div class="legend-item"><span class="dot tatkal-dot"></span> Tatkal Only</div>
+                <div class="legend-item"><span class="dot open-dot"></span> Booking Open</div>
+                <div class="legend-item"><span class="dot closed-dot"></span> Not Yet Open</div>
             </div>
 
             <section aria-labelledby="calendar-title">
-                <h2 id="calendar-title" class="section-title">You can book tickets for these days</h2>
-                <div id="calendar-container" class="calendar-container"></div>
+                <h2 id="calendar-title" class="section-title">Train Ticket Booking Calendar - Next 60 Days</h2>
+                <div id="calendar-container" class="calendar-container">
+                    <div class="skeleton-loader">Loading Indian Railways booking calendar...</div>
+                </div>
             </section>
 
             <section class="booking-partners-card" aria-labelledby="partners-title">
-                <h3 id="partners-title" class="rules-title" style="justify-content: center;">Book Tickets Via</h3>
+                <h3 id="partners-title" class="rules-title">Book Train Tickets Online</h3>
                 <div class="booking-partners-grid">
                     <a href="https://www.makemytrip.com/railways/" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-mmt">MakeMyTrip</a>
+                        class="partner-link partner-mmt" title="Book train tickets on MakeMyTrip">MakeMyTrip</a>
                     <a href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-irctc">IRCTC</a>
+                        class="partner-link partner-irctc" title="Official IRCTC train booking">IRCTC</a>
                     <a href="https://www.railyatri.in/train-ticket" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-railyatri">RailYatri</a>
+                        class="partner-link partner-railyatri" title="Book trains on RailYatri">RailYatri</a>
                     <a href="https://www.confirmtkt.com/" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-confirmtkt">Confirm Ticket</a>
+                        class="partner-link partner-confirmtkt" title="ConfirmTkt train booking">Confirm Ticket</a>
                     <a href="https://www.easemytrip.com/railways/" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-easemytrip">EaseMyTrip</a>
+                        class="partner-link partner-easemytrip" title="EaseMyTrip railway booking">EaseMyTrip</a>
                     <a href="https://www.goibibo.com/trains/" target="_blank" rel="noopener noreferrer"
-                        class="partner-link partner-goibibo">Goibibo</a>
+                        class="partner-link partner-goibibo" title="Goibibo train tickets">Goibibo</a>
                 </div>
             </section>
 
@@ -128,72 +452,104 @@
                         <line x1="12" y1="16" x2="12" y2="12"></line>
                         <line x1="12" y1="8" x2="12.01" y2="8"></line>
                     </svg>
-                    Booking Rules
+                    IRCTC Booking Timings
                 </h3>
                 <ul class="rules-list">
-                    <li>Tatkal for AC opens at 10:00 AM</li>
-                    <li>Tatkal for Sleeper Opens at 11:00 AM</li>
-                    <li>60 days prior booking opens at 8:00 AM</li>
+                    <li><strong>Advance Booking (ARP):</strong> Opens at 8:00 AM, 60 days before journey</li>
+                    <li><strong>Tatkal AC Classes:</strong> Opens at 10:00 AM, 1 day before journey</li>
+                    <li><strong>Tatkal Sleeper/2S:</strong> Opens at 11:00 AM, 1 day before journey</li>
+                    <li><strong>Premium Tatkal:</strong> Same timing as Tatkal with dynamic pricing</li>
                 </ul>
             </section>
 
-            <section class="seo-content-section" aria-labelledby="seo-title">
-                <h2 id="seo-title" class="section-title">Indian Railways Booking & Tatkal Guide</h2>
+            <!-- SEO Content Section with Keywords -->
+            <section class="seo-content-section lazy-section" aria-labelledby="seo-title">
+                <h2 id="seo-title" class="section-title">Complete Guide to Indian Railways Booking & Tatkal</h2>
 
                 <article class="seo-article">
-                    <h3>What is RailBookingDate?</h3>
-                    <p>RailBookingDate is a smart <strong>Indian Railway Booking Date Calculator</strong> designed to
-                        help you plan your train journeys effortlessly. It calculates the exact date when booking opens
-                        for your planned travel date based on the 60-day Advance Reservation Period (ARP).</p>
+                    <h3>What is the IRCTC Booking Date Calculator?</h3>
+                    <p>RailBookingDate is a free <strong>IRCTC booking date calculator</strong> that helps you find exactly when <strong>train ticket booking opens</strong> for your journey. Whether you need to book through the <strong>60 days advance reservation period (ARP)</strong> or need last-minute <strong>Tatkal tickets</strong>, our calculator shows you the exact date and time when booking starts on the <strong>Indian Railways reservation system</strong>.</p>
 
-                    <h3>When does Tatkal Booking Open?</h3>
-                    <p><strong>Tatkal booking</strong> is for travelers who need to book tickets at the last minute. The
-                        timings are strict:</p>
+                    <h3>When Does Train Booking Open on IRCTC?</h3>
+                    <p>The <strong>IRCTC booking window</strong> for regular advance reservation opens exactly <strong>60 days before your travel date at 8:00 AM IST</strong>. This is known as the <strong>Advance Reservation Period (ARP)</strong>. For example, if you want to travel on March 15th, you can start booking from January 14th at 8 AM. Our <strong>train booking date finder</strong> automatically calculates this for any travel date.</p>
+
+                    <h3>Tatkal Booking Time - AC and Sleeper Class</h3>
+                    <p><strong>Tatkal booking</strong> is for last-minute train travel and opens <strong>one day before the journey</strong>:</p>
                     <ul>
-                        <li><strong>AC Classes (1A, 2A, 3A, CC, EC, 3E):</strong> Booking opens at <strong>10:00
-                                AM</strong>, one day before the journey.</li>
-                        <li><strong>Non-AC Classes (Sleeper, 2S):</strong> Booking opens at <strong>11:00 AM</strong>,
-                            one day before the journey.</li>
+                        <li><strong>AC Tatkal (1A, 2A, 3A, CC, EC, 3E):</strong> Booking opens at <strong>10:00 AM IST</strong></li>
+                        <li><strong>Sleeper Tatkal (SL) and Second Sitting (2S):</strong> Booking opens at <strong>11:00 AM IST</strong></li>
+                        <li><strong>Premium Tatkal:</strong> Same timing as regular Tatkal with dynamic (higher) pricing</li>
+                    </ul>
+                    <p>Tatkal tickets have additional charges and limited quota, so you need to be quick. Being logged into IRCTC a few minutes before the opening time increases your chances of getting a <strong>confirmed train ticket</strong>.</p>
+
+                    <h3>How to Use the Railway Booking Calendar</h3>
+                    <p>Our <strong>Indian Railways booking calendar</strong> shows all dates with color-coded status:</p>
+                    <ul>
+                        <li><strong>Green dates:</strong> <strong>Advance booking is open</strong> - you can book tickets now</li>
+                        <li><strong>Orange dates:</strong> Only <strong>Tatkal booking available</strong> (today and tomorrow)</li>
+                        <li><strong>Grey dates:</strong> <strong>Booking not yet open</strong> - check when it opens using our calculator</li>
+                    </ul>
+                    <p>Simply select your <strong>travel date</strong> and the calculator instantly shows when <strong>IRCTC booking opens</strong> for that date.</p>
+
+                    <h3>Why Use a Train Ticket Booking Calculator?</h3>
+                    <p>Manually counting 60 days can be confusing and error-prone. Our <strong>railway reservation date calculator</strong> eliminates guesswork by:</p>
+                    <ul>
+                        <li>Instantly calculating the <strong>exact booking opening date</strong></li>
+                        <li>Showing <strong>Tatkal availability</strong> with proper timings</li>
+                        <li>Displaying a visual <strong>90-day booking calendar</strong></li>
+                        <li>Working offline as a <strong>Progressive Web App (PWA)</strong></li>
+                        <li>Helping you never miss the <strong>8 AM booking window</strong></li>
                     </ul>
 
-                    <h3>How does the 60-Day Advance Reservation Work?</h3>
-                    <p>General booking for Indian trains opens <strong>60 days in advance</strong>. The booking window
-                        opens sharply at <strong>8:00 AM</strong>. For example, if you want to travel on a specific
-                        date, you should check our calendar to find the exact date to book your ticket 60 days prior.
-                    </p>
+                    <h3>Tips for Successful IRCTC Booking</h3>
+                    <p>To increase your chances of getting <strong>confirmed train tickets</strong>:</p>
+                    <ul>
+                        <li>Log into IRCTC 5-10 minutes before 8 AM for advance booking</li>
+                        <li>Keep passenger details saved in your IRCTC profile</li>
+                        <li>Use a fast and stable internet connection</li>
+                        <li>Have multiple payment options ready</li>
+                        <li>For <strong>Tatkal booking</strong>, be ready exactly at 10 AM (AC) or 11 AM (Sleeper)</li>
+                        <li>Consider booking from multiple devices for better chances</li>
+                    </ul>
 
-                    <h3>Why use a Train Ticket Booking Calculator?</h3>
-                    <p>Calculating the 60-day window manually can be confusing. RailBookingDate removes the guesswork by
-                        providing an accurate <strong>IRCTC booking date</strong> calendar, ensuring you never miss the
-                        8:00 AM opening window for your preferred train.</p>
+                    <h3>Understanding Train Classes and Booking Priority</h3>
+                    <p>Indian Railways offers different classes with varying <strong>booking quotas</strong>:</p>
+                    <ul>
+                        <li><strong>1A (First AC):</strong> Premium class with most privacy</li>
+                        <li><strong>2A (Second AC):</strong> Two-tier AC sleeper</li>
+                        <li><strong>3A (Third AC):</strong> Most popular AC class, three-tier</li>
+                        <li><strong>3E (Third AC Economy):</strong> Budget AC option</li>
+                        <li><strong>SL (Sleeper):</strong> Non-AC sleeper class</li>
+                        <li><strong>2S (Second Sitting):</strong> Unreserved seating for short journeys</li>
+                    </ul>
                 </article>
             </section>
 
-            <!-- About Us Section -->
-            <section class="seo-content-section" aria-labelledby="about-title" style="margin-top: 3rem;">
-                <h2 id="about-title" class="section-title">About Me</h2>
+            <!-- About Section -->
+            <section class="seo-content-section about-section lazy-section" aria-labelledby="about-title">
+                <h2 id="about-title" class="section-title">About RailBookingDate</h2>
                 
                 <article class="seo-article">
-                    <h3>Who Built This Site?</h3>
-                    <p>RailBookingDate was created by Me, <strong>Ishwar Joshi</strong>, a passionate developer who understands the challenges of booking train tickets in India. This tool was born out of personal experience and the desire to help fellow travelers navigate the complex Indian Railways booking system.</p>
+                    <h3>Who Created This Tool?</h3>
+                    <p>RailBookingDate was built by <strong>Ishwar Joshi</strong>, a developer who understands the challenges millions of Indians face when trying to book train tickets. This <strong>free IRCTC booking calculator</strong> was created to simplify the process of finding when booking opens for your journey.</p>
 
-                    <h3>Why Does This Site Exist?</h3>
-                    <p>Planning train travel in India can be confusing, especially when trying to calculate the exact date when booking opens for your journey. The 60-day advance reservation period, combined with different Tatkal timings for AC and non-AC classes, often leaves travelers uncertain about when to book their tickets.</p>
-
-                    <h3>What Problem Does It Solve?</h3>
-                    <p>RailBookingDate eliminates the guesswork from train ticket booking by:</p>
+                    <h3>Why This Tool Exists</h3>
+                    <p>With over 23 million passengers traveling daily on <strong>Indian Railways</strong>, getting a confirmed ticket can be challenging. The <strong>60-day advance booking</strong> system and different <strong>Tatkal timings</strong> for AC and Sleeper classes make planning complicated. RailBookingDate solves this by providing:</p>
                     <ul>
-                        <li><strong>Calculating booking dates automatically:</strong> No more manual counting of 60 days or worrying about making mistakes.</li>
-                        <li><strong>Showing Tatkal availability:</strong> Clear indication of when Tatkal booking opens for AC and Sleeper classes.</li>
-                        <li><strong>Visual calendar interface:</strong> Easy-to-understand color-coded calendar showing booking windows at a glance.</li>
-                        <li><strong>Mobile-friendly design:</strong> Book on the go with our Progressive Web App that works seamlessly on all devices.</li>
+                        <li>Instant <strong>booking date calculation</strong> for any travel date</li>
+                        <li>Clear visualization of <strong>available booking windows</strong></li>
+                        <li>Quick reference for <strong>Tatkal booking timings</strong></li>
+                        <li>Mobile-friendly design that works on all devices</li>
+                        <li>Offline capability - works even without internet</li>
                     </ul>
-                    <p>Our mission is simple: make train travel planning stress-free for millions of Indian travelers.</p>
+
+                    <h3>Frequently Searched Questions</h3>
+                    <p>Our users commonly search for: "<strong>when to book train tickets</strong>", "<strong>IRCTC 60 days advance booking</strong>", "<strong>Tatkal booking time</strong>", "<strong>train ticket availability next 60 days</strong>", and "<strong>railway booking calendar</strong>". This tool answers all these queries instantly.</p>
                 </article>
             </section>
 
             <!-- Contact Section -->
-            <section class="booking-rules-card" aria-labelledby="contact-title" style="margin-top: 2rem;">
+            <section class="booking-rules-card lazy-section" aria-labelledby="contact-title">
                 <h3 id="contact-title" class="rules-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -201,408 +557,30 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
-                    Contact Us
+                    Contact & Feedback
                 </h3>
-                <div style="padding: 1rem 0;">
-                    <p style="margin-bottom: 0.5rem; color: var(--text-secondary);">Have questions, suggestions, or feedback? We'd love to hear from you!</p>
-                    <p style="margin: 0;">
+                <div class="contact-info">
+                    <p>Have suggestions to improve this <strong>train booking calculator</strong>? Found a bug? We'd love to hear from you!</p>
+                    <p>
                         <strong>Email:</strong> 
-                        <a href="mailto:ishwarj515@gmail.com" 
-                           style="color: var(--primary-color); text-decoration: none; font-weight: 500;"
-                           onmouseover="this.style.textDecoration='underline'"
-                           onmouseout="this.style.textDecoration='none'">
-                            ishwarj515@gmail.com
-                        </a>
+                        <a href="mailto:ishwarj515@gmail.com" class="contact-link">ishwarj515@gmail.com</a>
                     </p>
                 </div>
             </section>
         </main>
 
-        <footer
-            style="margin-top: 3rem; text-align: center; color: var(--text-tertiary); font-size: 0.8rem; padding-bottom: 2rem;">
-            <p>&copy;
-                <script>document.write(new Date().getFullYear())</script> RailBookingDate. All rights reserved.<br>
-                Created by Ishwar Joshi
+        <footer class="site-footer">
+            <p>&copy; <span id="current-year">2026</span> RailBookingDate - Free IRCTC Booking Date Calculator<br>
+                Calculate Indian Railways booking dates instantly | Created by Ishwar Joshi
             </p>
         </footer>
     </div>
 
-    <script>
-        function getIndianDate() {
-            const now = new Date();
-            const indianDateStr = now.toLocaleDateString('en-IN', {
-                timeZone: 'Asia/Kolkata',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            });
-            const [day, month, year] = indianDateStr.split('/');
-            return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-        }
-
-        function updateCurrentDate() {
-            const today = getIndianDate();
-            const dateStr = today.toLocaleDateString('en-IN', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-            document.getElementById('current-date-display').textContent = dateStr;
-        }
-
-        updateCurrentDate();
-
-        function generate90DayCalendar() {
-            const container = document.getElementById('calendar-container');
-            const today = getIndianDate();
-
-            const travelDateInput = document.getElementById('travel-date');
-            const todayFormatted = today.getFullYear() + '-' +
-                String(today.getMonth() + 1).padStart(2, '0') + '-' +
-                String(today.getDate()).padStart(2, '0');
-            travelDateInput.setAttribute('min', todayFormatted);
-
-            const tomorrow = new Date(today);
-            tomorrow.setDate(today.getDate() + 1);
-
-            const sixtyDaysLater = new Date(today);
-            sixtyDaysLater.setDate(today.getDate() + 60);
-
-            const bookingInfo = document.getElementById('booking-info');
-            const day = sixtyDaysLater.getDate();
-            const month = sixtyDaysLater.toLocaleDateString('en-IN', {
-                month: 'long',
-                timeZone: 'Asia/Kolkata'
-            });
-            const weekday = sixtyDaysLater.toLocaleDateString('en-IN', {
-                weekday: 'long',
-                timeZone: 'Asia/Kolkata'
-            });
-            bookingInfo.innerHTML = `You can book tickets for travel up to <span class="highlight">${day} ${month}</span> (${weekday})`;
-
-            const endDate = new Date(today);
-            endDate.setDate(today.getDate() + 90);
-
-            const months = [];
-            let currentDate = new Date(today);
-
-            while (currentDate <= endDate) {
-                const monthKey = `${currentDate.getFullYear()}-${currentDate.getMonth()}`;
-                const monthName = currentDate.toLocaleDateString('en-IN', {
-                    month: 'long',
-                    year: 'numeric',
-                    timeZone: 'Asia/Kolkata'
-                });
-
-                if (!months.find(m => m.key === monthKey)) {
-                    months.push({
-                        key: monthKey,
-                        name: monthName,
-                        year: currentDate.getFullYear(),
-                        month: currentDate.getMonth(),
-                        days: []
-                    });
-                }
-
-                const monthIndex = months.findIndex(m => m.key === monthKey);
-                months[monthIndex].days.push(new Date(currentDate));
-
-                currentDate.setDate(currentDate.getDate() + 1);
-            }
-
-            months.forEach((month, monthIndex) => {
-                const monthDiv = document.createElement('div');
-                monthDiv.className = 'month-section';
-
-                const monthHeader = document.createElement('h2');
-                monthHeader.className = 'month-header';
-                monthHeader.textContent = month.name;
-                monthDiv.appendChild(monthHeader);
-
-                const calendarGrid = document.createElement('div');
-                calendarGrid.className = 'calendar-grid';
-
-                const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-                dayHeaders.forEach(dayName => {
-                    const headerCell = document.createElement('div');
-                    headerCell.className = 'day-header';
-                    headerCell.textContent = dayName;
-                    calendarGrid.appendChild(headerCell);
-                });
-
-                const firstDay = month.days[0];
-                const firstDayOfWeek = firstDay.getDay();
-
-                for (let i = 0; i < firstDayOfWeek; i++) {
-                    const emptyCell = document.createElement('div');
-                    emptyCell.className = 'day-cell empty';
-                    calendarGrid.appendChild(emptyCell);
-                }
-
-                month.days.forEach(day => {
-                    const dayDiv = document.createElement('div');
-                    dayDiv.className = 'day-cell';
-
-                    const dayNumber = document.createElement('span');
-                    dayNumber.className = 'day-number';
-                    dayNumber.textContent = day.getDate();
-
-                    const dayDate = new Date(day.getFullYear(), day.getMonth(), day.getDate());
-                    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                    const tomorrowDate = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
-                    const sixtyDaysDate = new Date(sixtyDaysLater.getFullYear(), sixtyDaysLater.getMonth(), sixtyDaysLater.getDate());
-
-                    if (dayDate.getTime() === todayDate.getTime()) {
-                        dayDiv.classList.add('today');
-                    }
-
-                    if (dayDate.getTime() === todayDate.getTime() || dayDate.getTime() === tomorrowDate.getTime()) {
-                        dayDiv.classList.add('tatkal');
-                    }
-
-                    if (dayDate.getTime() >= todayDate.getTime() && dayDate.getTime() <= sixtyDaysDate.getTime()) {
-                        dayDiv.classList.add('next-60-days');
-                    }
-
-                    dayDiv.appendChild(dayNumber);
-                    calendarGrid.appendChild(dayDiv);
-                });
-
-                const totalCells = calendarGrid.children.length;
-                const remainingCells = (7 - (totalCells % 7)) % 7;
-                for (let i = 0; i < remainingCells; i++) {
-                    const emptyCell = document.createElement('div');
-                    emptyCell.className = 'day-cell empty';
-                    calendarGrid.appendChild(emptyCell);
-                }
-
-                monthDiv.appendChild(calendarGrid);
-                container.appendChild(monthDiv);
-            });
-        }
-
-        generate90DayCalendar();
-
-        let selectedTravelDate = null;
-        const travelDateInput = document.getElementById('travel-date');
-        const bookingMessage = document.getElementById('booking-message');
-        const customCalendar = document.getElementById('custom-calendar');
-
-        function formatDateForInput(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-
-        function formatDateForDisplay(date) {
-            return date.toLocaleDateString('en-IN', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
-            });
-        }
-
-        function generateCustomCalendar() {
-            const today = getIndianDate();
-            const startDate = new Date(today);
-            const endDate = new Date(today);
-            endDate.setDate(today.getDate() + 120);
-
-            customCalendar.innerHTML = '';
-            customCalendar.classList.add('show');
-
-            const calendarWrapper = document.createElement('div');
-            calendarWrapper.className = 'custom-calendar-wrapper';
-
-            const headerRow = document.createElement('div');
-            headerRow.className = 'popup-header-row';
-
-            const title = document.createElement('h3');
-            title.className = 'calendar-picker-title';
-            title.textContent = 'Select Date';
-            headerRow.appendChild(title);
-
-            const closeBtn = document.createElement('button');
-            closeBtn.className = 'calendar-close-btn';
-            closeBtn.innerHTML = '&times;';
-            closeBtn.onclick = (e) => {
-                e.stopPropagation();
-                customCalendar.classList.remove('show');
-            };
-            headerRow.appendChild(closeBtn);
-
-            calendarWrapper.appendChild(headerRow);
-
-            const scrollContent = document.createElement('div');
-            scrollContent.className = 'calendar-scroll-content';
-            calendarWrapper.appendChild(scrollContent);
-
-            const months = [];
-            let currentDate = new Date(startDate);
-
-            while (currentDate <= endDate) {
-                const monthKey = `${currentDate.getFullYear()}-${currentDate.getMonth()}`;
-                const monthName = currentDate.toLocaleDateString('en-IN', {
-                    month: 'long',
-                    year: 'numeric'
-                });
-
-                if (!months.find(m => m.key === monthKey)) {
-                    months.push({
-                        key: monthKey,
-                        name: monthName,
-                        days: []
-                    });
-                }
-
-                const monthIndex = months.findIndex(m => m.key === monthKey);
-                months[monthIndex].days.push(new Date(currentDate));
-
-                currentDate.setDate(currentDate.getDate() + 1);
-            }
-
-            months.forEach((month) => {
-                const monthSection = document.createElement('div');
-                monthSection.className = 'calendar-picker-month';
-
-                const monthHeader = document.createElement('h4');
-                monthHeader.className = 'calendar-picker-month-header';
-                monthHeader.textContent = month.name;
-                monthSection.appendChild(monthHeader);
-
-                const calendarGrid = document.createElement('div');
-                calendarGrid.className = 'calendar-picker-grid';
-
-                const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-                dayHeaders.forEach(day => {
-                    const header = document.createElement('div');
-                    header.className = 'calendar-picker-header';
-                    header.textContent = day;
-                    calendarGrid.appendChild(header);
-                });
-
-                const firstDay = month.days[0];
-                const firstDayOfWeek = firstDay.getDay();
-
-                for (let i = 0; i < firstDayOfWeek; i++) {
-                    const emptyDiv = document.createElement('div');
-                    emptyDiv.className = 'calendar-picker-day disabled empty';
-                    calendarGrid.appendChild(emptyDiv);
-                }
-
-                month.days.forEach(day => {
-                    const dayDiv = document.createElement('div');
-                    dayDiv.className = 'calendar-picker-day';
-
-                    const dayDate = new Date(day.getFullYear(), day.getMonth(), day.getDate());
-                    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-                    if (dayDate < todayDate) {
-                        dayDiv.classList.add('disabled');
-                        dayDiv.textContent = day.getDate();
-                    } else {
-                        dayDiv.textContent = day.getDate();
-                        dayDiv.onclick = (e) => {
-                            e.stopPropagation();
-                            selectedTravelDate = new Date(dayDate);
-                            travelDateInput.value = formatDateForDisplay(selectedTravelDate);
-                            customCalendar.classList.remove('show');
-                            handleDateSelection();
-                        };
-                    }
-
-                    if (dayDate.getTime() === todayDate.getTime()) {
-                        dayDiv.classList.add('today');
-                    }
-
-                    calendarGrid.appendChild(dayDiv);
-                });
-
-                const totalCells = calendarGrid.children.length;
-                const remainingCells = (7 - (totalCells % 7)) % 7;
-                for (let i = 0; i < remainingCells; i++) {
-                    const emptyDiv = document.createElement('div');
-                    emptyDiv.className = 'calendar-picker-day disabled empty';
-                    calendarGrid.appendChild(emptyDiv);
-                }
-
-                monthSection.appendChild(calendarGrid);
-                scrollContent.appendChild(monthSection);
-            });
-
-            customCalendar.appendChild(calendarWrapper);
-        }
-
-        function handleDateSelection() {
-            if (!selectedTravelDate) return;
-
-            const today = getIndianDate();
-            const sixtyDaysLater = new Date(today);
-            sixtyDaysLater.setDate(today.getDate() + 60);
-
-            const selectedDateOnly = new Date(selectedTravelDate.getFullYear(), selectedTravelDate.getMonth(), selectedTravelDate.getDate());
-            const todayOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-            const sixtyDaysOnly = new Date(sixtyDaysLater.getFullYear(), sixtyDaysLater.getMonth(), sixtyDaysLater.getDate());
-
-            if (selectedDateOnly.getTime() === sixtyDaysOnly.getTime()) {
-                const now = new Date();
-                // Get current hour in IST
-                const currentHour = parseInt(now.toLocaleTimeString('en-IN', {
-                    timeZone: 'Asia/Kolkata',
-                    hour: 'numeric',
-                    hour12: false
-                }));
-
-                if (currentHour < 8) {
-                    bookingMessage.innerHTML = 'Booking opens <strong>today at 8 AM</strong>';
-                    bookingMessage.className = 'booking-message booking-future';
-                    return;
-                }
-            }
-
-            if (selectedDateOnly >= todayOnly && selectedDateOnly <= sixtyDaysOnly) {
-                bookingMessage.textContent = 'Booking is open now';
-                bookingMessage.className = 'booking-message booking-open';
-            } else {
-                const bookingDate = new Date(selectedDateOnly);
-                bookingDate.setDate(selectedDateOnly.getDate() - 60);
-
-                const bookingDay = bookingDate.getDate();
-                const bookingMonth = bookingDate.toLocaleDateString('en-IN', { month: 'long' });
-                const bookingWeekday = bookingDate.toLocaleDateString('en-IN', { weekday: 'long' });
-
-                bookingMessage.innerHTML = `Booking opens on <strong>${bookingDay} ${bookingMonth}</strong> (${bookingWeekday}) at 8 AM`;
-                bookingMessage.className = 'booking-message booking-future';
-            }
-        }
-
-        travelDateInput.addEventListener('click', function (e) {
-            e.stopPropagation();
-            generateCustomCalendar();
-        });
-
-        document.addEventListener('click', function (event) {
-            const isClickInside = customCalendar.contains(event.target) || travelDateInput.contains(event.target);
-            if (!isClickInside && customCalendar.classList.contains('show')) {
-                customCalendar.classList.remove('show');
-            }
-        });
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-        }
-
-    </script>
+    <!-- Main Application Script - Deferred for performance -->
+    <script src="js/app.js" defer></script>
+    
+    <!-- Set current year -->
+    <script>document.getElementById('current-year').textContent=new Date().getFullYear();</script>
 </body>
 
 </html>
