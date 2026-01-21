@@ -75,6 +75,54 @@
                     "sizes": "192x192"
                 }
             ]
+        },
+        {
+            "name": "Railway Helpline",
+            "short_name": "Helpline",
+            "description": "Indian Railways Universal Helpline 139",
+            "url": "./pages/helpline.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Train Videos",
+            "short_name": "Videos",
+            "description": "Watch beautiful train videos",
+            "url": "./pages/videos.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Railway FAQ",
+            "short_name": "FAQ",
+            "description": "Frequently Asked Questions about booking",
+            "url": "./pages/faq.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "eWallet Guide",
+            "short_name": "eWallet",
+            "description": "IRCTC eWallet registration guide",
+            "url": "./pages/ewallet.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
         }
     ]
 }
