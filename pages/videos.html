@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NL4NTX1D6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Videos - Indian Railways Railfan Collection | RailBookingDate</title>
+    <meta name="description"
+        content="Watch amazing videos of Indian Railways, including high-speed trains, scenic journeys, and railfan captures.">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="../favicon-144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
+    <link rel="icon" type="image/x-icon" sizes="any" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../icon-192.png">
+
+    <meta name="theme-color" content="#ff6b00">
+
+    <style>
+        :root {
+            --bg-app: #fef7ed;
+            --bg-card: #ffffff;
+            --text-primary: #1a365d;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --primary: #ff6b00;
+            --primary-light: #fff3e6;
+            --border-light: #fed7aa;
+            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] {
+            --bg-app: #0f1729;
+            --bg-card: #1a2744;
+            --text-primary: #f7fafc;
+            --text-secondary: #cbd5e0;
+            --text-tertiary: #a0aec0;
+            --primary: #ff8533;
+            --primary-light: #2d1f0f;
+            --border-light: #3d4f6f;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .app-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav a {
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary) !important;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+
+        .thumbnail-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+
+        .video-card:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .video-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .site-footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .app-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-info {
+                padding: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.75rem !important;
+            }
+        }
+    </style>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Calculator
+        </a>
+
+        <header class="app-header">
+            <nav style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Calculator</a>
+                <a href="tatkal.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Tatkal
+                    Dates</a>
+                <a href="faq.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">FAQ</a>
+                <a href="ewallet.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">eWallet</a>
+                <a href="helpline.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Helpline</a>
+                <a href="videos.html"
+                    style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Train
+                    Videos</a>
+            </nav>
+            <h1>Train Videos</h1>
+            <p>Experience the beauty and power of Indian Railways</p>
+        </header>
+
+        <main>
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <a href="https://youtu.be/XF12otRPeXA" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/XF12otRPeXA/maxresdefault.jpg"
+                            alt="Karnataka Bharat Gaurav Kashi Yatra Train">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Journey on Karnataka Bharat Gaurav Kashi Yatra Train</h3>
+                        <p class="video-description">Experience the spiritual and cultural journey of the special Bharat
+                            Gaurav tourist train to Kashi.</p>
+                        <div class="video-meta">Tourist Train</div>
+                    </div>
+                </a>
+
+                <!-- Video 2 -->
+                <a href="https://youtu.be/Cf1Mz4f3CJs" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/Cf1Mz4f3CJs/maxresdefault.jpg"
+                            alt="Pandharpur Golgumbaz Express Journey">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Journey on Pandharpur Golgumbaz express</h3>
+                        <p class="video-description">A relaxing journey on the Golgumbaz Express, connecting historic
+                            cities across Karnataka.</p>
+                        <div class="video-meta">Express Journey</div>
+                    </div>
+                </a>
+
+                <!-- Video 3 -->
+                <a href="https://youtu.be/BIj3z13WfVk" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/BIj3z13WfVk/maxresdefault.jpg"
+                            alt="Bengaluru Karwar Panchaganga Express Review">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Bengaluru Karwar Panchaganga Express review</h3>
+                        <p class="video-description">A detailed review and journey experience of the popular overnight
+                            train to coastal Karwar.</p>
+                        <div class="video-meta">Train Review</div>
+                    </div>
+                </a>
+
+                <!-- Video 4 -->
+                <a href="https://youtu.be/h8V3qmyWxyQ" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/h8V3qmyWxyQ/maxresdefault.jpg"
+                            alt="Fastest Train? Speed Test">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Fastest train?</h3>
+                        <p class="video-description">Is this the fastest rail journey in India? Watch our speed test and
+                            experience.</p>
+                        <div class="video-meta">Speed Test</div>
+                    </div>
+                </a>
+
+                <!-- Video 5 -->
+                <a href="https://youtu.be/Pfm4FfkRLWs" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/Pfm4FfkRLWs/maxresdefault.jpg"
+                            alt="Mysuru Kacheguda Express Journey">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Mysuru Kacheguda Express</h3>
+                        <p class="video-description">Enjoying the rhythmic journey on the Mysuru-Kacheguda Express
+                            through the Deccan plateau.</p>
+                        <div class="video-meta">Express Journey</div>
+                    </div>
+                </a>
+
+                <!-- Video 6 -->
+                <a href="https://youtu.be/brUuQLRxOig" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/brUuQLRxOig/maxresdefault.jpg"
+                            alt="Dharwad Vande Bharat Review">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Dharwad Vande Bharat Review</h3>
+                        <p class="video-description">A detailed review and journey experience of the Dharwad-Bengaluru
+                            Vande Bharat Express.</p>
+                        <div class="video-meta">Journey Review</div>
+                    </div>
+                </a>
+
+                <!-- Video 7 -->
+                <a href="https://youtu.be/WaaPMN4NQjM" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/WaaPMN4NQjM/maxresdefault.jpg"
+                            alt="Travelling to Shivamogga by Train">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Night Train Journey to Shivamogga</h3>
+                        <p class="video-description">Experience the serene late-night landscapes of karnataka as we
+                            travel to Shivamogga.</p>
+                        <div class="video-meta">Night Journey</div>
+                    </div>
+                </a>
+
+                <!-- Video 8 -->
+                <a href="https://youtu.be/dxjtlPwXnpU" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/dxjtlPwXnpU/maxresdefault.jpg"
+                            alt="Western Ghats Scenic Rail Journey">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Western Ghats Scenic Journey</h3>
+                        <p class="video-description">Experience the breathtaking beauty of the Western Ghats on the
+                            Subramanya-Sakleshpur-Mangalore scenic rail route.</p>
+                        <div class="video-meta">Scenic Journey</div>
+                    </div>
+                </a>
+
+                <!-- Video 9 -->
+                <a href="https://youtu.be/ofqf65h1kCk" target="_blank" rel="noopener noreferrer" class="video-card">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/ofqf65h1kCk/maxresdefault.jpg"
+                            alt="Diesel Engine Chugging Video Kumta to Madgaon">
+                        <div class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Diesel Engine Chugging (Kumta to Madgaon)</h3>
+                        <p class="video-description">The mesmerizing sound and sight of a diesel engine chugging through
+                            the Konkan route from Kumta to Madgaon.</p>
+                        <div class="video-meta">Railfan Capture</div>
+                    </div>
+                </a>
+
+                <!-- Placeholder for future videos -->
+                <!-- 
+                <div class="video-card" style="opacity: 0.6; cursor: default;">
+                    <div class="thumbnail-container" style="background: var(--border-light); display: flex; align-items: center; justify-content: center;">
+                        <span style="color: var(--text-tertiary); font-weight: 600;">Coming Soon</span>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Mastering Tatkal Booking</h3>
+                        <p class="video-description">Tips and tricks to secure a confirmed Tatkal ticket every time.</p>
+                    </div>
+                </div>
+                -->
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+        </footer>
+    </div>
+</body>
+
+</html>

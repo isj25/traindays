@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NL4NTX1D6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC eWallet Guide | RailBookingDate</title>
+    <meta name="description"
+        content="Everything you need to know about IRCTC eWallet - register, deposit money, and save time during train ticket booking.">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="../favicon-144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
+    <link rel="icon" type="image/x-icon" sizes="any" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../icon-192.png">
+
+    <meta name="theme-color" content="#ff6b00">
+
+    <style>
+        :root {
+            --bg-app: #fef7ed;
+            --bg-card: #ffffff;
+            --text-primary: #1a365d;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --primary: #ff6b00;
+            --primary-light: #fff3e6;
+            --border-light: #fed7aa;
+            --accent-tatkal: #dc2626;
+            --accent-open: #16a34a;
+            --accent-open-light: #dcfce7;
+            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-app: #0f1729;
+            --bg-card: #1a2744;
+            --text-primary: #f7fafc;
+            --text-secondary: #cbd5e0;
+            --text-tertiary: #a0aec0;
+            --primary: #ff8533;
+            --primary-light: #2d1f0f;
+            --border-light: #3d4f6f;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .app-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav a {
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary) !important;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h2,
+        .info-card h3 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul,
+        .info-card ol {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .info-card li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .steps-container {
+            counter-reset: step;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .note-card {
+            background: var(--accent-open-light);
+            border: 1px solid var(--accent-open);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        [data-theme="dark"] .note-card {
+            background: #064e3b22;
+        }
+
+        .note-card h3 {
+            color: var(--accent-open);
+            margin-top: 0;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .fee-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .fee-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .site-footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .app-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-card {
+                padding: 1.25rem;
+            }
+
+            nav a {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.75rem !important;
+            }
+        }
+    </style>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Calculator
+        </a>
+
+        <header class="app-header">
+            <nav style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Calculator</a>
+                <a href="tatkal.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Tatkal
+                    Dates</a>
+                <a href="faq.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">FAQ</a>
+                <a href="ewallet.html"
+                    style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">eWallet</a>
+                <a href="helpline.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Helpline</a>
+                <a href="videos.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Train
+                    Videos</a>
+            </nav>
+            <h1>IRCTC eWallet Guide</h1>
+            <p>Everything you need to know about the fastest way to book train tickets</p>
+        </header>
+
+        <main class="info-section">
+            <article class="info-card">
+                <h2>What is IRCTC eWallet?</h2>
+                <p>IRCTC eWallet is a scheme under which user can deposit money in advance with IRCTC and can be used as
+                    payment option along with other payment options available on IRCTC for paying money at the time of
+                    booking tickets.</p>
+                <p><a href="https://contents.irctc.co.in/en/AboutEwallet.html" target="_blank" rel="noopener noreferrer"
+                        style="color: var(--primary); font-weight: 600; text-decoration: underline;">View Official IRCTC
+                        eWallet Document</a></p>
+
+                <h3>Key Advantages</h3>
+                <ul>
+                    <li><strong>Hassle-free & Secure:</strong> Experience smoother transactions with higher security.
+                    </li>
+                    <li><strong>Save Booking Time:</strong> Eliminates the payment approval cycle, saving precious
+                        seconds during peak booking hours.</li>
+                    <li><strong>Lower Charges:</strong> Benefit of saving Payment Gateway charges per ticket.</li>
+                    <li><strong>Online Management:</strong> Easily manage your account and top up balance online.</li>
+                    <li><strong>Bank Independence:</strong> Reduced dependency on specific banks. If a bank goes
+                        offline, you can still book tickets using your eWallet balance.</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h2>Salient Features</h2>
+                <ul>
+                    <li><strong>User Authentication:</strong> Users are verified and authenticated through PAN or
+                        Aadhaar via an Online Verification Process during registration.</li>
+                    <li><strong>Secured Access:</strong> IRCTC offers secure booking by providing a Transaction
+                        Password/PIN required for every booking.</li>
+                    <li><strong>Complete History:</strong> Access a dedicated "IRCTC eWallet" link to view transaction
+                        history, payment history, and change passwords.</li>
+                    <li><strong>Easy Refund:</strong> In case of ticket cancellation, the due refund is credited back to
+                        your eWallet account the next day.</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h2>7 Easy Steps to Register & Book</h2>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <p>Login to IRCTC with your existing User ID and Password.</p>
+                    </div>
+                    <div class="step-item">
+                        <p>Click the <strong>"IRCTC eWallet Registration"</strong> link under the IRCTC eWallet Section
+                            in the "Plan my travel" page.</p>
+                    </div>
+                    <div class="step-item">
+                        <p>Complete the Verification process by providing your <strong>PAN or Aadhaar</strong> and other
+                            required details.</p>
+                    </div>
+                    <div class="step-item">
+                        <p>Deposit a one-time registration fee of <strong>Rs. 50/-</strong> (Excluding GST) online using
+                            any available payment option.</p>
+                    </div>
+                    <div class="step-item">
+                        <p>Note: Membership fee and redemption rules are subject to change at the discretion of IRCTC.
+                        </p>
+                    </div>
+                    <div class="step-item">
+                        <p>Credit your eWallet with a minimum deposit of <strong>Rs. 100/-</strong>. You can hold a
+                            maximum of <strong>Rs. 10,000/-</strong> in your account.</p>
+                    </div>
+                    <div class="step-item">
+                        <p>Pay for your ticket booking using the "IRCTC eWallet" option displayed alongside other
+                            payment methods.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="info-card note-card">
+                <h3>Important Notes</h3>
+                <table class="fee-table">
+                    <tr>
+                        <td>Registration Fee</td>
+                        <td>Rs. 50 + GST (Non-refundable)</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Charge</td>
+                        <td>Rs. 10 + GST per transaction</td>
+                    </tr>
+                    <tr>
+                        <td>Refunds</td>
+                        <td>No cash refunds / No redemption allowed.</td>
+                    </tr>
+                    <tr>
+                        <td>Usage</td>
+                        <td>Balance can only be used for booking railway tickets.</td>
+                    </tr>
+                    <tr>
+                        <td>Eligibility</td>
+                        <td>Available only for users with Indian Nationality and Indian Mobile Number.</td>
+                    </tr>
+                </table>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+        </footer>
+    </div>
+</body>
+
+</html>
