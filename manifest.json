@@ -51,6 +51,30 @@
                     "sizes": "192x192"
                 }
             ]
+        },
+        {
+            "name": "Tatkal Dates",
+            "short_name": "Tatkal",
+            "description": "Check current Tatkal booking dates",
+            "url": "./pages/tatkal.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Rail News",
+            "short_name": "News",
+            "description": "Latest Indian Railway news",
+            "url": "./pages/news.html",
+            "icons": [
+                {
+                    "src": "icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
         }
     ]
 }

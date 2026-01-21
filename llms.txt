@@ -15,6 +15,12 @@ This tool simplifies the process of finding exact booking dates and times for In
 
 ## Main Pages
 - Homepage: https://railbookingdate.com/
+- Tatkal Dates: https://railbookingdate.com/pages/tatkal.html
+- Rail News: https://railbookingdate.com/pages/news.html
+- FAQ: https://railbookingdate.com/pages/faq.html
+- eWallet Guide: https://railbookingdate.com/pages/ewallet.html
+- Railway Helpline: https://railbookingdate.com/pages/helpline.html
+- Train Videos: https://railbookingdate.com/pages/videos.html
 - GitHub Repository: https://github.com/isj25/traindays
 
 ## Technology Stack
