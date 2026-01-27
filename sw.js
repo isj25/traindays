@@ -3,7 +3,7 @@
 // Stale-While-Revalidate Strategy
 // ==========================================
 
-const CACHE_NAME = 'railbookingdate-v2';
+const CACHE_NAME = 'railbookingdate-v3';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -12,7 +12,14 @@ const STATIC_ASSETS = [
     './favicon.png',
     './icon-192.png',
     './icon-512.png',
-    './manifest.json'
+    './manifest.json',
+    './pages/ewallet.html',
+    './pages/faq.html',
+    './pages/helpline.html',
+    './pages/news.html',
+    './pages/tatkal.html',
+    './pages/videos.html',
+    './pages/disclaimer.html'
 ];
 
 // Install event - cache static assets
