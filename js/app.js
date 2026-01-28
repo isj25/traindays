@@ -193,6 +193,8 @@ function updateCountdownDisplay(type, target, now, travelDate, showOpenMessage) 
     const card = document.querySelector(`.countdown-${type}`);
     if (!card) return;
 
+    const opensTextEl = document.getElementById(`${type === 'general' ? 'general' : type}-opens-text`);
+
     // If showing "open" message instead of countdown
     if (showOpenMessage) {
         const dateEl = document.getElementById(`${type === 'general' ? 'general-booking' : type}-date`);
@@ -210,14 +212,22 @@ function updateCountdownDisplay(type, target, now, travelDate, showOpenMessage) 
             timerEl.style.display = 'none';
         }
 
+        if (opensTextEl) {
+            opensTextEl.style.display = 'none';
+        }
+
         card.classList.remove('countdown-urgent');
         return;
     }
 
-    // Show countdown timer
+    // Show countdown units and label
     const timerEl = card.querySelector('.countdown-timer');
     if (timerEl) {
         timerEl.style.display = 'flex';
+    }
+
+    if (opensTextEl) {
+        opensTextEl.style.display = 'block';
     }
 
     const diff = target.getTime() - now.getTime();
