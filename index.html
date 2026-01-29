@@ -24,7 +24,7 @@
     <meta name="description"
         content="Free IRCTC booking date calculator. Find the exact date and time (8:00 AM) to book Indian Railways tickets 60 days in advance. Includes 2026 holiday calendar and Tatkal timings.">
 
-    <link rel="stylesheet" href="css/navigation.css">
+
     <meta name="keywords"
         content="IRCTC 60 days advance ticket booking date calculator, reservation date calculator, IRCTC booking open date, train ticket booking calculator, RailBookingDate, when does IRCTC booking open for my travel date, how to calculate IRCTC ticket booking date, IRCTC advance reservation date checker, train ticket booking date calculator online, IRCTC booking date for selected travel date, Indian railways booking date, tatkal booking time, when to book train tickets, 60 days advance booking, railway reservation date, irctc advance booking, tatkal ticket booking time, train booking window, arp booking date, irctc booking opens at, railway booking calendar, train reservation date calculator, sleeper tatkal timing, ac tatkal timing, irctc 8 am booking, confirm train ticket, railway ticket availability, next 60 days train booking, when does train booking open, advance reservation period">
     <meta name="author" content="RailBookingDate">
@@ -1810,6 +1810,74 @@
             .lazy-section {
                 contain-intrinsic-size: 0 300px;
             }
+
+            /* Holiday table mobile optimization */
+            .holidays-card {
+                padding: 1rem;
+                overflow-x: visible;
+            }
+
+            .holidays-table {
+                min-width: 100%;
+                font-size: 0.85rem;
+            }
+
+            /* Hide table headers on mobile */
+            .holidays-table thead {
+                display: none;
+            }
+
+            /* Transform rows into cards */
+            .holidays-table tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                background: var(--bg-app);
+                border-radius: 12px;
+                border: 1px solid var(--border-light);
+            }
+
+            .holidays-table tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Stack cells vertically */
+            .holidays-table td {
+                display: block;
+                padding: 0.5rem 0;
+                border-bottom: none;
+                text-align: left;
+            }
+
+            /* Add labels for mobile */
+            .holidays-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: var(--text-tertiary);
+                display: block;
+                font-size: 0.75rem;
+                margin-bottom: 0.25rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            /* Optimize guide cards for mobile */
+            .guides-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .guide-card {
+                padding: 1.25rem;
+            }
+
+            .guide-icon {
+                font-size: 2rem;
+            }
+
+            .guide-card h3 {
+                font-size: 1.1rem;
+            }
         }
 
         /* ==========================================
@@ -1938,6 +2006,84 @@
                 break-inside: avoid;
                 box-shadow: none;
                 border: 1px solid #ccc;
+            }
+        }
+
+        /* ==========================================
+   Standardized Site Navigation
+   ========================================== */
+
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .main-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all var(--transition-fast, 0.2s ease);
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .main-nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer Navigation */
+        .site-footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .site-footer-nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .site-footer-nav a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .main-nav {
+                gap: 0.25rem;
+                padding: 0.4rem;
+                border-radius: 8px;
+            }
+
+            .main-nav a {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.75rem;
             }
         }
     </style>
@@ -2188,97 +2334,108 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="holiday-name">Holi Holidays</td>
-                                <td>Mar 4 - Mar 7, 2026 (Wed-Sat)</td>
-                                <td class="booking-open-date">Jan 3, 2026 (Sat)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Holi Holidays</td>
+                                <td data-label="Holiday Date">Mar 4 - Mar 7, 2026 (Wed-Sat)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 3, 2026 (Sat)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Id-ul-Fitr</td>
-                                <td>Mar 21, 2026 (Sat)</td>
-                                <td class="booking-open-date">Jan 20, 2026 (Tue)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Id-ul-Fitr</td>
+                                <td data-label="Holiday Date">Mar 21, 2026 (Sat)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 20, 2026 (Tue)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Ram Navami</td>
-                                <td>Mar 26, 2026 (Thu)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Jan 25, 2026 (Sun)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Ram Navami</td>
+                                <td data-label="Holiday Date">Mar 26, 2026 (Thu)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 25, 2026 (Sun)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Mahavir Jayanti</td>
-                                <td>Mar 31, 2026 (Tue)</td>
-                                <td class="booking-open-date">Jan 30, 2026 (Fri)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Mahavir Jayanti</td>
+                                <td data-label="Holiday Date">Mar 31, 2026 (Tue)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 30, 2026 (Fri)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Good Friday</td>
-                                <td>Apr 3, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Feb 2, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Good Friday</td>
+                                <td data-label="Holiday Date">Apr 3, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Feb 2, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Budha Purnima</td>
-                                <td>May 1, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Mar 2, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Budha Purnima</td>
+                                <td data-label="Holiday Date">May 1, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Mar 2, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Id-ul-Zuha (Bakrid)</td>
-                                <td>May 27, 2026 (Wed)</td>
-                                <td class="booking-open-date">Mar 28, 2026 (Sat)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Id-ul-Zuha (Bakrid)</td>
+                                <td data-label="Holiday Date">May 27, 2026 (Wed)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Mar 28, 2026 (Sat)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Muharram</td>
-                                <td>Jun 26, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Apr 27, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Muharram</td>
+                                <td data-label="Holiday Date">Jun 26, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Apr 27, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Independence Day</td>
-                                <td>Aug 15, 2026 (Sat)</td>
-                                <td class="booking-open-date">Jun 16, 2026 (Tue)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Independence Day</td>
+                                <td data-label="Holiday Date">Aug 15, 2026 (Sat)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 16, 2026 (Tue)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Milad-un-Nabi</td>
-                                <td>Aug 26, 2026 (Wed)</td>
-                                <td class="booking-open-date">Jun 27, 2026 (Sat)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Milad-un-Nabi</td>
+                                <td data-label="Holiday Date">Aug 26, 2026 (Wed)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 27, 2026 (Sat)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Raksha Bandhan</td>
-                                <td>Aug 28, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Jun 29, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Raksha Bandhan</td>
+                                <td data-label="Holiday Date">Aug 28, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 29, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Janmashtami</td>
-                                <td>Sep 4, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Jul 6, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Janmashtami</td>
+                                <td data-label="Holiday Date">Sep 4, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jul 6, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Ganesh Chaturthi</td>
-                                <td>Sep 14, 2026 (Mon)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Jul 16, 2026 (Thu)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Ganesh Chaturthi</td>
+                                <td data-label="Holiday Date">Sep 14, 2026 (Mon)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jul 16, 2026 (Thu)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Mahatma Gandhi's Birthday</td>
-                                <td>Oct 2, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Aug 3, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Mahatma Gandhi's Birthday</td>
+                                <td data-label="Holiday Date">Oct 2, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Aug 3, 2026 (Mon)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Dussehra Holidays</td>
-                                <td>Oct 19 - Oct 24, 2026 (Mon-Sat)<span class="long-weekend-tag">Long
+                                <td class="holiday-name" data-label="Holiday Name">Dussehra Holidays</td>
+                                <td data-label="Holiday Date">Oct 19 - Oct 24, 2026 (Mon-Sat)<span
+                                        class="long-weekend-tag">Long
                                         Weekend</span>
                                 </td>
-                                <td class="booking-open-date">Aug 20, 2026 (Thu)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Aug 20, 2026 (Thu)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Diwali Holidays</td>
-                                <td>Nov 9 - Nov 14, 2026 (Mon-Sat)<span class="long-weekend-tag">Long Weekend</span>
+                                <td class="holiday-name" data-label="Holiday Name">Diwali Holidays</td>
+                                <td data-label="Holiday Date">Nov 9 - Nov 14, 2026 (Mon-Sat)<span
+                                        class="long-weekend-tag">Long Weekend</span>
                                 </td>
-                                <td class="booking-open-date">Sep 10, 2026 (Thu)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Sep 10, 2026 (Thu)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Guru Nanak's Birthday</td>
-                                <td>Nov 24, 2026 (Tue)</td>
-                                <td class="booking-open-date">Sep 25, 2026 (Fri)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Guru Nanak's Birthday</td>
+                                <td data-label="Holiday Date">Nov 24, 2026 (Tue)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Sep 25, 2026 (Fri)</td>
                             </tr>
                             <tr>
-                                <td class="holiday-name">Christmas</td>
-                                <td>Dec 25, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
-                                <td class="booking-open-date">Oct 26, 2026 (Mon)</td>
+                                <td class="holiday-name" data-label="Holiday Name">Christmas</td>
+                                <td data-label="Holiday Date">Dec 25, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Oct 26, 2026 (Mon)</td>
                             </tr>
                         </tbody>
                     </table>
