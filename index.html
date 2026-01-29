@@ -20,9 +20,11 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRCTC 60 Days Advance Ticket Booking Calculator</title>
+    <title>RailBookingDate | IRCTC 60-Day Advance Train Booking Date Calculator</title>
     <meta name="description"
-        content="Calculate Indian railways booking date instantly. RailBookingDate helps you find the exact reservation opening date for your travel.">
+        content="Free IRCTC booking date calculator. Find the exact date and time (8:00 AM) to book Indian Railways tickets 60 days in advance. Includes 2026 holiday calendar and Tatkal timings.">
+
+    <link rel="stylesheet" href="css/navigation.css">
     <meta name="keywords"
         content="IRCTC 60 days advance ticket booking date calculator, reservation date calculator, IRCTC booking open date, train ticket booking calculator, RailBookingDate, when does IRCTC booking open for my travel date, how to calculate IRCTC ticket booking date, IRCTC advance reservation date checker, train ticket booking date calculator online, IRCTC booking date for selected travel date, Indian railways booking date, tatkal booking time, when to book train tickets, 60 days advance booking, railway reservation date, irctc advance booking, tatkal ticket booking time, train booking window, arp booking date, irctc booking opens at, railway booking calendar, train reservation date calculator, sleeper tatkal timing, ac tatkal timing, irctc 8 am booking, confirm train ticket, railway ticket availability, next 60 days train booking, when does train booking open, advance reservation period">
     <meta name="author" content="RailBookingDate">
@@ -1623,6 +1625,85 @@
         }
 
         /* ==========================================
+   Holidays Table
+   ========================================== */
+        .holidays-section {
+            margin-top: 2rem;
+        }
+
+        .holidays-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+        }
+
+        .holidays-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 500px;
+        }
+
+        .holidays-table th,
+        .holidays-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .holidays-table th {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--bg-app);
+        }
+
+        .holidays-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .holiday-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .booking-open-date {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .id-ul-fitr-tag {
+            font-size: 0.75rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .long-weekend-tag {
+            font-size: 0.7rem;
+            background: #22c55e20;
+            color: #16a34a;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            font-weight: 600;
+            border: 1px solid #22c55e40;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+        }
+
+        [data-theme="dark"] .long-weekend-tag {
+            background: #22c55e30;
+            color: #4ade80;
+            border-color: #22c55e50;
+        }
+
+        /* ==========================================
    Footer
    ========================================== */
 
@@ -1725,14 +1806,99 @@
                 align-items: stretch;
             }
 
-            .action-btn {
-                justify-content: center;
-            }
-
             /* Reduce layout complexity on mobile */
             .lazy-section {
                 contain-intrinsic-size: 0 300px;
             }
+        }
+
+        /* ==========================================
+   Quick Holiday Guides Section
+   ========================================== */
+        .guides-section {
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .guide-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .guide-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+        }
+
+        .guide-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .guide-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff4757;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 5px rgba(255, 71, 87, 0.3);
+        }
+
+        .guide-action {
+            margin-top: auto;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .guide-action::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .guide-card:hover .guide-action::after {
+            transform: translateX(4px);
         }
 
         /* ==========================================
@@ -1812,14 +1978,16 @@
                 </button>
             </div>
             <h1 itemprop="name">IRCTC 60 Days Advance Ticket Booking Date Calculator</h1>
-            <p class="subtitle" itemprop="description">IRCTC Booking Date Calculator - Find when train booking opens</p>
+            <p class="subtitle" itemprop="description">IRCTC Booking Date Calculator - Find when train booking opens
+            </p>
         </header>
 
         <main class="main-content">
             <!-- Hero Date Selector - Primary Feature -->
             <section class="date-selector-hero" aria-label="Select Travel Date for Booking">
                 <div class="hero-content">
-                    <h2 class="hero-title"><span class="train-icon">🚂</span> Find Train Ticket Booking Open Date</h2>
+                    <h2 class="hero-title"><span class="train-icon">🚂</span> Find Train Ticket Booking Open Date
+                    </h2>
                     <p class="hero-subtitle">Select your travel date to find out instantly</p>
                     <div class="hero-input-wrapper">
                         <div class="input-wrapper-hero">
@@ -2007,6 +2175,167 @@
                 </div>
             </section>
 
+            <section class="holidays-section" aria-labelledby="holidays-title">
+                <h2 id="holidays-title" class="section-title">2026 Holiday Train Booking Dates</h2>
+                <div class="holidays-card">
+                    <table class="holidays-table" itemscope itemtype="https://schema.org/Table">
+                        <thead>
+                            <tr>
+                                <th>Holiday Name</th>
+                                <th>Holiday Date</th>
+                                <th>60 Days Advance Booking Opens</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="holiday-name">Holi Holidays</td>
+                                <td>Mar 4 - Mar 7, 2026 (Wed-Sat)</td>
+                                <td class="booking-open-date">Jan 3, 2026 (Sat)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Id-ul-Fitr</td>
+                                <td>Mar 21, 2026 (Sat)</td>
+                                <td class="booking-open-date">Jan 20, 2026 (Tue)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Ram Navami</td>
+                                <td>Mar 26, 2026 (Thu)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Jan 25, 2026 (Sun)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Mahavir Jayanti</td>
+                                <td>Mar 31, 2026 (Tue)</td>
+                                <td class="booking-open-date">Jan 30, 2026 (Fri)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Good Friday</td>
+                                <td>Apr 3, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Feb 2, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Budha Purnima</td>
+                                <td>May 1, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Mar 2, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Id-ul-Zuha (Bakrid)</td>
+                                <td>May 27, 2026 (Wed)</td>
+                                <td class="booking-open-date">Mar 28, 2026 (Sat)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Muharram</td>
+                                <td>Jun 26, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Apr 27, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Independence Day</td>
+                                <td>Aug 15, 2026 (Sat)</td>
+                                <td class="booking-open-date">Jun 16, 2026 (Tue)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Milad-un-Nabi</td>
+                                <td>Aug 26, 2026 (Wed)</td>
+                                <td class="booking-open-date">Jun 27, 2026 (Sat)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Raksha Bandhan</td>
+                                <td>Aug 28, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Jun 29, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Janmashtami</td>
+                                <td>Sep 4, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Jul 6, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Ganesh Chaturthi</td>
+                                <td>Sep 14, 2026 (Mon)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Jul 16, 2026 (Thu)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Mahatma Gandhi's Birthday</td>
+                                <td>Oct 2, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Aug 3, 2026 (Mon)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Dussehra Holidays</td>
+                                <td>Oct 19 - Oct 24, 2026 (Mon-Sat)<span class="long-weekend-tag">Long
+                                        Weekend</span>
+                                </td>
+                                <td class="booking-open-date">Aug 20, 2026 (Thu)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Diwali Holidays</td>
+                                <td>Nov 9 - Nov 14, 2026 (Mon-Sat)<span class="long-weekend-tag">Long Weekend</span>
+                                </td>
+                                <td class="booking-open-date">Sep 10, 2026 (Thu)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Guru Nanak's Birthday</td>
+                                <td>Nov 24, 2026 (Tue)</td>
+                                <td class="booking-open-date">Sep 25, 2026 (Fri)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name">Christmas</td>
+                                <td>Dec 25, 2026 (Fri)<span class="long-weekend-tag">Long Weekend</span></td>
+                                <td class="booking-open-date">Oct 26, 2026 (Mon)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="guides-section" aria-labelledby="guides-title">
+                <h2 id="guides-title" class="section-title">🔥 Popular Holiday Booking Guides</h2>
+                <div class="guides-grid">
+                    <a href="pages/faq.html#faq-holi" class="guide-card">
+                        <span class="guide-tag">Hot Planning</span>
+                        <div class="guide-icon">🎨</div>
+                        <h3>Holi 2026 Booking</h3>
+                        <p>Dates: Mar 4-7. Booking opens Jan 3. Major routes sell out in minutes!</p>
+                        <div class="guide-action">Read Full Guide</div>
+                    </a>
+
+                    <a href="pages/faq.html#faq-diwali" class="guide-card">
+                        <span class="guide-tag">High Demand</span>
+                        <div class="guide-icon">🪔</div>
+                        <h3>Diwali 2026 Planning</h3>
+                        <p>Planning for Nov 9-14? Booking opens Sep 10. Stay ahead of the rush.</p>
+                        <div class="guide-action">View Booking Dates</div>
+                    </a>
+
+                    <a href="pages/faq.html#faq-ganesh-chaturthi" class="guide-card">
+                        <div class="guide-icon">🐘</div>
+                        <h3>Ganesh Chaturthi Guide</h3>
+                        <p>Festival starts Sep 14. Booking opens Jul 16. Best tips for Konkan routes.</p>
+                        <div class="guide-action">Read Tips</div>
+                    </a>
+
+                    <a href="pages/faq.html#faq-tatkal-rule" class="guide-card" style="border-left: 4px solid #ffa502;">
+                        <span class="guide-tag" style="background: #ffa502;">Essential</span>
+                        <div class="guide-icon">🚀</div>
+                        <h3>Tatkal Booking Masterclass</h3>
+                        <p>Stuck at the last minute? Learn pro tactics to confirm your Tatkal tickets.</p>
+                        <div class="guide-action">Learn Pro Tactics</div>
+                    </a>
+
+                    <a href="pages/faq.html#faq-aadhaar" class="guide-card">
+                        <div class="guide-icon">👤</div>
+                        <h3>Aadhaar Rule for 2026</h3>
+                        <p>New IRCTC authentication rules for 2026. Avoid booking failures.</p>
+                        <div class="guide-action">Check Rules</div>
+                    </a>
+
+                    <a href="pages/faq.html#holiday-faqs-title" class="guide-card"
+                        style="background: var(--primary-light);">
+                        <div class="guide-icon">📅</div>
+                        <h3>All 2026 Holidays</h3>
+                        <p>View the complete list of 18 major holidays and their IRCTC booking dates.</p>
+                        <div class="guide-action">Browse All</div>
+                    </a>
+                </div>
+            </section>
+
             <section class="booking-partners-card" aria-labelledby="partners-title">
                 <h3 id="partners-title" class="rules-title">Book Train Tickets Online</h3>
                 <div class="booking-partners-grid">
@@ -2062,38 +2391,48 @@
                 <article class="seo-article">
                     <h3>What is the IRCTC Booking Date Calculator?</h3>
                     <p>RailBookingDate is a free <strong>IRCTC booking date calculator</strong> that helps you find
-                        exactly when <strong>train ticket booking opens</strong> for your journey. Whether you need to
-                        book through the <strong>60 days advance reservation period (ARP)</strong> or need last-minute
-                        <strong>Tatkal tickets</strong>, our calculator shows you the exact date and time when booking
+                        exactly when <strong>train ticket booking opens</strong> for your journey. Whether you need
+                        to
+                        book through the <strong>60 days advance reservation period (ARP)</strong> or need
+                        last-minute
+                        <strong>Tatkal tickets</strong>, our calculator shows you the exact date and time when
+                        booking
                         starts on the <strong>Indian Railways reservation system</strong>.
                     </p>
 
                     <h3>When Does Train Booking Open on IRCTC?</h3>
                     <p>The <strong>IRCTC booking window</strong> for regular advance reservation opens exactly
                         <strong>60 days before your travel date at 8:00 AM IST</strong>. This is known as the
-                        <strong>Advance Reservation Period (ARP)</strong>. For example, if you want to travel on March
+                        <strong>Advance Reservation Period (ARP)</strong>. For example, if you want to travel on
+                        March
                         15th, you can start booking from January 14th at 8 AM. Our <strong>train booking date
                             finder</strong> automatically calculates this for any travel date.
                     </p>
 
                     <h3>Tatkal Booking Time - AC and Sleeper Class</h3>
-                    <p><strong>Tatkal booking</strong> is for last-minute train travel and opens <strong>one day before
+                    <p><strong>Tatkal booking</strong> is for last-minute train travel and opens <strong>one day
+                            before
                             the journey</strong>:</p>
                     <ul>
                         <li><strong>AC Tatkal (1A, 2A, 3A, CC, EC, 3E):</strong> Booking opens at <strong>10:00 AM
                                 IST</strong></li>
-                        <li><strong>Sleeper Tatkal (SL) and Second Sitting (2S):</strong> Booking opens at <strong>11:00
-                                AM IST</strong></li>
-                        <li><strong>Premium Tatkal:</strong> Same timing as regular Tatkal with dynamic (higher) pricing
+                        <li><strong>Sleeper Tatkal (SL) and Second Sitting (2S):</strong> Booking opens at
+                            <strong>11:00
+                                AM IST</strong>
+                        </li>
+                        <li><strong>Premium Tatkal:</strong> Same timing as regular Tatkal with dynamic (higher)
+                            pricing
                         </li>
                     </ul>
-                    <p>Tatkal tickets have additional charges and limited quota, so you need to be quick. Being logged
+                    <p>Tatkal tickets have additional charges and limited quota, so you need to be quick. Being
+                        logged
                         into IRCTC a few minutes before the opening time increases your chances of getting a
                         <strong>confirmed train ticket</strong>.
                     </p>
 
                     <h3>How to Use the Railway Booking Calendar</h3>
-                    <p>Our <strong>Indian Railways booking calendar</strong> shows all dates with color-coded status:
+                    <p>Our <strong>Indian Railways booking calendar</strong> shows all dates with color-coded
+                        status:
                     </p>
                     <ul>
                         <li><strong>Green dates:</strong> <strong>Advance booking is open</strong> - you can book
@@ -2108,7 +2447,8 @@
                     </p>
 
                     <h3>Why Use a Train Ticket Booking Calculator?</h3>
-                    <p>Manually counting 60 days can be confusing and error-prone. Our <strong>railway reservation date
+                    <p>Manually counting 60 days can be confusing and error-prone. Our <strong>railway reservation
+                            date
                             calculator</strong> eliminates guesswork by:</p>
                     <ul>
                         <li>Instantly calculating the <strong>exact booking opening date</strong></li>
@@ -2125,7 +2465,8 @@
                         <li>Keep passenger details saved in your IRCTC profile</li>
                         <li>Use a fast and stable internet connection</li>
                         <li>Have multiple payment options ready</li>
-                        <li>For <strong>Tatkal booking</strong>, be ready exactly at 10 AM (AC) or 11 AM (Sleeper)</li>
+                        <li>For <strong>Tatkal booking</strong>, be ready exactly at 10 AM (AC) or 11 AM (Sleeper)
+                        </li>
                         <li>Consider booking from multiple devices for better chances</li>
                     </ul>
 
@@ -2149,14 +2490,17 @@
                 <article class="seo-article">
                     <h3>Who Created This Tool?</h3>
                     <p>RailBookingDate was built by <strong>Ishwar Joshi</strong>, a developer who understands the
-                        challenges millions of Indians face when trying to book train tickets. This <strong>free IRCTC
+                        challenges millions of Indians face when trying to book train tickets. This <strong>free
+                            IRCTC
                             booking calculator</strong> was created to simplify the process of finding when booking
                         opens for your journey.</p>
 
                     <h3>Why This Tool Exists</h3>
-                    <p>With over 23 million passengers traveling daily on <strong>Indian Railways</strong>, getting a
+                    <p>With over 23 million passengers traveling daily on <strong>Indian Railways</strong>, getting
+                        a
                         confirmed ticket can be challenging. The <strong>60-day advance booking</strong> system and
-                        different <strong>Tatkal timings</strong> for AC and Sleeper classes make planning complicated.
+                        different <strong>Tatkal timings</strong> for AC and Sleeper classes make planning
+                        complicated.
                         RailBookingDate solves this by providing:</p>
                     <ul>
                         <li>Instant <strong>booking date calculation</strong> for any travel date</li>
@@ -2167,9 +2511,11 @@
                     </ul>
 
                     <h3>Frequently Searched Questions</h3>
-                    <p>Our users commonly search for: "<strong>when to book train tickets</strong>", "<strong>IRCTC 60
+                    <p>Our users commonly search for: "<strong>when to book train tickets</strong>", "<strong>IRCTC
+                            60
                             days advance booking</strong>", "<strong>Tatkal booking time</strong>", "<strong>train
-                            ticket availability next 60 days</strong>", and "<strong>railway booking calendar</strong>".
+                            ticket availability next 60 days</strong>", and "<strong>railway booking
+                            calendar</strong>".
                         This tool answers all these queries instantly.</p>
                 </article>
             </section>
@@ -2180,7 +2526,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="rules-icon" aria-hidden="true">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                        </path>
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                     Contact & Feedback
@@ -2198,29 +2545,38 @@
             <section class="seo-content-section lazy-section" aria-labelledby="seo-keywords-title">
                 <h2 id="seo-keywords-title" class="section-title">IRCTC Train Booking & Calculator Resources</h2>
                 <article class="seo-article">
-                    <p>Planning your journey on Indian Railways? Use our comprehensive tools and guides to ensure you
-                        never miss a reservation window. Our <strong>booking calculator</strong> is designed to help you
-                        navigate the <strong>irctc train booking 60 days advance booking</strong> system with ease.</p>
+                    <p>Planning your journey on Indian Railways? Use our comprehensive tools and guides to ensure
+                        you
+                        never miss a reservation window. Our <strong>booking calculator</strong> is designed to help
+                        you
+                        navigate the <strong>irctc train booking 60 days advance booking</strong> system with ease.
+                    </p>
 
                     <ul class="seo-features-list">
                         <li>Find when to book train tickets based on the official <strong>IRCTC 60 days advance
                                 booking</strong> rule.</li>
-                        <li>Instantly check your <strong>train ticket availability</strong> for the next 60 days using
+                        <li>Instantly check your <strong>train ticket availability</strong> for the next 60 days
+                            using
                             our <strong>railway booking calculator</strong>.</li>
                         <li>Never miss your <strong>reservation date</strong> with our <strong>IRCTC advance booking
                                 date finder</strong>.</li>
                         <li>Plan your journey smarter by knowing exactly when <strong>IRCTC train bookings
                                 open</strong>.</li>
-                        <li>Use our <strong>railway booking calendar</strong> to view upcoming reservation opening dates
+                        <li>Use our <strong>railway booking calendar</strong> to view upcoming reservation opening
+                            dates
                             at a glance.</li>
-                        <li>Not sure <strong>when to book train tickets on IRCTC</strong>? This tool gives you the exact
+                        <li>Not sure <strong>when to book train tickets on IRCTC</strong>? This tool gives you the
+                            exact
                             <strong>booking date</strong>.
                         </li>
-                        <li>Calculate the <strong>60-day advance train booking date</strong> in seconds without logging
+                        <li>Calculate the <strong>60-day advance train booking date</strong> in seconds without
+                            logging
                             into IRCTC.</li>
-                        <li>Check <strong>train ticket availability</strong> for future dates before the booking window
+                        <li>Check <strong>train ticket availability</strong> for future dates before the booking
+                            window
                             opens.</li>
-                        <li>Know your <strong>IRCTC reservation opening date</strong> and set reminders instantly.</li>
+                        <li>Know your <strong>IRCTC reservation opening date</strong> and set reminders instantly.
+                        </li>
                         <li>View <strong>railway ticket booking dates</strong> in calendar format for easy planning.
                         </li>
                         <li>Find the correct <strong>Tatkal booking time</strong> for AC and Sleeper classes.</li>
@@ -2228,7 +2584,8 @@
                             confirmation.</li>
                         <li>Understand <strong>Tatkal rules</strong>, booking time, and eligibility before reserving
                             tickets.</li>
-                        <li>Check <strong>Tatkal train ticket availability</strong> and booking schedule in one place.
+                        <li>Check <strong>Tatkal train ticket availability</strong> and booking schedule in one
+                            place.
                         </li>
                         <li>Avoid confusion around <strong>IRCTC rules</strong> by checking <strong>train booking
                                 dates</strong> instantly.</li>
@@ -2236,11 +2593,14 @@
                                 timing</strong>, and availability in one tool.</li>
                         <li>Perfect for travelers who want to know when <strong>IRCTC allows booking</strong> for a
                             specific journey date.</li>
-                        <li>Ideal for frequent travelers planning <strong>train tickets</strong> well in advance.</li>
-                        <li>Trusted by users who want a fast, accurate <strong>railway booking date calculator</strong>.
+                        <li>Ideal for frequent travelers planning <strong>train tickets</strong> well in advance.
+                        </li>
+                        <li>Trusted by users who want a fast, accurate <strong>railway booking date
+                                calculator</strong>.
                         </li>
                         <li>Based on official <strong>IRCTC booking rules</strong> and timelines.</li>
-                        <li>Updated regularly to reflect latest <strong>Indian Railways reservation policies</strong>.
+                        <li>Updated regularly to reflect latest <strong>Indian Railways reservation
+                                policies</strong>.
                         </li>
                         <li>Simple, accurate, and no login required.</li>
                         <li>Designed to help passengers avoid booking mistakes and missed dates.</li>
@@ -2249,18 +2609,16 @@
                         <li><strong>View railway booking calendar for upcoming dates.</strong></li>
                         <li><strong>Plan your journey with confidence.</strong></li>
                         <li>
-                            <string> User Searches include</strong>
-                        </li>
-                        <li>
-                            <h2>60 days irctc booking</h2>
-                        </li>
-                        <li>
-                            <h2>irctc advance ticket booking period</h2>
+                            <strong>User Searches include</strong>
+                            <ul>
+                                <li>60 days irctc booking</li>
+                                <li>irctc advance ticket booking period</li>
+                            </ul>
                         </li>
                     </ul>
                 </article>
-            </section>
         </main>
+<<<<<<< Updated upstream
 
         <footer class="site-footer">
             <p>&copy; <span id="current-year">2026</span> RailBookingDate - Free IRCTC Booking Date Calculator<br>
@@ -2297,7 +2655,28 @@
                     Us</a>
             </p>
         </footer>
+=======
+        </section>
+>>>>>>> Stashed changes
     </div>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year">2026</span> RailBookingDate - Free IRCTC Booking Date Calculator<br>
+            Calculate Indian Railways booking dates instantly | Created by Ishwar Joshi</p>
+        <nav class="site-footer-nav">
+            <a href="index.html">Calculator</a>
+            <a href="pages/tatkal.html">Tatkal Dates</a>
+            <a href="pages/news.html">Rail News</a>
+            <a href="pages/faq.html">FAQ</a>
+            <a href="pages/ewallet.html">eWallet</a>
+            <a href="pages/helpline.html">Helpline</a>
+            <a href="pages/videos.html">Train Videos</a>
+            <a href="pages/about-us.html">About Us</a>
+            <a href="pages/privacy-policy.html">Privacy Policy</a>
+            <a href="pages/contact-us.html">Contact Us</a>
+            <a href="pages/disclaimer.html">Disclaimer</a>
+        </nav>
+    </footer>
 
     <!-- Main Application Script - Deferred for performance -->
     <script src="js/app.js" defer></script>

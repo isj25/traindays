@@ -17,6 +17,8 @@
     <meta name="description"
         content="Find answers to common questions about IRCTC 60-day advance booking, Tatkal timings, and Indian Railways reservation rules.">
 
+    <link rel="stylesheet" href="../css/navigation.css">
+
     <!-- FAQ Schema (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -126,16 +128,33 @@
             "@type": "Answer",
             "text": "Absolutely. You can copy or share the booking date easily with friends or family planning the same journey."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the new Aadhaar verification rule for 2026 train booking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From 2026, IRCTC requires Aadhaar authentication for booking on the opening day of ARP. Verified users can book from 8:00 AM until midnight on Day One. Non-verified users cannot book online on the first day and must wait until later, depending on availability."
+          }
         }
       ]
     }
     </script>
 
     <!-- Favicon and Icons -->
-        <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<<<<<<< Updated upstream
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="../favicon-144.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
+    <link rel="icon" type="image/x-icon" sizes="any" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../icon-192.png">
+=======
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+>>>>>>> Stashed changes
 
     <meta name="theme-color" content="#ff6b00">
 
@@ -242,11 +261,131 @@
             margin-bottom: 0.5rem;
         }
 
-        .site-footer {
-            margin-top: 4rem;
-            text-align: center;
-            color: var(--text-tertiary);
+        .page-layout {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .faq-sidebar {
+            width: 260px;
+            position: sticky;
+            top: 2rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .sidebar-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .sidebar-links::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--border-light);
+            z-index: 0;
+        }
+
+        .sidebar-link {
+            color: var(--text-secondary);
+            text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0.5rem 0.4rem 1.75rem;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-link::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border-light);
+            border: 2px solid var(--bg-card);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--primary);
+            background: var(--primary-light);
+            transform: translateX(4px);
+        }
+
+        .sidebar-link:hover::before {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.5);
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .faq-sidebar {
+                display: none;
+            }
+
+            .app-container {
+                max-width: 800px;
+            }
+        }
+
+        @media (min-width: 1101px) {
+            .app-container {
+                max-width: 1100px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -263,9 +402,12 @@
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
     </script>
+<<<<<<< Updated upstream
+=======
     <!-- Google Adsense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -280,6 +422,7 @@
         </a>
 
         <header class="app-header">
+<<<<<<< Updated upstream
             <nav style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
                 <a href="../index.html"
                     style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Calculator</a>
@@ -306,117 +449,456 @@
                     style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Contact</a>
                 <a href="disclaimer.html"
                     style="color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 99px; background: var(--bg-card);">Disclaimer</a>
+=======
+            <nav class="main-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="tatkal.html">Tatkal Dates</a>
+                <a href="news.html">Rail News</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="ewallet.html">eWallet</a>
+                <a href="helpline.html">Helpline</a>
+                <a href="videos.html">Train Videos</a>
+                <a href="about-us.html">About</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="contact-us.html">Contact</a>
+                <a href="disclaimer.html">Disclaimer</a>
+>>>>>>> Stashed changes
             </nav>
             <h1>Frequently Asked Questions</h1>
-            <p>Everything you need to know about Indian Railways booking rules</p>
         </header>
 
-        <main class="faq-section">
-            <article class="faq-card">
-                <h3>What is the IRCTC advance reservation period?</h3>
-                <p>IRCTC allows train tickets to be booked <strong>up to 60 days in advance</strong>, excluding the date
-                    of journey. The booking opens at <strong>8:00 AM IST</strong> on the opening day.</p>
-            </article>
+        <div class="page-layout">
+            <aside class="faq-sidebar">
+                <div class="sidebar-section">
+                    <h4 class="sidebar-title"><span>🛡️</span> General Rules</h4>
+                    <nav class="sidebar-links">
+                        <a href="#faq-arp" class="sidebar-link">📅 ARP Period</a>
+                        <a href="#faq-calculate" class="sidebar-link">🖩 Calculate Date</a>
+                        <a href="#faq-time" class="sidebar-link">⏰ Booking Time</a>
+                        <a href="#faq-aadhaar" class="sidebar-link">👤 Aadhaar Rule</a>
+                        <a href="#faq-tatkal" class="sidebar-link">🚀 Tatkal Booking</a>
+                        <a href="#faq-accuracy" class="sidebar-link">✅ Accuracy</a>
+                    </nav>
+                </div>
 
-            <article class="faq-card">
-                <h3>How do I calculate the IRCTC booking opening date?</h3>
-                <p>You can calculate the IRCTC booking opening date by subtracting <strong>60 days from your journey
-                        date</strong>. To avoid manual errors, use our <strong>IRCTC booking date calculator</strong> to
-                    get the exact date instantly.</p>
-            </article>
+                <div class="sidebar-section">
+                    <h4 class="sidebar-title"><span>🔥</span> Hot Holidays</h4>
+                    <nav class="sidebar-links">
+                        <a href="#faq-holi" class="sidebar-link">🎨 Holi 2026</a>
+                        <a href="#faq-diwali" class="sidebar-link">🪔 Diwali 2026</a>
+                        <a href="#faq-christmas" class="sidebar-link">🎄 Christmas 2026</a>
+                        <a href="#holiday-faqs-title" class="sidebar-link">📅 All Holidays →</a>
+                    </nav>
+                </div>
+            </aside>
 
-            <article class="faq-card">
-                <h3>At what time does IRCTC ticket booking open?</h3>
-                <p>IRCTC online ticket booking opens at <strong>8:00 AM IST</strong> for all classes, including Sleeper,
-                    3AC, 2AC, and 1AC.</p>
-            </article>
+            <main class="main-content">
+                <section class="faq-section">
+                    <article class="faq-card" id="faq-arp">
+                        <span class="category-chip chip-official">Official Rule</span>
+                        <h3>What is the IRCTC advance reservation period?</h3>
+                        <p>IRCTC allows train tickets to be booked <strong>up to 60 days in advance</strong>,
+                            excluding the
+                            date
+                            of journey. The booking opens at <strong>8:00 AM IST</strong> on the opening day.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Is the journey date included in the 60-day advance booking?</h3>
-                <p>No. The <strong>journey date is not included</strong> while calculating the 60-day advance
-                    reservation period. Our calculator automatically follows IRCTC rules to give accurate results.</p>
-            </article>
+                    <article class="faq-card" id="faq-calculate">
+                        <span class="category-chip chip-official">Guide</span>
+                        <h3>How do I calculate the IRCTC booking opening date?</h3>
+                        <p>You can calculate the IRCTC booking opening date by subtracting <strong>60 days from your
+                                journey
+                                date</strong>. To avoid manual errors, use our <strong>IRCTC booking date
+                                calculator</strong> to
+                            get the exact date instantly.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Can I book train tickets before 60 days?</h3>
-                <p>No, IRCTC does <strong>not allow booking before 60 days</strong> (except special trains). Booking
-                    attempts before the opening date will fail.</p>
-            </article>
+                    <article class="faq-card" id="faq-time">
+                        <span class="category-chip chip-official">Timings</span>
+                        <h3>At what time does IRCTC ticket booking open?</h3>
+                        <p>IRCTC online ticket booking opens at <strong>8:00 AM IST</strong> for all classes,
+                            including
+                            Sleeper,
+                            3AC, 2AC, and 1AC.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>How accurate is this IRCTC booking date calculator?</h3>
-                <p>Our calculator follows <strong>official IRCTC rules</strong> and provides <strong>100% accurate
-                        booking dates</strong>, including leap years and month variations.</p>
-            </article>
+                    <article class="faq-card" id="faq-journey-date">
+                        <span class="category-chip chip-official">Official Rule</span>
+                        <h3>Is the journey date included in the 60-day advance booking?</h3>
+                        <p>No. The <strong>journey date is not included</strong> while calculating the 60-day
+                            advance
+                            reservation period. Our calculator automatically follows IRCTC rules to give accurate
+                            results.
+                        </p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Does this calculator work for all Indian trains?</h3>
-                <p>Yes, this tool works for <strong>all Indian Railways trains</strong>, including: Express trains,
-                    Superfast trains, Mail trains, and Passenger trains.</p>
-            </article>
+                    <article class="faq-card" id="faq-before-60">
+                        <span class="category-chip chip-official">Official Rule</span>
+                        <h3>Can I book train tickets before 60 days?</h3>
+                        <p>No, IRCTC does <strong>not allow booking before 60 days</strong> (except special trains).
+                            Booking
+                            attempts before the opening date will fail.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Can I use this calculator for Tatkal tickets?</h3>
-                <p>No. <strong>Tatkal tickets</strong> have a different booking window (1 day before journey). This
-                    calculator is designed specifically for <strong>advance reservation tickets</strong>.</p>
-                <p style="margin-top: 1rem;">Check out our <a href="tatkal.html#tactics"
-                        style="color: var(--primary); font-weight: 600;">Pro Tactics for Tatkal booking</a> to increase
-                    your chances of getting a confirmed ticket.</p>
-            </article>
+                    <article class="faq-card" id="faq-accuracy">
+                        <span class="category-chip chip-official">Verified</span>
+                        <h3>How accurate is this IRCTC booking date calculator?</h3>
+                        <p>Our calculator follows <strong>official IRCTC rules</strong> and provides <strong>100%
+                                accurate
+                                booking dates</strong>, including leap years and month variations.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Is this IRCTC booking date calculator free to use?</h3>
-                <p>Yes ✅ This tool is <strong>completely free</strong> and does not require login or personal details.
-                </p>
-            </article>
+                    <article class="faq-card" id="faq-all-trains">
+                        <span class="category-chip chip-official">Compatibility</span>
+                        <h3>Does this calculator work for all Indian trains?</h3>
+                        <p>Yes, this tool works for <strong>all Indian Railways trains</strong>, including: Express
+                            trains,
+                            Superfast trains, Mail trains, and Passenger trains.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Do I need to log in to IRCTC to use this tool?</h3>
-                <p>No login is required. Simply enter your <strong>journey date</strong>, and the calculator will
-                    instantly show the <strong>IRCTC booking start date</strong>.</p>
-            </article>
+                    <article class="faq-card" id="faq-tatkal">
+                        <span class="category-chip chip-seasonal">Pro Tip</span>
+                        <h3>Can I use this calculator for Tatkal tickets?</h3>
+                        <p>No. <strong>Tatkal tickets</strong> have a different booking window (1 day before
+                            journey). This
+                            calculator is designed specifically for <strong>advance reservation tickets</strong>.
+                        </p>
+                        <p style="margin-top: 1rem;">Check out our <a href="tatkal.html#tactics"
+                                style="color: var(--primary); font-weight: 600;">Pro Tactics for Tatkal booking</a>
+                            to
+                            increase
+                            your chances of getting a confirmed ticket.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Why should I use RailBookingDate.com instead of manual calculation?</h3>
-                <p>Manual calculation can lead to <strong>date mistakes</strong>. RailBookingDate.com:
-                <ul>
-                    <li>Eliminate confusion</li>
-                    <li>Saves time</li>
-                    <li>Gives instant results</li>
-                    <li>Follows official IRCTC rules</li>
-                </ul>
-                </p>
-            </article>
+                    <article class="faq-card" id="faq-free">
+                        <span class="category-chip chip-official">Price</span>
+                        <h3>Is this IRCTC booking date calculator free to use?</h3>
+                        <p>Yes ✅ This tool is <strong>completely free</strong> and does not require login or
+                            personal
+                            details.
+                        </p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Does this calculator consider public holidays?</h3>
-                <p>Yes. The calculator provides the <strong>correct booking date regardless of holidays</strong>, as
-                    IRCTC booking opens daily at 8:00 AM.</p>
-            </article>
+                    <article class="faq-card" id="faq-login">
+                        <span class="category-chip chip-official">Privacy</span>
+                        <h3>Do I need to log in to IRCTC to use this tool?</h3>
+                        <p>No login is required. Simply enter your <strong>journey date</strong>, and the calculator
+                            will
+                            instantly show the <strong>IRCTC booking start date</strong>.</p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>Can I share the booking date with others?</h3>
-                <p>Absolutely. You can <strong>copy or share</strong> the booking date easily with friends or family
-                    planning the same journey.</p>
-            </article>
+                    <article class="faq-card" id="faq-why-us">
+                        <span class="category-chip chip-official">Benefits</span>
+                        <h3>Why should I use RailBookingDate.com instead of manual calculation?</h3>
+                        <p>Manual calculation can lead to <strong>date mistakes</strong>. RailBookingDate.com:
+                        <ul>
+                            <li>Eliminate confusion</li>
+                            <li>Saves time</li>
+                            <li>Gives instant results</li>
+                            <li>Follows official IRCTC rules</li>
+                        </ul>
+                        </p>
+                    </article>
 
-            <article class="faq-card">
-                <h3>What is the new Aadhaar verification rule for 2026?</h3>
-                <p>From January 12, 2026, only Aadhaar-verified users can book general reserved tickets on the very
-                    first day the booking window opens (ARP day). Non-verified users can book from the second day
-                    onwards, subject to availability.</p>
-            </article>
-        </main>
+                    <article class="faq-card" id="faq-holidays">
+                        <span class="category-chip chip-official">Timing</span>
+                        <h3>Does this calculator consider public holidays?</h3>
+                        <p>Yes. The calculator provides the <strong>correct booking date regardless of
+                                holidays</strong>, as
+                            IRCTC booking opens daily at 8:00 AM.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-share">
+                        <span class="category-chip chip-official">Sharing</span>
+                        <h3>Can I share the booking date with others?</h3>
+                        <p>Absolutely. You can <strong>copy or share</strong> the booking date easily with friends
+                            or family
+                            planning the same journey.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-aadhaar">
+                        <span class="category-chip chip-seasonal">New for 2026</span>
+                        <h3>What is the new Aadhaar verification rule for 2026?</h3>
+                        <p>From 2026, IRCTC has implemented stricter Aadhaar-linkage rules for advance reservations:
+                        </p>
+                        <ul style="margin-top: 1rem; color: var(--text-secondary); line-height: 1.6;">
+                            <li><strong>Online Booking Restriction:</strong> Only Aadhaar-authenticated IRCTC users
+                                will be
+                                allowed
+                                to book general reserved tickets online on the opening day of ARP (Advance
+                                Reservation Period).
+                            </li>
+                            <li><strong>Extended Window:</strong> Verified users can book tickets from <strong>8:00
+                                    AM until
+                                    midnight</strong> on the opening day.</li>
+                            <li><strong>Non-Verified Users:</strong> Users without Aadhaar authentication will
+                                <strong>not be
+                                    able to book online on Day One</strong> and must wait until later, depending on
+                                seat
+                                availability.
+                            </li>
+                            <li><strong>Wider Window:</strong> This new rule significantly widens the booking window
+                                for
+                                Aadhaar-verified users compared to earlier limited time slots.</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">To avoid missing out on peak holiday bookings, we highly
+                            recommend linking
+                            your Aadhaar to your IRCTC profile immediately. You can follow the official steps here:
+                            <a href="https://contents.irctc.co.in/en/BookUpto12ticketsinamonthbylinkingAadhaar.pdf"
+                                target="_blank" rel="noopener noreferrer"
+                                style="color: var(--primary); font-weight: 600; text-decoration: underline;">Official
+                                Aadhaar
+                                Linking Guide (PDF)</a>
+                        </p>
+                    </article>
+
+                    <article class="faq-card" id="faq-tatkal-rule">
+                        <span class="category-chip chip-seasonal">Pro Tip</span>
+                        <h3>Is Tatkal booking affected by the 60-day rule?</h3>
+                        <p>No, Tatkal booking remains a last-minute service. It opens precisely one day before the
+                            train's
+                            departure from its originating station at 10:00 AM for AC and 11:00 AM for Sleeper
+                            classes.
+                            Check out our <a href="tatkal.html#tactics"
+                                style="color: var(--primary); font-weight: 600;">Pro
+                                Tactics for Tatkal booking</a> to increase your chances of getting a confirmed
+                            ticket.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-not-open">
+                        <span class="category-chip chip-official">Guide</span>
+                        <h3>What happens if my travel date is more than 60 days away?</h3>
+                        <p>If your travel date is more than 60 days away, you cannot book yet. Use our calculator to
+                            find the
+                            exact date and time your booking window will open, and set a reminder!</p>
+                    </article>
+
+                    <h2 id="holiday-faqs-title"
+                        style="margin-top: 3rem; text-align: center; font-family: var(--font-heading); color: var(--text-primary);">
+                        2026 Holiday Booking FAQs</h2>
+
+                    <article class="faq-card" id="faq-holi">
+                        <span class="category-chip chip-holiday">Holi 2026</span>
+                        <h3>When to book train ticket for Holi 2026?</h3>
+                        <p>For Holi (Mar 4 - Mar 7, 2026), the IRCTC 60-day advance booking opens on <strong>Jan 3,
+                                2026 at 8:00
+                                AM IST</strong>. Since this is a peak travel time, tickets for major routes like
+                            Delhi to Patna
+                            or Mumbai to Lucknow sell out within minutes of opening.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-eid">
+                        <span class="category-chip chip-holiday">Eid 2026</span>
+                        <h3>When to book train ticket for Id-ul-Fitr 2026?</h3>
+                        <p>For Id-ul-Fitr (Mar 21, 2026), the IRCTC booking window opens on <strong>Jan 20, 2026 at
+                                8:00 AM
+                                IST</strong>. Plan and book early as this holiday falls on a Saturday, creating a
+                            busy travel
+                            weekend.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-ram-navami">
+                        <span class="category-chip chip-holiday">Ram Navami 2026</span>
+                        <h3>When to book train ticket for Ram Navami 2026?</h3>
+                        <p>For Ram Navami (Mar 26, 2026), the IRCTC 60-day advance booking starts on <strong>Jan 25,
+                                2026 at
+                                8:00 AM IST</strong>. This is a potential long weekend, so expect high demand for
+                            trains to
+                            pilgrimage sites.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-mahavir">
+                        <span class="category-chip chip-holiday">Mahavir Jayanti 2026</span>
+                        <h3>When to book train ticket for Mahavir Jayanti 2026?</h3>
+                        <p>For Mahavir Jayanti (Mar 31, 2026), the IRCTC booking opens on <strong>Jan 30, 2026 at
+                                8:00 AM
+                                IST</strong>. Book exactly at 8 AM to ensure seat availability.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-good-friday">
+                        <span class="category-chip chip-holiday">Good Friday 2026</span>
+                        <h3>When to book train ticket for Good Friday 2026?</h3>
+                        <p>For Good Friday (Apr 3, 2026), the IRCTC 60-day booking opens on <strong>Feb 2, 2026 at
+                                8:00 AM
+                                IST</strong>. This creates a 3-day long weekend, making it a popular time for short
+                            trips and
+                            home visits.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-budha-purnima">
+                        <span class="category-chip chip-holiday">Budha Purnima 2026</span>
+                        <h3>When to book train ticket for Budha Purnima 2026?</h3>
+                        <p>For Budha Purnima (May 1, 2026), the IRCTC booking window opens on <strong>Mar 2, 2026 at
+                                8:00 AM
+                                IST</strong>. As it falls on a Friday, it's a great opportunity for a long weekend
+                            trip.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-bakrid">
+                        <span class="category-chip chip-holiday">Bakrid 2026</span>
+                        <h3>When to book train ticket for Id-ul-Zuha (Bakrid) 2026?</h3>
+                        <p>For Id-ul-Zuha (May 27, 2026), the IRCTC booking window starts on <strong>Mar 28, 2026 at
+                                8:00 AM
+                                IST</strong>.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-muharram">
+                        <span class="category-chip chip-holiday">Muharram 2026</span>
+                        <h3>When to book train ticket for Muharram 2026?</h3>
+                        <p>For Muharram (Jun 26, 2026), the IRCTC booking opens on <strong>Apr 27, 2026 at 8:00 AM
+                                IST</strong>.
+                            Falling on a Friday, this is another long weekend for many travelers.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-independence">
+                        <span class="category-chip chip-holiday">Independence Day</span>
+                        <h3>When to book train ticket for Independence Day 2026?</h3>
+                        <p>For Independence Day (Aug 15, 2026), the IRCTC 60-day advance booking opens on
+                            <strong>Jun 16, 2026
+                                at 8:00 AM IST</strong>. August 15 falls on a Saturday in 2026.
+                        </p>
+                    </article>
+
+                    <article class="faq-card" id="faq-milad">
+                        <span class="category-chip chip-holiday">Milad-un-Nabi</span>
+                        <h3>When to book train ticket for Milad-un-Nabi 2026?</h3>
+                        <p>For Milad-un-Nabi (Aug 26, 2026), the IRCTC booking window opens on <strong>Jun 27, 2026
+                                at 8:00 AM
+                                IST</strong>.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-raksha-bandhan">
+                        <span class="category-chip chip-holiday">Raksha Bandhan</span>
+                        <h3>When to book train ticket for Raksha Bandhan 2026?</h3>
+                        <p>For Raksha Bandhan (Aug 28, 2026), the IRCTC booking starts on <strong>Jun 29, 2026 at
+                                8:00 AM
+                                IST</strong>. Since the festival is on a Friday, it's perfect for a long weekend
+                            visit to
+                            family.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-janmashtami">
+                        <span class="category-chip chip-holiday">Janmashtami 2026</span>
+                        <h3>When to book train ticket for Janmashtami 2026?</h3>
+                        <p>For Janmashtami (Sep 4, 2026), the IRCTC booking opens on <strong>Jul 6, 2026 at 8:00 AM
+                                IST</strong>. This Friday holiday is ideal for traveling to Mathura or Vrindavan.
+                        </p>
+                    </article>
+
+                    <article class="faq-card" id="faq-ganesh-chaturthi">
+                        <span class="category-chip chip-holiday">Ganesh Chaturthi</span>
+                        <h3>When to book train ticket for Ganesh Chaturthi 2026?</h3>
+                        <p>For Ganesh Chaturthi (Sep 14, 2026), the IRCTC booking window opens on <strong>Jul 16,
+                                2026 at 8:00
+                                AM IST</strong>. In Maharashtra, demand for trains to Konkan and Pune will be
+                            extremely high on
+                            this Monday holiday.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-gandhi">
+                        <span class="category-chip chip-holiday">Gandhi Jayanti</span>
+                        <h3>When to book train ticket for Gandhi Jayanti 2026?</h3>
+                        <p>For Mahatma Gandhi’s Birthday (Oct 2, 2026), the IRCTC booking opens on <strong>Aug 3,
+                                2026 at 8:00
+                                AM IST</strong>. This Friday holiday consistently creates high demand for weekend
+                            getaways.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-dussehra">
+                        <span class="category-chip chip-holiday">Dussehra 2026</span>
+                        <h3>When to book train ticket for Dussehra 2026?</h3>
+                        <p>For Dussehra Holidays (Oct 19 - Oct 24, 2026), the IRCTC booking for the start of the
+                            week opens on
+                            <strong>Aug 20, 2026 at 8:00 AM IST</strong>. Dussehra falls on Oct 20 (Tuesday), making
+                            the whole
+                            week busy for travel.
+                        </p>
+                    </article>
+
+                    <article class="faq-card" id="faq-diwali">
+                        <span class="category-chip chip-holiday">Diwali 2026</span>
+                        <h3>When to book train ticket for Diwali 2026?</h3>
+                        <p>For Diwali Holidays (Nov 9 - Nov 14, 2026), the IRCTC 60-day booking opens on <strong>Sep
+                                10, 2026 at
+                                8:00 AM IST</strong>. Diwali is the busiest train travel period in India; booking at
+                            exactly
+                            8:00 AM is critical for any hope of a confirmed seat.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-guru-nanak">
+                        <span class="category-chip chip-holiday">Guru Nanak Jayanti</span>
+                        <h3>When to book train ticket for Guru Nanak's Birthday 2026?</h3>
+                        <p>For Guru Nanak's Birthday (Nov 24, 2026), the IRCTC booking starts on <strong>Sep 25,
+                                2026 at 8:00 AM
+                                IST</strong>.</p>
+                    </article>
+
+                    <article class="faq-card" id="faq-christmas">
+                        <span class="category-chip chip-holiday">Winter Holiday</span>
+                        <h3>When to book train ticket for Christmas 2026?</h3>
+                        <p>For Christmas (Dec 25, 2026), the IRCTC booking opens on <strong>Oct 26, 2026 at 8:00 AM
+                                IST</strong>. As it falls on a Friday, expect heavy rush for winter vacations and
+                            home travel.
+                        </p>
+                    </article>
+                </section>
+            </main>
+        </div>
 
         <footer class="site-footer">
-            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi |
-                <a href="about-us.html" style="color: var(--primary); text-decoration: none;">About Us</a> |
-                <a href="privacy-policy.html" style="color: var(--primary); text-decoration: none;">Privacy Policy</a> |
-                <a href="contact-us.html" style="color: var(--primary); text-decoration: none;">Contact Us</a> |
-                <a href="disclaimer.html" style="color: var(--primary); text-decoration: none;">Disclaimer</a>
-            </p>
+<<<<<<< Updated upstream
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi | <a href="disclaimer.html"
+                    style="color: var(--primary); text-decoration: none;">Disclaimer</a></p>
+=======
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+            <nav class="site-footer-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="tatkal.html">Tatkal Dates</a>
+                <a href="news.html">Rail News</a>
+                <a href="faq.html">FAQ</a>
+                <a href="ewallet.html">eWallet</a>
+                <a href="helpline.html">Helpline</a>
+                <a href="videos.html">Train Videos</a>
+                <a href="about-us.html">About Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="contact-us.html">Contact Us</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </nav>
+>>>>>>> Stashed changes
         </footer>
     </div>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When to book train ticket for Holi 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Holi (Mar 4 - Mar 7, 2026), the IRCTC 60-day advance booking opens on Jan 3, 2026 at 8:00 AM IST."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When to book train ticket for Diwali 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Diwali Holidays (Nov 9 - Nov 14, 2026), the IRCTC 60-day booking opens on Sep 10, 2026 at 8:00 AM IST. This is the busiest period, so book exactly at 8 AM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When to book train ticket for Eid-ul-Fitr 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Id-ul-Fitr (Mar 21, 2026), the IRCTC booking window opens on Jan 20, 2026 at 8:00 AM IST."
+          }
+        }
+      ]
+    }
+    </script>
 </body>
 
 </html>
