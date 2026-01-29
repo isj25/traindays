@@ -15,25 +15,19 @@
     ],
     "icons": [
         {
-            "src": "favicon-48.png",
-            "sizes": "48x48",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "favicon-96.png",
+            "src": "favicon-96x96.png",
             "sizes": "96x96",
             "type": "image/png",
             "purpose": "any"
         },
         {
-            "src": "icon-192.png",
+            "src": "web-app-manifest-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "icon-512.png",
+            "src": "web-app-manifest-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
@@ -47,7 +41,7 @@
             "url": "./index.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -59,7 +53,7 @@
             "url": "./pages/tatkal.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -71,7 +65,7 @@
             "url": "./pages/news.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -83,7 +77,7 @@
             "url": "./pages/helpline.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -95,7 +89,7 @@
             "url": "./pages/videos.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -107,7 +101,7 @@
             "url": "./pages/faq.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
@@ -119,7 +113,7 @@
             "url": "./pages/ewallet.html",
             "icons": [
                 {
-                    "src": "icon-192.png",
+                    "src": "web-app-manifest-192x192.png",
                     "sizes": "192x192"
                 }
             ]
