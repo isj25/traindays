@@ -1,12 +1,17 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
-  # Force HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # 1. Redirect /index.html to / (Canonicalization)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+  RewriteRule ^index\.html$ https://railbookingdate.com/ [R=301,L]
 
-  # Redirect www to non-www
+  # 2. Redirect www to non-www (Handles both HTTP and HTTPS)
   RewriteCond %{HTTP_HOST} ^www\.railbookingdate\.com [NC]
+  RewriteRule ^(.*)$ https://railbookingdate.com/$1 [L,R=301]
+
+  # 3. Force HTTPS for non-www
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} ^railbookingdate\.com [NC]
   RewriteRule ^(.*)$ https://railbookingdate.com/$1 [L,R=301]
 </IfModule>
 
