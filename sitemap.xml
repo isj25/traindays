@@ -67,6 +67,18 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://railbookingdate.com/pages/pnr-status.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/live-status.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://railbookingdate.com/pages/trains/train-between-hyderabad-decan-new-delhi.html</loc>
         <lastmod>2026-01-28</lastmod>
         <changefreq>weekly</changefreq>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <meta name="google-adsense-account" content="ca-pub-5018644317959743">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NL4NTX1D6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Train Status & Running History | RailBookingDate</title>
+    <link rel="canonical" href="https://railbookingdate.com/pages/live-status.html">
+    <meta name="description"
+        content="Track live train running status immediately. Real-time updates on train location, delays, and arrival times via NTES, RailYatri, and more.">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <meta name="theme-color" content="#ff6b00">
+
+    <link rel="stylesheet" href="../css/navigation.css">
+
+    <style>
+        :root {
+            --bg-app: #fef7ed;
+            --bg-card: #ffffff;
+            --text-primary: #1a365d;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --primary: #ff6b00;
+            --primary-light: #fff3e6;
+            --border-light: #fed7aa;
+            --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-app: #0f1729;
+            --bg-card: #1a2744;
+            --text-primary: #f7fafc;
+            --text-secondary: #cbd5e0;
+            --text-tertiary: #a0aec0;
+            --primary: #ff8533;
+            --primary-light: #2d1f0f;
+            --border-light: #3d4f6f;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .app-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-card h2,
+        .content-card h3 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .content-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pnr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .pnr-link-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-app);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pnr-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .pnr-link-card strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .pnr-link-card span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .steps-list {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .steps-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .site-footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .app-header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.75rem !important;
+            }
+        }
+    </style>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Calculator
+        </a>
+
+        <header class="app-header">
+            <nav class="main-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="live-status.html" class="active">Live Status</a>
+                <a href="pnr-status.html">PNR Status</a>
+                <a href="tatkal.html">Tatkal Dates</a>
+                <a href="news.html">Rail News</a>
+                <a href="faq.html">FAQ</a>
+                <a href="ewallet.html">eWallet</a>
+                <a href="helpline.html">Helpline</a>
+                <a href="videos.html">Train Videos</a>
+                <a href="about-us.html">About</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="contact-us.html">Contact</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </nav>
+            <h1>Live Train Status</h1>
+            <p>Track your train in real-time and check running history</p>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <h2>Check Live Status Via</h2>
+                <p style="color: var(--text-secondary);">Select a trusted platform to track your train's current
+                    location:</p>
+
+                <div class="pnr-grid">
+                    <a href="https://enquiry.indianrail.gov.in/mntes/" target="_blank" rel="noopener noreferrer"
+                        class="pnr-link-card">
+                        <strong>NTES (IRCTC)</strong>
+                        <span>Official Tracking</span>
+                    </a>
+                    <a href="https://www.railyatri.in/live-train-status" target="_blank" rel="noopener noreferrer"
+                        class="pnr-link-card">
+                        <strong>RailYatri</strong>
+                        <span>Live GPS Status</span>
+                    </a>
+                    <a href="https://www.confirmtkt.com/train-running-status" target="_blank" rel="noopener noreferrer"
+                        class="pnr-link-card">
+                        <strong>ConfirmTkt</strong>
+                        <span>Spot Your Train</span>
+                    </a>
+                    <a href="https://www.makemytrip.com/railways/liveStatus/" target="_blank" rel="noopener noreferrer"
+                        class="pnr-link-card">
+                        <strong>MakeMyTrip</strong>
+                        <span>Fast Updates</span>
+                    </a>
+                    <a href="https://www.redbus.in/railways/train-running-status" target="_blank"
+                        rel="noopener noreferrer" class="pnr-link-card">
+                        <strong>RedBus</strong>
+                        <span>Easy Tracking</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <h2>About Live Train Tracking</h2>
+
+                <h3>What is Live Station Status?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    <strong>Live Train Running Status</strong> helps you spot your train's exact current location in
+                    real-time.
+                    It tells you which station the train has just crossed, whether it is running on time (Right Time -
+                    RT) or is delayed, and the estimated time of arrival (ETA) at upcoming stations.
+                </p>
+
+                <h3>How to Track Your Train?</h3>
+                <ol class="steps-list">
+                    <li>Find your 5-digit <strong>Train Number</strong> (e.g., 12951).</li>
+                    <li>Click on one of the tracking links above (e.g., NTES or RailYatri).</li>
+                    <li>Enter the Train Number in the search bar.</li>
+                    <li>Select the journey date (usually "Today" or "Yesterday").</li>
+                    <li>View the live dashboard to see current milestones and delay info.</li>
+                </ol>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+            <nav class="site-footer-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="live-status.html">Live Status</a>
+                <a href="pnr-status.html">PNR Status</a>
+                <a href="tatkal.html">Tatkal Dates</a>
+                <a href="news.html">Rail News</a>
+                <a href="faq.html">FAQ</a>
+                <a href="ewallet.html">eWallet</a>
+                <a href="helpline.html">Helpline</a>
+                <a href="videos.html">Train Videos</a>
+                <a href="about-us.html">About Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="contact-us.html">Contact Us</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+
+</html>
