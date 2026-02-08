@@ -280,6 +280,41 @@ function startCountdowns() {
 // Uses DocumentFragment for batch DOM updates
 // ==========================================
 
+// Holiday Data for 2026
+const HOLIDAYS_2026 = [
+    { date: '2026-03-04', name: 'Holi Holiday' },
+    { date: '2026-03-05', name: 'Holi Holiday' },
+    { date: '2026-03-06', name: 'Holi Holiday' },
+    { date: '2026-03-07', name: 'Holi Holiday' },
+    { date: '2026-03-21', name: 'Id-ul-Fitr' },
+    { date: '2026-03-26', name: 'Ram Navami', type: 'long-weekend' },
+    { date: '2026-03-31', name: 'Mahavir Jayanti' },
+    { date: '2026-04-03', name: 'Good Friday', type: 'long-weekend' },
+    { date: '2026-05-01', name: 'Budha Purnima', type: 'long-weekend' },
+    { date: '2026-05-27', name: 'Id-ul-Zuha (Bakrid)' },
+    { date: '2026-06-26', name: 'Muharram', type: 'long-weekend' },
+    { date: '2026-08-15', name: 'Independence Day' },
+    { date: '2026-08-26', name: 'Milad-un-Nabi' },
+    { date: '2026-08-28', name: 'Raksha Bandhan', type: 'long-weekend' },
+    { date: '2026-09-04', name: 'Janmashtami', type: 'long-weekend' },
+    { date: '2026-09-14', name: 'Ganesh Chaturthi', type: 'long-weekend' },
+    { date: '2026-10-02', name: 'Mahatma Gandhi Birthday', type: 'long-weekend' },
+    { date: '2026-10-19', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-10-20', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-10-21', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-10-22', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-10-23', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-10-24', name: 'Dussehra Holiday', type: 'long-weekend' },
+    { date: '2026-11-09', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-10', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-11', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-12', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-13', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-14', name: 'Diwali Holiday', type: 'long-weekend' },
+    { date: '2026-11-24', name: 'Guru Nanak Birthday' },
+    { date: '2026-12-25', name: 'Christmas', type: 'long-weekend' }
+];
+
 function generate90DayCalendar() {
     const elements = getElements();
     const container = elements.calendarContainer;
@@ -294,7 +329,10 @@ function generate90DayCalendar() {
     const todayTime = today.getTime();
     const tomorrowTime = todayTime + 86400000; // +1 day in ms
     const sixtyDaysTime = todayTime + (BOOKING_CONFIG.ADVANCE_DAYS * 86400000);
-    const endTime = todayTime + (BOOKING_CONFIG.CALENDAR_DAYS * 86400000);
+
+    // Extend calendar to Dec 31, 2026
+    // We use a fixed date as per requirement
+    const endTime = new Date('2026-12-31T23:59:59+05:30').getTime();
 
     // Update booking info card
     const sixtyDaysLater = new Date(sixtyDaysTime);
@@ -325,10 +363,18 @@ function generate90DayCalendar() {
             months.push(monthData);
         }
 
+        // Check for holiday
+        const dateString = currentDate.getFullYear() + '-' +
+            String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+            String(currentDate.getDate()).padStart(2, '0');
+
+        const holiday = HOLIDAYS_2026.find(h => h.date === dateString);
+
         monthData.days.push({
             date: currentDate.getDate(),
             time: currentTime,
-            dayOfWeek: currentDate.getDay()
+            dayOfWeek: currentDate.getDay(),
+            holiday: holiday
         });
 
         currentTime += 86400000;
@@ -338,12 +384,46 @@ function generate90DayCalendar() {
     const fragment = document.createDocumentFragment();
     const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
+    // Ensure tooltip element exists
+    let tooltip = document.getElementById('calendar-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'calendar-tooltip';
+        tooltip.className = 'calendar-tooltip';
+        document.body.appendChild(tooltip);
+    }
+
+    const showTooltip = (e, text, type) => {
+        tooltip.innerHTML = text;
+        tooltip.className = `calendar-tooltip tooltip-${type} show`;
+
+        // Position logic
+        const rect = e.target.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+
+        let top = rect.top - tooltipRect.height - 10 + window.scrollY;
+        let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
+
+        // Prevent going off-screen
+        if (left < 10) left = 10;
+        if (left + tooltipRect.width > window.innerWidth - 10) {
+            left = window.innerWidth - tooltipRect.width - 10;
+        }
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+    };
+
+    const hideTooltip = () => {
+        tooltip.classList.remove('show');
+    };
+
     months.forEach((monthData, monthIndex) => {
         const monthDiv = document.createElement('div');
         monthDiv.className = 'month-section';
 
-        // Only add animation delay on non-mobile
-        if (window.innerWidth > 600) {
+        // Lazy load animation for cleaner UI, but only for first few to avoid lag
+        if (window.innerWidth > 600 && monthIndex < 4) {
             monthDiv.style.animationDelay = `${monthIndex * 40}ms`;
         }
 
@@ -376,19 +456,81 @@ function generate90DayCalendar() {
             const dayDiv = document.createElement('div');
             dayDiv.className = 'day-cell';
 
+            // Holiday styling
+            if (dayData.holiday) {
+                dayDiv.className += ' holiday-date';
+                if (dayData.holiday.type === 'long-weekend') {
+                    dayDiv.className += ' long-weekend-date';
+                }
+            }
+
             const dayNumber = document.createElement('span');
             dayNumber.className = 'day-number';
             dayNumber.textContent = dayData.date;
             dayDiv.appendChild(dayNumber);
 
-            // Determine status using timestamps (faster than Date comparisons)
+            // Determine status
+            let status = 'future';
+            let openDate = null;
+
             if (dayData.time === todayTime) {
                 dayDiv.className += ' today tatkal next-60-days';
+                status = 'open';
             } else if (dayData.time === tomorrowTime) {
                 dayDiv.className += ' tatkal next-60-days';
+                status = 'open';
             } else if (dayData.time <= sixtyDaysTime) {
                 dayDiv.className += ' next-60-days';
+                status = 'open';
             }
+
+            // Bind tooltip events
+            dayDiv.addEventListener('mouseenter', (e) => {
+                let tooltipText = '';
+
+                // Add holiday info first if present
+                if (dayData.holiday) {
+                    const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
+                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308'; // Pink for long weekend, Yellow/Orange for holiday
+                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:${labelColor}; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">🎉 ${dayData.holiday.name} (${typeLabel})</div>`;
+                }
+
+                if (status === 'open') {
+                    tooltipText += '<strong>Booking is Open ✅</strong><br><span style="font-size:0.8em; opacity:0.9">Book now on IRCTC</span>';
+                    showTooltip(e, tooltipText, 'open');
+                } else {
+                    // Calculate open date
+                    const bookingDate = new Date(dayData.time - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
+                    const dateStr = formatDateLong(bookingDate);
+                    tooltipText += `Booking opens on:<br><strong>${dateStr}</strong> 📅`;
+                    showTooltip(e, tooltipText, 'future');
+                }
+            });
+
+            dayDiv.addEventListener('mouseleave', hideTooltip);
+
+            // Touch support for mobile tooltips
+            dayDiv.addEventListener('touchstart', (e) => {
+                let tooltipText = '';
+                if (dayData.holiday) {
+                    const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
+                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308';
+                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:${labelColor};">🎉 ${dayData.holiday.name}</div>`;
+                }
+
+                if (status === 'open') {
+                    tooltipText += '<strong>Booking is Open ✅</strong>';
+                    showTooltip(e, tooltipText, 'open');
+                } else {
+                    const bookingDate = new Date(dayData.time - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
+                    const dateStr = formatDateLong(bookingDate);
+                    tooltipText += `Booking opens on:<br><strong>${dateStr}</strong>`;
+                    showTooltip(e, tooltipText, 'future');
+                }
+                // Auto hide after 3 seconds on mobile
+                setTimeout(hideTooltip, 3000);
+            }, { passive: true });
+
 
             calendarGrid.appendChild(dayDiv);
         });
