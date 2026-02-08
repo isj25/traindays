@@ -1105,6 +1105,10 @@ body {
     background-color: var(--accent-closed);
 }
 
+.pass-dot {
+    background-color: #94a3b8;
+}
+
 /* ==========================================
    Booking Partners
    ========================================== */

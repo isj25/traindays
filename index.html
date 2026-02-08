@@ -1934,6 +1934,10 @@
             background-color: var(--secondary-dark);
         }
 
+        .calendar-tooltip.tooltip-past {
+            background-color: var(--text-tertiary);
+        }
+
         /* ==========================================
            Holiday Highlights
            ========================================== */
@@ -1941,6 +1945,17 @@
         /* Ensure holiday markers position correctly */
         .day-cell {
             position: relative;
+        }
+
+        .day-cell.pass-date {
+            opacity: 0.5;
+            filter: grayscale(0.8);
+            background-color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .day-cell.pass-date {
+            background-color: #1e293b;
+            opacity: 0.4;
         }
 
         .holiday-date {
@@ -2120,7 +2135,7 @@
                         </div>
                         <div class="general-note">60 days advance booking</div>
                         <div class="countdown-date" id="general-booking-date">Loading...</div>
-                        <div
+                        <div id="general-opens-text"
                             style="font-size: 0.8rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
                             Booking opens in:</div>
                         <div class="countdown-timer" id="general-countdown">
@@ -2149,7 +2164,7 @@
                         </div>
                         <div class="tatkal-note">Book today → Travel tomorrow</div>
                         <div class="countdown-date" id="tatkal-ac-date">Tomorrow's Train</div>
-                        <div
+                        <div id="tatkal-ac-opens-text"
                             style="font-size: 0.8rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
                             Booking opens in:</div>
                         <div class="countdown-timer" id="tatkal-ac-countdown">
@@ -2178,7 +2193,7 @@
                         </div>
                         <div class="tatkal-note">Book today → Travel tomorrow</div>
                         <div class="countdown-date" id="tatkal-sleeper-date">Tomorrow's Train</div>
-                        <div
+                        <div id="tatkal-sleeper-opens-text"
                             style="font-size: 0.8rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
                             Booking opens in:</div>
                         <div class="countdown-timer" id="tatkal-sleeper-countdown">
@@ -2203,13 +2218,15 @@
 
 
             <div class="calendar-legend-minimal" aria-label="Calendar color legend">
+                <div class="legend-item"><span class="dot pass-dot"></span> Passed</div>
                 <div class="legend-item"><span class="dot tatkal-dot"></span> Tatkal Only</div>
                 <div class="legend-item"><span class="dot open-dot"></span> Booking Open</div>
                 <div class="legend-item"><span class="dot closed-dot"></span> Not Yet Open</div>
             </div>
 
             <section aria-labelledby="calendar-title">
-                <h2 id="calendar-title" class="section-title">IRCTC Reservation Date Calculator - Next 60 Days</h2>
+                <h2 id="calendar-title" class="section-title">IRCTC Reservation Date Calculator 2026 - Full Year Outlook
+                </h2>
                 <div id="calendar-container" class="calendar-container">
                     <div class="skeleton-loader">Loading Indian Railways booking calendar...</div>
                 </div>
@@ -2496,7 +2513,7 @@
                     <ul>
                         <li>Instantly calculating the <strong>exact booking opening date</strong></li>
                         <li>Showing <strong>Tatkal availability</strong> with proper timings</li>
-                        <li>Displaying a visual <strong>90-day booking calendar</strong></li>
+                        <li>Displaying a visual <strong>full 2026 booking calendar</strong></li>
                         <li>Working offline as a <strong>Progressive Web App (PWA)</strong></li>
                         <li>Helping you never miss the <strong>8 AM booking window</strong></li>
                     </ul>
