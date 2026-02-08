@@ -2,6 +2,7 @@
 <html lang="en-IN">
 
 <head>
+    <meta name="google-adsense-account" content="ca-pub-5018644317959743">
     <!-- Google tag (gtag.js) -->
     <!-- Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
@@ -264,6 +265,91 @@
 
         [data-theme="dark"] .dark-mode-toggle .moon-icon {
             display: none;
+        }
+
+        /* Visit Button and Dropdown */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .visit-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+        }
+
+        .visit-btn:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .visit-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .visit-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            min-width: 200px;
+            padding: 0.75rem 0;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .visit-dropdown {
+            background: rgba(26, 39, 68, 0.95);
+        }
+
+        .visit-dropdown.show {
+            display: block;
+            animation: slideIn 0.2s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .visit-dropdown a {
+            display: block;
+            padding: 0.6rem 1.25rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .visit-dropdown a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding-left: 1.5rem;
         }
 
         /* ==========================================
@@ -1781,6 +1867,36 @@
                 order: -1;
             }
 
+            .header-actions {
+                flex: 1 1 100%;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .visit-dropdown {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100vw - 2rem);
+                max-width: 300px;
+            }
+
+            .visit-dropdown.show {
+                animation: slideInMobile 0.2s ease-out;
+            }
+
+            @keyframes slideInMobile {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+
             .calendar-container {
                 grid-template-columns: 1fr;
             }
@@ -2014,25 +2130,46 @@
         <header class="app-header">
             <div class="header-top-row">
                 <div id="current-date-display" class="current-date-display">Loading...</div>
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode"
-                    aria-pressed="false">
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+                <div class="header-actions">
+                    <div class="visit-dropdown-wrapper">
+                        <button id="visit-btn" class="visit-btn" aria-haspopup="true"
+                            aria-expanded="false">Visit</button>
+                        <div id="visit-dropdown" class="visit-dropdown">
+                            <a href="pages/live-status.html">Live Status</a>
+                            <a href="pages/pnr-status.html">PNR Status</a>
+                            <a href="pages/tatkal.html">Tatkal Dates</a>
+                            <a href="pages/indian-railway-blogs.html">Blogs</a>
+                            <a href="pages/news.html">Rail News</a>
+                            <a href="pages/faq.html">FAQ</a>
+                            <a href="pages/ewallet.html">eWallet</a>
+                            <a href="pages/helpline.html">Helpline</a>
+                            <a href="pages/videos.html">Train Videos</a>
+                            <a href="pages/about-us.html">About Us</a>
+                            <a href="pages/privacy-policy.html">Privacy Policy</a>
+                            <a href="pages/contact-us.html">Contact Us</a>
+                            <a href="pages/disclaimer.html">Disclaimer</a>
+                        </div>
+                    </div>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode"
+                        aria-pressed="false">
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <h1 itemprop="name">IRCTC 60 Days Advance Ticket Booking Date Calculator</h1>
             <p class="subtitle" itemprop="description">IRCTC Booking Date Calculator - Find when train booking opens</p>
@@ -2671,6 +2808,10 @@
                 <a href="pages/tatkal.html"
                     style="color: var(--primary); text-decoration: none; font-weight: 500; margin-top: 0.5rem; display: inline-block;">Tatkal
                     Booking Dates</a> |
+                <a href="pages/indian-railway-blogs.html"
+                    style="color: var(--primary); text-decoration: none; font-weight: 500; margin-top: 0.5rem; display: inline-block;">Indian
+                    Railway
+                    Blogs</a> |
                 <a href="pages/news.html"
                     style="color: var(--primary); text-decoration: none; font-weight: 500; margin-top: 0.5rem; display: inline-block;">Rail
                     News</a> |

@@ -1087,13 +1087,43 @@ function init() {
         }
     });
 
-    // Copy, Share, and Calendar buttons
-    if (elements.copyBtn) {
-        elements.copyBtn.addEventListener('click', copyBookingInfo);
+    // Register copy and share buttons
+    if (elements.copyBtn) elements.copyBtn.onclick = copyBookingInfo;
+    if (elements.shareBtn) elements.shareBtn.onclick = shareBookingInfo;
+
+    // Visit Dropdown Logic
+    const visitBtn = document.getElementById('visit-btn');
+    const visitDropdown = document.getElementById('visit-dropdown');
+
+    if (visitBtn && visitDropdown) {
+        visitBtn.onclick = (e) => {
+            e.stopPropagation();
+            const isExpanded = visitBtn.getAttribute('aria-expanded') === 'true';
+            visitBtn.setAttribute('aria-expanded', !isExpanded);
+            visitDropdown.classList.toggle('show');
+        };
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!visitBtn.contains(e.target) && !visitDropdown.contains(e.target)) {
+                visitDropdown.classList.remove('show');
+                visitBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close dropdown on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && visitDropdown.classList.contains('show')) {
+                visitDropdown.classList.remove('show');
+                visitBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
     }
 
+    // Copy, Share, and Calendar buttons
+    // The previous copy/share button event listeners were replaced by the new block above.
+    // This block now only handles the calendar button and the share button's display logic.
     if (elements.shareBtn) {
-        elements.shareBtn.addEventListener('click', shareBookingInfo);
         if (!navigator.share) {
             elements.shareBtn.style.display = 'none';
         }
