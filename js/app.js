@@ -315,10 +315,11 @@ const HOLIDAYS_2026 = [
     { date: '2026-12-25', name: 'Christmas', type: 'long-weekend' }
 ];
 
-function generate90DayCalendar() {
+function generate2026Calendar() {
     const elements = getElements();
     const container = elements.calendarContainer;
     const today = getIndianDate();
+    const todayTime = today.getTime();
 
     // Set min date for travel input
     const todayFormatted = today.getFullYear() + '-' +
@@ -326,12 +327,10 @@ function generate90DayCalendar() {
         String(today.getDate()).padStart(2, '0');
     elements.travelDateInput.setAttribute('min', todayFormatted);
 
-    const todayTime = today.getTime();
-    const tomorrowTime = todayTime + 86400000; // +1 day in ms
     const sixtyDaysTime = todayTime + (BOOKING_CONFIG.ADVANCE_DAYS * 86400000);
 
-    // Extend calendar to Dec 31, 2026
-    // We use a fixed date as per requirement
+    // Start from current month
+    const startTime = new Date(today.getFullYear(), today.getMonth(), 1).getTime();
     const endTime = new Date('2026-12-31T23:59:59+05:30').getTime();
 
     // Update booking info card
@@ -343,7 +342,7 @@ function generate90DayCalendar() {
 
     // Group dates by month
     const months = [];
-    let currentTime = todayTime;
+    let currentTime = startTime;
 
     while (currentTime <= endTime) {
         const currentDate = new Date(currentTime);
@@ -422,12 +421,7 @@ function generate90DayCalendar() {
         const monthDiv = document.createElement('div');
         monthDiv.className = 'month-section';
 
-        // Lazy load animation for cleaner UI, but only for first few to avoid lag
-        if (window.innerWidth > 600 && monthIndex < 4) {
-            monthDiv.style.animationDelay = `${monthIndex * 40}ms`;
-        }
-
-        const monthHeader = document.createElement('h2');
+        const monthHeader = document.createElement('h3');
         monthHeader.className = 'month-header';
         monthHeader.textContent = monthData.name;
         monthDiv.appendChild(monthHeader);
@@ -471,16 +465,13 @@ function generate90DayCalendar() {
 
             // Determine status
             let status = 'future';
-            let openDate = null;
 
-            if (dayData.time === todayTime) {
-                dayDiv.className += ' today tatkal next-60-days';
-                status = 'open';
-            } else if (dayData.time === tomorrowTime) {
-                dayDiv.className += ' tatkal next-60-days';
-                status = 'open';
+            if (dayData.time < todayTime) {
+                dayDiv.className += ' pass-date';
+                status = 'past';
             } else if (dayData.time <= sixtyDaysTime) {
                 dayDiv.className += ' next-60-days';
+                if (dayData.time === todayTime) dayDiv.className += ' today';
                 status = 'open';
             }
 
@@ -491,18 +482,21 @@ function generate90DayCalendar() {
                 // Add holiday info first if present
                 if (dayData.holiday) {
                     const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
-                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308'; // Pink for long weekend, Yellow/Orange for holiday
+                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308';
                     tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:${labelColor}; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">🎉 ${dayData.holiday.name} (${typeLabel})</div>`;
                 }
 
-                if (status === 'open') {
-                    tooltipText += '<strong>Booking is Open ✅</strong><br><span style="font-size:0.8em; opacity:0.9">Book now on IRCTC</span>';
+                if (status === 'past') {
+                    tooltipText += '<strong>Travel Date Passed 🕰️</strong>';
+                    showTooltip(e, tooltipText, 'past');
+                } else if (status === 'open') {
+                    const bookedDate = new Date(dayData.time - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
+                    tooltipText += `<strong>Booking is Open ✅</strong><br><span style="font-size:0.85em; opacity:0.9">Booking opened on ${formatDateForDisplay(bookedDate)}</span>`;
                     showTooltip(e, tooltipText, 'open');
                 } else {
                     // Calculate open date
                     const bookingDate = new Date(dayData.time - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
-                    const dateStr = formatDateLong(bookingDate);
-                    tooltipText += `Booking opens on:<br><strong>${dateStr}</strong> 📅`;
+                    tooltipText += `Booking opens on:<br><strong>${formatDateLong(bookingDate)}</strong> 📅`;
                     showTooltip(e, tooltipText, 'future');
                 }
             });
@@ -511,33 +505,32 @@ function generate90DayCalendar() {
 
             // Touch support for mobile tooltips
             dayDiv.addEventListener('touchstart', (e) => {
+                // ... mobile logic same as mouseenter ...
                 let tooltipText = '';
                 if (dayData.holiday) {
-                    const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
-                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308';
-                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:${labelColor};">🎉 ${dayData.holiday.name}</div>`;
+                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:#eab308;">🎉 ${dayData.holiday.name}</div>`;
                 }
 
-                if (status === 'open') {
+                if (status === 'past') {
+                    tooltipText += '<strong>Travel Date Passed 🕰️</strong>';
+                    showTooltip(e, tooltipText, 'past');
+                } else if (status === 'open') {
                     tooltipText += '<strong>Booking is Open ✅</strong>';
                     showTooltip(e, tooltipText, 'open');
                 } else {
                     const bookingDate = new Date(dayData.time - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
-                    const dateStr = formatDateLong(bookingDate);
-                    tooltipText += `Booking opens on:<br><strong>${dateStr}</strong>`;
+                    tooltipText += `Booking opens on:<br><strong>${formatDateForDisplay(bookingDate)}</strong>`;
                     showTooltip(e, tooltipText, 'future');
                 }
-                // Auto hide after 3 seconds on mobile
                 setTimeout(hideTooltip, 3000);
             }, { passive: true });
-
 
             calendarGrid.appendChild(dayDiv);
         });
 
         // Fill remaining cells
-        const totalCells = 7 + firstDayOfWeek + monthData.days.length;
-        const remainingCells = (7 - (totalCells % 7)) % 7;
+        const totalCellsLast = firstDayOfWeek + monthData.days.length;
+        const remainingCells = (7 - (totalCellsLast % 7)) % 7;
         for (let i = 0; i < remainingCells; i++) {
             const emptyCell = document.createElement('div');
             emptyCell.className = 'day-cell empty';
@@ -1066,9 +1059,9 @@ function init() {
 
     // Non-critical - defer calendar generation
     if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => generate90DayCalendar(), { timeout: 100 });
+        requestIdleCallback(() => generate2026Calendar(), { timeout: 100 });
     } else {
-        setTimeout(generate90DayCalendar, 0);
+        setTimeout(generate2026Calendar, 0);
     }
 
     // Travel date input
