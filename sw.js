@@ -3,7 +3,7 @@
 // Stale-While-Revalidate Strategy
 // ==========================================
 
-const CACHE_NAME = 'railbookingdate-v3';
+const CACHE_NAME = 'railbookingdate-v5';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -19,7 +19,10 @@ const STATIC_ASSETS = [
     './pages/news.html',
     './pages/tatkal.html',
     './pages/videos.html',
-    './pages/disclaimer.html'
+    './pages/disclaimer.html',
+    './pages/indian-railway-blogs.html',
+    './pages/blogs/konkan-railway-engineering-marvel.html',
+    './pages/blogs/sakleshpur-ghat-green-route.html'
 ];
 
 // Install event - cache static assets
