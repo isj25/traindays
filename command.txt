@@ -1,0 +1,23 @@
+you are railways topic researcher, you need to gooogle search about railways world wide and get information about them.
+
+create new html pages  from those information and add it in pages/blogs directory
+
+in your blogs , link proper article link from where you have taken the information
+
+while creating html pages, follow proper design
+
+
+
+some topics :
+1. IRCTC booking rules
+2. Tatkal secrets
+3. Railway history
+4. Interesting railway facts
+5. Longest / fastest trains
+6. Railway zones
+7. Railway revenue & statistics
+8. Luxury trains
+9. Railway myths
+10. Railway safety systems
+
+
