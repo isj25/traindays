@@ -6,9 +6,10 @@ in your blogs , link proper article link from where you have taken the informati
 
 while creating html pages, follow proper design
 
+Do not write about the same topic
 
 
-some topics :
+some topics for example:
 1. IRCTC booking rules
 2. Tatkal secrets
 3. Railway history
