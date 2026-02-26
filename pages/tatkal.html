@@ -3,7 +3,6 @@
 
 <head>
     <meta name="google-adsense-account" content="ca-pub-5018644317959743">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,198 +10,603 @@
         gtag('js', new Date());
         gtag('config', 'G-NL4NTX1D6V');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tatkal Booking Dates | RailBookingDate</title>
+    <title>Tatkal Booking Date Calculator | RailBookingDate</title>
     <link rel="canonical" href="https://railbookingdate.com/pages/tatkal.html">
     <meta name="description"
-        content="Check which travel dates are open for Tatkal booking today. View Tatkal AC and Sleeper booking timings and rules.">
+        content="Tatkal booking date calculator for IRCTC. Find exact Tatkal opening date and time: AC at 10:00 AM and Sleeper/2S at 11:00 AM, 1 day before journey.">
 
-    <!-- Favicon and Icons -->
+    <meta property="og:title" content="Tatkal Booking Date Calculator">
+    <meta property="og:description"
+        content="Check when Tatkal opens for your train journey. AC Tatkal: 10:00 AM, Sleeper/2S Tatkal: 11:00 AM, one day before travel.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://railbookingdate.com/pages/tatkal.html">
+
     <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-
     <meta name="theme-color" content="#ff6b00">
 
     <link rel="stylesheet" href="../css/navigation.css">
 
     <style>
         :root {
-            --bg-app: #fef7ed;
+            --bg-app: #f8fafc;
             --bg-card: #ffffff;
-            --text-primary: #1a365d;
-            --text-secondary: #4a5568;
-            --text-tertiary: #718096;
-            --primary: #ff6b00;
-            --primary-light: #fff3e6;
-            --border-light: #fed7aa;
-            --accent-tatkal: #dc2626;
+            --text-primary: #102a43;
+            --text-secondary: #486581;
+            --text-tertiary: #627d98;
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --primary-soft: #fff7ed;
+            --accent-ac: #2563eb;
+            --accent-sl: #059669;
+            --accent-open: #15803d;
+            --accent-late: #b45309;
+            --border-light: #e2e8f0;
+            --shadow-card: 0 14px 30px rgba(15, 23, 42, 0.08);
             --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
             --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
         }
 
         [data-theme="dark"] {
-            --bg-app: #0f1729;
-            --bg-card: #1a2744;
-            --text-primary: #f7fafc;
-            --text-secondary: #cbd5e0;
-            --text-tertiary: #a0aec0;
-            --primary: #ff8533;
-            --primary-light: #2d1f0f;
-            --border-light: #3d4f6f;
+            --bg-app: #0b1220;
+            --bg-card: #121c2e;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --primary: #fb923c;
+            --primary-dark: #f97316;
+            --primary-soft: #2c1d0f;
+            --border-light: #243249;
+            --shadow-card: 0 14px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-app);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.6;
             margin: 0;
-            padding: 0;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.55;
+            background:
+                radial-gradient(circle at 12% 20%, rgba(249, 115, 22, 0.12), transparent 38%),
+                radial-gradient(circle at 90% 0%, rgba(37, 99, 235, 0.08), transparent 35%),
+                var(--bg-app);
             min-height: 100vh;
         }
 
         .app-container {
-            max-width: 800px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 1rem 1rem 2.5rem;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.45rem;
             color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 2rem;
+            font-weight: 700;
+            margin: 0.5rem 0 1.4rem;
         }
 
         .back-link:hover {
             text-decoration: underline;
         }
 
-        .app-header {
+        .hero {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1.8rem;
         }
 
-        .app-header h1 {
+        .hero h1 {
+            margin: 0 0 0.35rem;
             font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+            letter-spacing: -0.03em;
         }
 
-        .tatkal-table-card {
+        .hero p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .card {
             background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
             border: 1px solid var(--border-light);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow-card);
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tatkal-ticket {
+            padding: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            border-color: #fdba74;
+        }
+
+        .ticket-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .ticket-topbar .muted {
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .ticket-body {
+            padding: 1rem;
+            background:
+                linear-gradient(180deg, rgba(249, 115, 22, 0.06), transparent 42%),
+                var(--bg-card);
+            position: relative;
+        }
+
+        .ticket-body::before,
+        .ticket-body::after {
+            content: "";
+            position: absolute;
+            top: 130px;
+            width: 24px;
+            height: 24px;
+            background: var(--bg-app);
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+        }
+
+        .ticket-body::before {
+            left: -12px;
+        }
+
+        .ticket-body::after {
+            right: -12px;
+        }
+
+        .ticket-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.82rem;
+        }
+
+        .ticket-chip {
+            border: 1px solid #fdba74;
+            background: #fff7ed;
+            color: #9a3412;
+            border-radius: 999px;
+            padding: 0.22rem 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        [data-theme="dark"] .ticket-chip {
+            background: #2c1d0f;
+            color: #fdba74;
+            border-color: #9a3412;
+        }
+
+        .ticket-divider {
+            border-top: 2px dashed #fdba74;
+            margin: 0.75rem 0 0.9rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            gap: 0.9rem;
+            grid-template-columns: 1fr;
+        }
+
+        .field-row {
+            display: grid;
+            gap: 0.75rem;
+            align-items: end;
+            grid-template-columns: 1fr;
+        }
+
+        .hero-input-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .input-wrapper-hero {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .date-input-wrap {
+            position: relative;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.45rem;
+        }
+
+        .modern-input-hero {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: var(--bg-app);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            text-align: center;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modern-input-hero:hover {
+            border-color: var(--primary);
+        }
+
+        .modern-input-hero:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.17);
+        }
+
+        .date-input-wrap .calendar-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+        }
+
+        .quick-status {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: rgba(148, 163, 184, 0.09);
+            padding: 0.75rem 0.85rem;
+        }
+
+        .quick-status strong {
+            color: var(--text-primary);
+        }
+
+        .result-box {
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 0.95rem 1rem;
+            background: var(--primary-soft);
+            font-size: 0.92rem;
+            margin-top: 0.4rem;
+        }
+
+        .result-box.open {
+            border-color: rgba(22, 163, 74, 0.45);
+            background: rgba(22, 163, 74, 0.11);
+            color: var(--accent-open);
+        }
+
+        .result-box.future {
+            border-color: rgba(37, 99, 235, 0.35);
+            background: rgba(37, 99, 235, 0.12);
+            color: var(--accent-ac);
+        }
+
+        .result-box.passed {
+            border-color: rgba(180, 83, 9, 0.45);
+            background: rgba(217, 119, 6, 0.13);
+            color: var(--accent-late);
+        }
+
+        .result-main {
+            margin: 0;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .result-caption {
+            margin: 0 0 0.3rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+        }
+
+        .result-status {
+            margin: 0.6rem 0 0.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .result-sub {
+            margin: 0;
+            display: grid;
+            gap: 0.42rem;
+        }
+
+        .result-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.45rem;
+            border: 1px dashed rgba(100, 116, 139, 0.35);
+            border-radius: 10px;
+            padding: 0.42rem 0.55rem;
+            background: rgba(255, 255, 255, 0.52);
+        }
+
+        [data-theme="dark"] .result-row {
+            background: rgba(15, 23, 42, 0.35);
+        }
+
+        .result-row-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            flex: 0 0 auto;
+        }
+
+        .result-row-value {
+            text-align: right;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.86rem;
+        }
+
+        .pill-mini {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            padding: 0.16rem 0.38rem;
+            border-radius: 999px;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-right: 0.35rem;
+        }
+
+        .pill-mini.ac {
+            background: var(--accent-ac);
+        }
+
+        .pill-mini.sl {
+            background: var(--accent-sl);
+        }
+
+        .result-note {
+            color: var(--text-secondary);
+            font-size: 0.87rem;
+            margin: 0;
+        }
+
+        .action-row {
+            display: grid;
+            gap: 0.55rem;
+            margin-top: 0.8rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .btn {
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 0.6rem 0.75rem;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 0.88rem;
+        }
+
+        .btn:hover {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .btn.primary {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .btn.primary:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+
+        .countdown-grid {
+            display: grid;
+            gap: 0.8rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .countdown-card {
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 0.9rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent), var(--bg-card);
+        }
+
+        [data-theme="dark"] .countdown-card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.25), transparent), var(--bg-card);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 0.2rem 0.45rem;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-right: 0.35rem;
+            color: #fff;
+        }
+
+        .pill.ac {
+            background: var(--accent-ac);
+        }
+
+        .pill.sl {
+            background: var(--accent-sl);
+        }
+
+        .countdown-title {
+            margin: 0 0 0.35rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+        }
+
+        .countdown-date {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.55rem;
+        }
+
+        .timer {
+            font-size: 1.4rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            letter-spacing: 0.04em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .table-wrap {
             overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 1rem;
+            font-size: 0.93rem;
         }
 
         th,
         td {
-            padding: 1rem;
-            text-align: left;
             border-bottom: 1px solid var(--border-light);
+            padding: 0.7rem;
+            text-align: left;
+            white-space: nowrap;
         }
 
         th {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
         }
 
-        .date-today {
+        .status-open {
+            color: var(--accent-open);
             font-weight: 700;
-            color: var(--accent-tatkal);
         }
 
-        .rules-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .status-upcoming {
+            color: var(--accent-ac);
+            font-weight: 700;
         }
 
-        .rules-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-light);
+        .status-past {
+            color: var(--accent-late);
+            font-weight: 700;
         }
 
-        .rules-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .rules-card ul {
+        .rules-list {
             margin: 0;
-            padding-left: 1.5rem;
+            padding-left: 1.1rem;
             color: var(--text-secondary);
         }
 
-        .rules-card li {
-            margin-bottom: 0.75rem;
+        .rules-list li {
+            margin-bottom: 0.45rem;
         }
 
         .site-footer {
-            margin-top: 4rem;
+            margin-top: 1.8rem;
             text-align: center;
             color: var(--text-tertiary);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
-        @media (max-width: 600px) {
-            .app-header h1 {
-                font-size: 1.8rem;
+        @media (min-width: 760px) {
+            .field-row {
+                grid-template-columns: 1.1fr 1fr;
             }
 
-            th,
-            td {
-                padding: 0.75rem 0.5rem;
-                font-size: 0.9rem;
+            .calculator-grid {
+                grid-template-columns: 1.1fr 1fr;
+                align-items: start;
+            }
+
+            .action-row {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .ticket-body::before,
+            .ticket-body::after {
+                top: 150px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .countdown-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ticket-topbar {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
+
     <script>
-        (function () { var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark') })();
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
     </script>
 </head>
 
 <body>
     <div class="app-container">
-        <a href="../index.html" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Back to Calculator
-        </a>
+        <a href="../index.html" class="back-link">&larr; Back to 60-Day Calculator</a>
 
-        <header class="app-header">
-                                                <nav class="main-nav">
+        <header class="hero">
+            <nav class="main-nav">
                 <a href="../index.html">Calculator</a>
                 <a href="live-status.html">Live Status</a>
                 <a href="pnr-status.html">PNR Status</a>
@@ -218,86 +622,116 @@
                 <a href="contact-us.html">Contact Us</a>
                 <a href="disclaimer.html">Disclaimer</a>
             </nav>
-            <h1>Tatkal Booking Dates</h1>
-            <p>Know exactly which travel dates are open for Tatkal booking right now</p>
+            <h1>Tatkal Booking Date Calculator</h1>
+            <p>Find the exact Tatkal opening date and time for your journey (AC at 10:00 AM, Sleeper/2S at 11:00 AM IST).</p>
         </header>
 
         <main>
-            <section class="tatkal-table-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Booking Date</th>
-                            <th>Travel Date</th>
-                            <th>Day</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tatkal-dates-body">
-                        <!-- Filled by JavaScript -->
-                    </tbody>
-                </table>
-                <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 1rem;">
-                    * Tatkal booking opens 1 day before the travel date (excluding the date of journey from source
-                    station).
-                </p>
+            <section class="card tatkal-ticket">
+                <div class="ticket-topbar">
+                    <span>TATKAL E-TICKET CALCULATOR</span>
+                    <span class="muted">IRCTC | AC 10:00 AM | SL 11:00 AM</span>
+                </div>
+                <div class="ticket-body">
+                    <div class="ticket-row">
+                        <span class="ticket-chip">QUOTA: TQ</span>
+                        <span class="ticket-chip">PNR: AUTO</span>
+                        <span class="ticket-chip">MODE: ONLINE</span>
+                    </div>
+                    <div class="ticket-divider"></div>
+                    <div class="field-row">
+                        <div class="field">
+                            <div class="hero-input-wrapper">
+                                <div class="input-wrapper-hero">
+                                    <label class="input-label" for="journey-date">Select Journey Date</label>
+                                    <div class="date-input-wrap">
+                                        <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        <input id="journey-date" class="modern-input-hero" type="date"
+                                            aria-label="Select journey date for Tatkal booking date calculation">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-status" id="quick-status">Checking Tatkal eligibility for today...</div>
+                    </div>
+
+                    <div class="calculator-grid">
+                        <div>
+                            <div class="result-box future" id="result-box">
+                                <p class="result-caption">Journey Date</p>
+                                <p class="result-main" id="result-main">Select a journey date</p>
+                                <p class="result-status" id="result-status">Tatkal schedule will appear here.</p>
+                                <div class="result-sub" id="result-sub">
+                                    <p class="result-note">Tatkal opens one day before the train journey date.</p>
+                                </div>
+                            </div>
+                            <div class="action-row">
+                                <button class="btn" id="copy-btn" type="button">Copy Result</button>
+                                <button class="btn" id="share-btn" type="button">Share</button>
+                                <button class="btn" id="whatsapp-btn" type="button">WhatsApp</button>
+                                <button class="btn" id="calendar-btn" type="button">Add Reminder</button>
+                                <button class="btn primary" id="book-btn" type="button">Book on IRCTC</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2 class="countdown-title">Next Tatkal Windows</h2>
+                            <div class="countdown-grid">
+                                <article class="countdown-card">
+                                    <div><span class="pill ac">10:00 AM</span>AC Tatkal</div>
+                                    <div class="countdown-date" id="ac-next-date">Loading...</div>
+                                    <div class="timer" id="ac-countdown">--:--:--</div>
+                                </article>
+                                <article class="countdown-card">
+                                    <div><span class="pill sl">11:00 AM</span>Sleeper/2S Tatkal</div>
+                                    <div class="countdown-date" id="sl-next-date">Loading...</div>
+                                    <div class="timer" id="sl-countdown">--:--:--</div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="rules-section">
-                <div class="rules-card">
-                    <h3>Tatkal Booking Timings</h3>
-                    <ul>
-                        <li><strong>AC Classes (1A, 2A, 3A, CC, EC, 3E):</strong> Booking starts at <strong>10:00 AM
-                                IST</strong> daily.</li>
-                        <li><strong>Non-AC Classes (SL, 2S):</strong> Booking starts at <strong>11:00 AM IST</strong>
-                            daily.</li>
-                    </ul>
-                </div>
-
-                <div class="rules-card">
-                    <h3>Important Tatkal Rules</h3>
-                    <ul>
-                        <li><strong>Booking Window:</strong> Opens 1 day in advance of the train's departure from its
-                            originating station.</li>
-                        <li><strong>No Refunds:</strong> No refund is granted on the cancellation of confirmed Tatkal
-                            tickets.</li>
-                        <li><strong>Limit per PNR:</strong> A maximum of 4 passengers can be booked on a single Tatkal
-                            PNR.</li>
-                        <li><strong>ID Proof:</strong> No need to enter ID details during booking, but one passenger
-                            must carry a valid original ID during travel.</li>
-                        <li><strong>Agent Restrictions:</strong> Authorized agents are restricted from booking Tatkal
-                            tickets during the first 30 minutes of opening (10:00-10:30 AM and 11:00-11:30 AM).</li>
-                    </ul>
-                </div>
-
-                <div class="rules-card" id="tactics">
-                    <h3>🚀 Pro Tricks for Tatkal Booking</h3>
-                    <ul>
-                        <li><strong>Use IRCTC Master List:</strong> This is the #1 tactic. Pre-save passenger details in
-                            your IRCTC profile "Master List" before booking opens. During booking, just select them to
-                            save 30-40 critical seconds.</li>
-                        <li><strong>The 2-Minute Rule:</strong> Login exactly 2-3 minutes before the booking window
-                            opens (9:57 AM for AC, 10:57 AM for Sleeper). Avoid logging in too early as your session
-                            might expire.</li>
-                        <li><strong>Faster Payments:</strong> Use IRCTC e-Wallet or UPI with a saved VPA. These are
-                            significantly faster than Net Banking or Debit/Credit cards which require multiple OTP
-                            steps.</li>
-                        <li><strong>One Tab Only:</strong> Do not open multiple tabs for the same account. IRCTC detects
-                            this and may log you out or slow down your session.</li>
-                        <li><strong>Auto-Fill Tools:</strong> Use browser extensions or IRCTC-specific magic tools that
-                            can auto-fill the CAPTCHA and passenger forms (use with caution as per IRCTC terms).</li>
-                        <li><strong>Stable Connection:</strong> Use a wired (Ethernet) connection if possible, or ensure
-                            you have full 5G/Wi-Fi bars. Every millisecond counts during the initial rush.</li>
-                    </ul>
+            <section class="card">
+                <h2 class="countdown-title">Tatkal Booking Availability (Next 7 Journey Days)</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Journey Date</th>
+                                <th>Booking Date</th>
+                                <th>AC Opens</th>
+                                <th>Sleeper Opens</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="availability-body"></tbody>
+                    </table>
                 </div>
             </section>
 
-
-
-
+            <section class="card">
+                <h2 class="countdown-title">Tatkal Rules & Tips</h2>
+                <ul class="rules-list">
+                    <li><strong>Window:</strong> Tatkal opens <strong>1 day before journey</strong> (from train origin logic as per IRCTC rules).</li>
+                    <li><strong>AC Classes:</strong> 1A, 2A, 3A, CC, EC, 3E open at <strong>10:00 AM IST</strong>.</li>
+                    <li><strong>Sleeper/2S:</strong> SL and 2S open at <strong>11:00 AM IST</strong>.</li>
+                    <li><strong>Per PNR limit:</strong> Max 4 passengers for Tatkal booking.</li>
+                    <li><strong>Faster checkout:</strong> Keep passenger master list and payment method ready before opening minute.</li>
+                </ul>
+            </section>
         </main>
 
-                <footer class="site-footer">
-            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+        <footer class="site-footer">
+            <p>&copy; <span id="current-year"></span> RailBookingDate - Created by Ishwar Joshi</p>
             <nav class="site-footer-nav">
                 <a href="../index.html">Calculator</a>
                 <a href="live-status.html">Live Status</a>
@@ -318,46 +752,318 @@
     </div>
 
     <script>
-        function updateTatkalDates() {
-            const body = document.getElementById('tatkal-dates-body');
-            const now = new Date();
+        (function () {
+            const journeyInput = document.getElementById('journey-date');
+            const quickStatus = document.getElementById('quick-status');
+            const resultBox = document.getElementById('result-box');
+            const resultMain = document.getElementById('result-main');
+            const resultStatus = document.getElementById('result-status');
+            const resultSub = document.getElementById('result-sub');
+            const availabilityBody = document.getElementById('availability-body');
+            const acDateEl = document.getElementById('ac-next-date');
+            const slDateEl = document.getElementById('sl-next-date');
+            const acCountdownEl = document.getElementById('ac-countdown');
+            const slCountdownEl = document.getElementById('sl-countdown');
 
-            // Tatkal is for tomorrow
-            const tomorrow = new Date(now);
-            tomorrow.setDate(now.getDate() + 1);
+            function getISTNow() {
+                const localNow = new Date();
+                const utcMs = localNow.getTime() + localNow.getTimezoneOffset() * 60000;
+                return new Date(utcMs + 5.5 * 3600000);
+            }
 
-            // And day after (if booking hasn't opened yet for day after)
-            // But usually Tatkal is just 1 day advance.
-            // If today is 21st, I can book for 22nd.
+            function pad(num) {
+                return String(num).padStart(2, '0');
+            }
 
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            const dayOptions = { weekday: 'long' };
+            function toYmd(date) {
+                return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+            }
 
-            const rows = [
-                {
-                    booking: 'Today (' + now.toLocaleDateString('en-IN', options) + ')',
-                    travel: tomorrow.toLocaleDateString('en-IN', options),
-                    day: tomorrow.toLocaleDateString('en-IN', dayOptions),
-                    isToday: true
-                },
-                {
-                    booking: 'Tomorrow (' + tomorrow.toLocaleDateString('en-IN', options) + ')',
-                    travel: (new Date(tomorrow.getTime() + 86400000)).toLocaleDateString('en-IN', options),
-                    day: (new Date(tomorrow.getTime() + 86400000)).toLocaleDateString('en-IN', dayOptions),
-                    isToday: false
+            function parseYmd(ymd) {
+                const parts = ymd.split('-').map(Number);
+                return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+
+            function formatDate(date) {
+                return date.toLocaleDateString('en-IN', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                    weekday: 'short'
+                });
+            }
+
+            function formatTime(date) {
+                return date.toLocaleTimeString('en-IN', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+            }
+
+            function toISTDateTime(baseDate, hour) {
+                const d = new Date(baseDate);
+                d.setHours(hour, 0, 0, 0);
+                return d;
+            }
+
+            function getTatkalForJourney(journeyDate) {
+                const bookingDate = new Date(journeyDate);
+                bookingDate.setDate(bookingDate.getDate() - 1);
+                const acOpen = toISTDateTime(bookingDate, 10);
+                const sleeperOpen = toISTDateTime(bookingDate, 11);
+                return { bookingDate, acOpen, sleeperOpen };
+            }
+
+            function setResultState(state) {
+                resultBox.classList.remove('open', 'future', 'passed');
+                resultBox.classList.add(state);
+            }
+
+            function updateCalculator() {
+                if (!journeyInput.value) {
+                    setResultState('future');
+                    resultMain.textContent = 'Select a journey date';
+                    resultStatus.textContent = 'Tatkal schedule will appear here.';
+                    resultSub.innerHTML = '<p class="result-note">Tatkal opens one day before the train journey date.</p>';
+                    return;
                 }
-            ];
 
-            body.innerHTML = rows.map(row => `
-                <tr>
-                    <td>${row.booking}</td>
-                    <td class="${row.isToday ? 'date-today' : ''}">${row.travel}</td>
-                    <td>${row.day}</td>
-                </tr>
-            `).join('');
-        }
+                const now = getISTNow();
+                const journeyDate = parseYmd(journeyInput.value);
+                const tatkal = getTatkalForJourney(journeyDate);
 
-        updateTatkalDates();
+                resultMain.textContent = formatDate(journeyDate);
+                resultSub.innerHTML =
+                    '<div class="result-row">' +
+                    '<span class="result-row-label"><span class="pill-mini ac">AC</span>Opens</span>' +
+                    '<span class="result-row-value">' + formatDate(tatkal.acOpen) + ' • 10:00 AM IST</span>' +
+                    '</div>' +
+                    '<div class="result-row">' +
+                    '<span class="result-row-label"><span class="pill-mini sl">SL</span>Opens</span>' +
+                    '<span class="result-row-value">' + formatDate(tatkal.sleeperOpen) + ' • 11:00 AM IST</span>' +
+                    '</div>';
+
+                if (now < tatkal.acOpen) {
+                    setResultState('future');
+                    resultStatus.textContent = 'Booking not opened yet for this journey.';
+                } else if (now >= tatkal.acOpen && now < tatkal.sleeperOpen) {
+                    setResultState('open');
+                    resultStatus.textContent = 'AC Tatkal is OPEN now. Sleeper opens at 11:00 AM.';
+                } else if (now.toDateString() === tatkal.bookingDate.toDateString()) {
+                    setResultState('open');
+                    resultStatus.textContent = 'Tatkal booking is OPEN now (subject to quota availability).';
+                } else {
+                    setResultState('passed');
+                    resultStatus.textContent = 'Tatkal opening window has passed for this journey date.';
+                }
+            }
+
+            function getNextWindow(hour) {
+                const now = getISTNow();
+                const target = new Date(now);
+                target.setHours(hour, 0, 0, 0);
+                if (now >= target) {
+                    target.setDate(target.getDate() + 1);
+                }
+                return target;
+            }
+
+            function formatTimer(ms) {
+                if (ms <= 0) return '00:00:00';
+                const total = Math.floor(ms / 1000);
+                const h = Math.floor(total / 3600);
+                const m = Math.floor((total % 3600) / 60);
+                const s = total % 60;
+                return pad(h) + ':' + pad(m) + ':' + pad(s);
+            }
+
+            function updateCountdowns() {
+                const now = getISTNow();
+                const acTarget = getNextWindow(10);
+                const slTarget = getNextWindow(11);
+
+                acDateEl.textContent = 'Opens: ' + formatDate(acTarget);
+                slDateEl.textContent = 'Opens: ' + formatDate(slTarget);
+
+                acCountdownEl.textContent = formatTimer(acTarget - now);
+                slCountdownEl.textContent = formatTimer(slTarget - now);
+            }
+
+            function updateQuickStatus() {
+                const now = getISTNow();
+                const todayJourney = new Date(now);
+                todayJourney.setDate(todayJourney.getDate() + 1);
+                quickStatus.innerHTML = 'Today (' + formatDate(now) + '), Tatkal is mainly for journey date <strong>' + formatDate(todayJourney) + '</strong>.';
+            }
+
+            function fillAvailability() {
+                const now = getISTNow();
+                const rows = [];
+                for (let i = 1; i <= 7; i++) {
+                    const journey = new Date(now);
+                    journey.setDate(journey.getDate() + i);
+                    const tatkal = getTatkalForJourney(journey);
+
+                    let statusClass = 'status-upcoming';
+                    let statusText = 'Upcoming';
+
+                    if (now >= tatkal.sleeperOpen && now.toDateString() === tatkal.bookingDate.toDateString()) {
+                        statusClass = 'status-open';
+                        statusText = 'Open Now';
+                    } else if (now >= tatkal.bookingDate && now.toDateString() !== tatkal.bookingDate.toDateString()) {
+                        statusClass = 'status-past';
+                        statusText = 'Window Passed';
+                    } else if (now >= tatkal.acOpen && now < tatkal.sleeperOpen) {
+                        statusClass = 'status-open';
+                        statusText = 'AC Open';
+                    }
+
+                    rows.push('<tr>' +
+                        '<td>' + formatDate(journey) + '</td>' +
+                        '<td>' + formatDate(tatkal.bookingDate) + '</td>' +
+                        '<td>' + formatTime(tatkal.acOpen) + '</td>' +
+                        '<td>' + formatTime(tatkal.sleeperOpen) + '</td>' +
+                        '<td class="' + statusClass + '">' + statusText + '</td>' +
+                        '</tr>');
+                }
+                availabilityBody.innerHTML = rows.join('');
+            }
+
+            function getShareText() {
+                const dateText = journeyInput.value ? formatDate(parseYmd(journeyInput.value)) : 'selected journey date';
+                return 'Tatkal Booking Date Calculator\nJourney: ' + dateText + '\n' + resultSub.textContent + '\nhttps://railbookingdate.com/pages/tatkal.html';
+            }
+
+            function downloadIcs() {
+                if (!journeyInput.value) {
+                    alert('Select a journey date first.');
+                    return;
+                }
+
+                const journeyDate = parseYmd(journeyInput.value);
+                const tatkal = getTatkalForJourney(journeyDate);
+                const start = tatkal.acOpen;
+                const end = new Date(start.getTime() + 15 * 60000);
+
+                const toUtcString = function (d) {
+                    const iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString();
+                    return iso.replace(/[-:]/g, '').split('.')[0] + 'Z';
+                };
+
+                const lines = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'PRODID:-//RailBookingDate//Tatkal Reminder//EN',
+                    'BEGIN:VEVENT',
+                    'UID:' + Date.now() + '@railbookingdate.com',
+                    'DTSTAMP:' + toUtcString(new Date()),
+                    'DTSTART:' + toUtcString(start),
+                    'DTEND:' + toUtcString(end),
+                    'SUMMARY:Tatkal Booking Opens (AC)',
+                    'DESCRIPTION:AC Tatkal opens 10:00 AM and Sleeper/2S opens 11:00 AM one day before journey.',
+                    'END:VEVENT',
+                    'END:VCALENDAR'
+                ];
+
+                const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tatkal-booking-reminder.ics';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            function initActions() {
+                document.getElementById('copy-btn').addEventListener('click', function () {
+                    const txt = getShareText();
+                    navigator.clipboard.writeText(txt).then(function () {
+                        alert('Copied booking details.');
+                    });
+                });
+
+                document.getElementById('share-btn').addEventListener('click', function () {
+                    const txt = getShareText();
+                    if (navigator.share) {
+                        navigator.share({ title: 'Tatkal Booking Date', text: txt, url: 'https://railbookingdate.com/pages/tatkal.html' });
+                    } else {
+                        navigator.clipboard.writeText(txt).then(function () {
+                            alert('Share not available. Details copied instead.');
+                        });
+                    }
+                });
+
+                document.getElementById('whatsapp-btn').addEventListener('click', function () {
+                    const url = 'https://wa.me/?text=' + encodeURIComponent(getShareText());
+                    window.open(url, '_blank', 'noopener');
+                });
+
+                document.getElementById('calendar-btn').addEventListener('click', downloadIcs);
+
+                document.getElementById('book-btn').addEventListener('click', function () {
+                    window.open('https://www.irctc.co.in/nget/train-search', '_blank', 'noopener');
+                });
+            }
+
+            function initDatePickerBehavior() {
+                const supportsShowPicker = typeof journeyInput.showPicker === 'function';
+                if (!supportsShowPicker) return;
+
+                const openPicker = function () {
+                    try {
+                        journeyInput.showPicker();
+                    } catch (e) {
+                        // Ignore if browser blocks programmatic picker opening.
+                    }
+                };
+
+                journeyInput.addEventListener('click', openPicker);
+                journeyInput.addEventListener('focus', openPicker);
+            }
+
+            function setDefaultDate() {
+                const now = getISTNow();
+                const defaultJourney = new Date(now);
+                defaultJourney.setDate(defaultJourney.getDate() + 1);
+                journeyInput.min = toYmd(now);
+                journeyInput.value = toYmd(defaultJourney);
+            }
+
+            function refreshAll() {
+                updateQuickStatus();
+                updateCalculator();
+                fillAvailability();
+                updateCountdowns();
+            }
+
+            setDefaultDate();
+            initDatePickerBehavior();
+            initActions();
+            journeyInput.addEventListener('change', refreshAll);
+            refreshAll();
+            setInterval(function () {
+                updateCountdowns();
+                fillAvailability();
+                updateCalculator();
+            }, 1000);
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        })();
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tatkal Booking Date Calculator",
+      "description": "Find Tatkal booking date and time for IRCTC journeys. AC opens at 10:00 AM and Sleeper/2S at 11:00 AM one day before travel.",
+      "url": "https://railbookingdate.com/pages/tatkal.html",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Web Browser"
+    }
     </script>
 </body>
 
