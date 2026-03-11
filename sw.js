@@ -3,7 +3,7 @@
 // Stale-While-Revalidate Strategy
 // ==========================================
 
-const CACHE_NAME = 'railbookingdate-v6';
+const CACHE_NAME = 'railbookingdate-v7';
 const STATIC_ASSETS = [
     './',
     './index.html',
