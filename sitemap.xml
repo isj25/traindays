@@ -301,4 +301,59 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <!-- Booking Date Pages -->
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/april-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/may-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/june-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/july-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/august-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/september-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/october-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/november-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/december-booking-date.html</loc>
+        <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
