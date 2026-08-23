@@ -1,0 +1,607 @@
+/* ==========================================
+   Station code pages - matches site design system
+   ========================================== */
+
+:root {
+    --bg-app: #fef7ed;
+    --bg-card: #ffffff;
+    --text-primary: #1a365d;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
+    --primary: #ff6b00;
+    --primary-light: #fff3e6;
+    --primary-dark: #e55a00;
+    --secondary: #1a365d;
+    --border-light: #fed7aa;
+    --accent-open: #16a34a;
+    --accent-open-light: #dcfce7;
+    --shadow-card: 0 4px 8px -1px rgb(26 54 93 / 0.12);
+    --font-heading: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+[data-theme="dark"] {
+    --bg-app: #0f1729;
+    --bg-card: #1a2744;
+    --text-primary: #f7fafc;
+    --text-secondary: #cbd5e0;
+    --text-tertiary: #a0aec0;
+    --primary: #ff8533;
+    --primary-light: #2d1f0f;
+    --primary-dark: #ff6b00;
+    --secondary: #3182ce;
+    --border-light: #3d4f6f;
+    --accent-open: #4ade80;
+    --accent-open-light: #052e16;
+    --shadow-card: 0 4px 8px -1px rgb(0 0 0 / 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2.5rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.station-hero {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.station-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.55rem, 3.6vw, 2.35rem);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 0 0 0.4rem;
+}
+
+.station-hero .subtitle {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    padding: 1.35rem 1.4rem;
+    margin-bottom: 1.1rem;
+}
+
+.code-ticket {
+    padding: 0;
+    overflow: hidden;
+    border-color: #fdba74;
+}
+
+.ticket-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1rem;
+    background: linear-gradient(90deg, #ff6b00 0%, #e55a00 100%);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ticket-body {
+    padding: 1.35rem 1.2rem 1.45rem;
+    text-align: center;
+}
+
+.station-code-value {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    line-height: 1;
+    margin: 0.15rem 0 0.55rem;
+}
+
+.station-meta {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.1rem;
+}
+
+.meta-item {
+    background: var(--bg-app);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0.7rem 0.8rem;
+}
+
+.meta-item span {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    font-weight: 700;
+}
+
+.meta-item strong {
+    font-size: 1rem;
+}
+
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.card p a,
+.card li a,
+.highlight-box a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card p a:hover,
+.card li a:hover,
+.highlight-box a:hover {
+    text-decoration: underline;
+}
+
+.card a.action-btn {
+    color: #fff;
+}
+
+.card a.action-btn.secondary {
+    color: var(--primary);
+}
+
+.site-footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.site-footer-nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.site-footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 0.75rem 1.15rem;
+    font-size: 0.95rem;
+}
+
+.action-btn:hover {
+    background: var(--primary-dark);
+}
+
+.action-btn.secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+}
+
+.action-btn.secondary:hover {
+    background: var(--primary-light);
+}
+
+h2 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin: 0 0 0.7rem;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    margin: 1.1rem 0 0.4rem;
+}
+
+.card p {
+    margin: 0 0 0.8rem;
+    color: var(--text-secondary);
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+.booking-steps {
+    margin: 0.4rem 0 0.9rem;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.booking-steps li {
+    margin-bottom: 0.4rem;
+}
+
+.highlight-box {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 0.9rem 1rem;
+    margin: 0.9rem 0 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.timing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+}
+
+.timing-card {
+    background: var(--bg-app);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0.85rem;
+}
+
+.timing-card strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.timing-card span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    border: 0;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.copy-btn:hover {
+    background: #ffe4c7;
+}
+
+/* Destination search */
+.train-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.7rem;
+    margin-top: 0.9rem;
+}
+
+.dest-field {
+    position: relative;
+    flex: 1 1 320px;
+    min-width: 0;
+}
+
+.dest-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.dest-input {
+    width: 100%;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    background: var(--bg-app);
+    color: var(--text-primary);
+    font: inherit;
+    padding: 0.72rem 0.9rem;
+}
+
+.dest-input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+.dest-suggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    max-height: 17rem;
+    overflow-y: auto;
+}
+
+.dest-suggestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.dest-suggestion.is-active {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.dest-suggestion-city {
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.dest-search-btn {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.route-form .dest-field {
+    flex: 1 1 240px;
+}
+
+.swap-btn {
+    flex: 0 0 auto;
+    align-self: flex-end;
+    height: 2.85rem;
+    width: 2.85rem;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    background: var(--bg-app);
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.swap-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.dest-error {
+    margin: 0.7rem 0 0;
+    color: #dc2626;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.search-note {
+    margin: 0.8rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .dest-error {
+    color: #f87171;
+}
+
+.related-stations {
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+.related-stations h2 {
+    font-size: 1rem;
+    margin-bottom: 0.65rem;
+}
+
+.related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+}
+
+.related-links a {
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    text-decoration: none;
+    line-height: 1.45;
+}
+
+.related-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.site-footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+/* Directory / index */
+.alpha-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.8rem 0 1.2rem;
+}
+
+.alpha-nav a {
+    min-width: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+}
+
+.alpha-nav a:hover {
+    background: var(--primary-light);
+}
+
+.search-box {
+    width: 100%;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    margin-bottom: 1rem;
+}
+
+.search-box:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.letter-group {
+    margin-bottom: 1.4rem;
+}
+
+.letter-group h2 {
+    position: sticky;
+    top: 0;
+    background: var(--bg-app);
+    padding: 0.4rem 0;
+    z-index: 1;
+}
+
+.directory-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.9rem;
+}
+
+.directory-links a {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    text-decoration: none;
+}
+
+.directory-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.directory-links a[hidden] {
+    display: none;
+}
+
+.empty-filter {
+    display: none;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+.empty-filter.visible {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 1rem 0.75rem 2rem;
+    }
+
+    .card {
+        padding: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .cta-row {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .train-search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Once stacked, flex-basis would set a height instead of a width. */
+    .dest-field,
+    .route-form .dest-field {
+        flex: 0 0 auto;
+    }
+
+    .swap-btn {
+        align-self: center;
+        width: 100%;
+    }
+}

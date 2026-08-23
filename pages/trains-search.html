@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <meta name="google-adsense-account" content="ca-pub-5018644317959743">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NL4NTX1D6V');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Search - Source to Destination Trains | RailBookingDate</title>
+    <meta name="description" content="Search trains between any two Indian Railways stations. Pick source and destination stations by name or code and see the full train list.">
+    <meta name="keywords" content="train search, source to destination trains, trains between stations, station code search, IRCTC train list">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://railbookingdate.com/pages/trains-search.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://railbookingdate.com/pages/trains-search.html">
+    <meta property="og:title" content="Train Search - Source to Destination Trains">
+    <meta property="og:description" content="Search trains between any two Indian Railways stations. Pick source and destination stations by name or code and see the full train list.">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="RailBookingDate">
+
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#ff6b00">
+
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/stations.css">
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <nav class="main-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="../pages/live-status.html">Live Status</a>
+                <a href="../pages/pnr-status.html">PNR Status</a>
+                <a href="../pages/tatkal.html">Tatkal Dates</a>
+                <a href="../pages/stations/index.html">Station Codes</a>
+                <a href="../pages/trains-search.html" class="active">Train Search</a>
+                <a href="../pages/indian-railway-blogs.html">Blogs</a>
+                <a href="../pages/news.html">Rail News</a>
+                <a href="../pages/faq.html">FAQ</a>
+                <a href="../pages/helpline.html">Helpline</a>
+                <a href="../pages/about-us.html">About Us</a>
+            </nav>
+            <a href="../index.html" class="back-link">← Back to calculator</a>
+        </header>
+
+        <article class="station-hero">
+            <h1>Train search - source to destination</h1>
+            <p class="subtitle">Pick two stations to see every train running between them</p>
+        </article>
+
+        <section class="card train-search-card route-search-card" data-station-search>
+            <h2>Search trains between stations</h2>
+            <p>Type a station name, city, or code (for example <strong>Kumta</strong> or <strong>KT</strong>) in both
+                boxes, then search.</p>
+            <form class="train-search-form route-form" autocomplete="off">
+                <div class="dest-field">
+                    <label class="dest-label" for="source-station">From station</label>
+                    <input type="text" id="source-station" class="dest-input" data-role="source" role="combobox"
+                        aria-expanded="false" aria-controls="source-suggestions" aria-autocomplete="list"
+                        placeholder="Source station or code">
+                    <ul class="dest-suggestions" id="source-suggestions" data-role="source-suggestions" role="listbox"
+                        hidden></ul>
+                </div>
+                <button type="button" class="swap-btn" data-role="swap" aria-label="Swap source and destination"
+                    title="Swap stations">⇄</button>
+                <div class="dest-field">
+                    <label class="dest-label" for="dest-station">To station</label>
+                    <input type="text" id="dest-station" class="dest-input" data-role="destination" role="combobox"
+                        aria-expanded="false" aria-controls="dest-suggestions" aria-autocomplete="list"
+                        placeholder="Destination station or code">
+                    <ul class="dest-suggestions" id="dest-suggestions" data-role="destination-suggestions"
+                        role="listbox" hidden></ul>
+                </div>
+                <button type="submit" class="action-btn dest-search-btn">Search trains</button>
+            </form>
+            <p class="dest-error" role="alert" hidden></p>
+        </section>
+
+        <section class="card">
+            <h2>How this train search works</h2>
+            <p>Indian Railways identifies every station by a short code. This search matches what you type against
+                4,598 station names, cities, and codes, then opens the full list of
+                trains running on that route.</p>
+            <ol class="booking-steps">
+                <li>Enter your boarding station in the <strong>From</strong> box and pick it from the suggestions.</li>
+                <li>Enter your destination in the <strong>To</strong> box.</li>
+                <li>Press <strong>Search trains</strong> to see train numbers, timings, and running days.</li>
+                <li>Once you pick a train, use the <a href="../index.html">60 days advance booking date
+                        calculator</a> to find out when IRCTC reservation opens for your travel date.</li>
+            </ol>
+            <div class="highlight-box">
+                General booking opens 60 days before the journey date at 8:00 AM IST. Tatkal opens one day before
+                travel, at 10:00 AM for AC and 11:00 AM for Sleeper/2S.
+                <a href="tatkal.html">Check Tatkal dates</a>.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Popular stations</h2>
+            <p>Open a station page to see its code, booking guidance, and trains from that station.</p>
+            <div class="related-links">
+                    <a href="stations/new-delhi-station-code-ndls.html">New Delhi - NDLS</a>
+                    <a href="stations/mumbai-cst-station-code-cstm.html">Mumbai Cst - CSTM</a>
+                    <a href="stations/chennai-central-station-code-mas.html">Chennai Central - MAS</a>
+                    <a href="stations/howrah-junction-station-code-hwh.html">Howrah Junction - HWH</a>
+                    <a href="stations/bangalore-cy-junction-station-code-sbc.html">Bangalore Cy Junction - SBC</a>
+                    <a href="stations/madgaon-station-code-mao.html">Madgaon - MAO</a>
+                    <a href="stations/pune-junction-station-code-pune.html">Pune Junction - PUNE</a>
+                    <a href="stations/ahmedabad-junction-station-code-adi.html">Ahmedabad Junction - ADI</a>
+            </div>
+            <p><a href="stations/index.html">Browse all 4,598 railway station
+                    codes →</a></p>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 RailBookingDate - Created by Ishwar Joshi</p>
+            <nav class="site-footer-nav">
+                <a href="../index.html">Calculator</a>
+                <a href="../pages/tatkal.html">Tatkal Dates</a>
+                <a href="../pages/faq.html">FAQ</a>
+                <a href="../pages/stations/index.html">Station Codes</a>
+                <a href="../pages/trains-search.html">Train Search</a>
+                <a href="../pages/about-us.html">About Us</a>
+            </nav>
+        </footer>
+    </div>
+    <script src="../js/stations-data.js" defer></script>
+    <script src="../js/station-search.js" defer></script>
+</body>
+
+</html>
