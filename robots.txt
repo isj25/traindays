@@ -6,6 +6,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://railbookingdate.com/sitemap.xml
+Sitemap: https://railbookingdate.com/sitemap-stations.xml
 
 # Crawl-delay (optional, for polite crawling)
 Crawl-delay: 1
