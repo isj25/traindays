@@ -3,21 +3,23 @@
 // Stale-While-Revalidate Strategy
 // ==========================================
 
-const CACHE_NAME = 'railbookingdate-v7';
+const CACHE_NAME = 'railbookingdate-v9';
 const STATIC_ASSETS = [
     './',
     './index.html',
     './css/styles.css',
     './js/app.js',
-    './favicon.png',
-    './icon-192.png',
-    './icon-512.png',
+    './favicon.ico',
+    './favicon-96x96.png',
+    './web-app-manifest-192x192.png',
+    './web-app-manifest-512x512.png',
     './manifest.json',
     './pages/ewallet.html',
     './pages/faq.html',
     './pages/helpline.html',
     './pages/news.html',
     './pages/tatkal.html',
+    './pages/holidays-2027.html',
     './pages/videos.html',
     './pages/disclaimer.html',
     './pages/indian-railway-blogs.html',

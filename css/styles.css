@@ -1430,7 +1430,51 @@ body {
     color: var(--primary);
 }
 
+.calendar-year-nav {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin: 0.75rem 1.25rem 0.25rem;
+    padding: 4px;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: var(--bg-app);
+}
+
+.calendar-year-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 1rem;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.calendar-year-btn:hover {
+    color: var(--text-primary);
+    background: var(--primary-light);
+}
+
+.calendar-year-btn.active,
+.calendar-year-btn.active:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
 .calendar-scroll-content {
+    position: relative;
     flex: 1;
     overflow-y: auto;
     padding-bottom: 1rem;
