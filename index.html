@@ -1581,7 +1581,51 @@
             color: var(--primary);
         }
 
+        .calendar-year-nav {
+            flex-shrink: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin: 0.75rem 1.25rem 0.25rem;
+            padding: 4px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: var(--bg-app);
+        }
+
+        .calendar-year-btn {
+            appearance: none;
+            -webkit-appearance: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            margin: 0;
+            padding: 0 1rem;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .calendar-year-btn:hover {
+            color: var(--text-primary);
+            background: var(--primary-light);
+        }
+
+        .calendar-year-btn.active,
+        .calendar-year-btn.active:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
         .calendar-scroll-content {
+            position: relative;
             flex: 1;
             overflow-y: auto;
             padding-bottom: 1rem;
@@ -2182,7 +2226,7 @@
             <section class="date-selector-hero" aria-label="Select Travel Date for Booking">
                 <div class="hero-content">
                     <h2 class="hero-title"><span class="train-icon">🚂</span> Find Train Ticket Booking Open Date</h2>
-                    <p class="hero-subtitle">Select your travel date to find out instantly</p>
+                    <p class="hero-subtitle">Select a travel date through 31 December 2027</p>
                     <div class="hero-input-wrapper">
                         <div class="input-wrapper-hero">
                             <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -2364,7 +2408,7 @@
             </div>
 
             <section aria-labelledby="calendar-title">
-                <h2 id="calendar-title" class="section-title">IRCTC Reservation Date Calculator 2026 - Full Year Outlook
+                <h2 id="calendar-title" class="section-title">IRCTC Reservation Date Calculator 2026–2027
                 </h2>
                 <div id="calendar-container" class="calendar-container">
                     <div class="skeleton-loader">Loading Indian Railways booking calendar...</div>
@@ -2373,6 +2417,10 @@
 
             <section class="holidays-section" aria-labelledby="holidays-title">
                 <h2 id="holidays-title" class="section-title">2026 Holiday Train Booking Dates</h2>
+                <p style="margin: 0 0 1rem;">
+                    <a href="pages/holidays-2027.html"
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">2027 holiday booking dates — shown 1 day earlier</a>
+                </p>
                 <div class="holidays-card">
                     <table class="holidays-table" itemscope itemtype="https://schema.org/Table">
                         <thead>
@@ -2652,7 +2700,7 @@
                     <ul>
                         <li>Instantly calculating the <strong>exact booking opening date</strong></li>
                         <li>Showing <strong>Tatkal availability</strong> with proper timings</li>
-                        <li>Displaying a visual <strong>full 2026 booking calendar</strong></li>
+                        <li>Displaying a visual <strong>2026 and 2027 booking calendar</strong></li>
                         <li>Working offline as a <strong>Progressive Web App (PWA)</strong></li>
                         <li>Helping you never miss the <strong>8 AM booking window</strong></li>
                     </ul>
@@ -2815,6 +2863,37 @@
                     <a href="pages/bookingdate/november-booking-date.html" class="action-btn"
                         style="justify-content: center; text-decoration: none;">November Booking Dates</a>
                     <a href="pages/bookingdate/december-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">December Booking Dates</a>
+                </div>
+            </section>
+            <section class="booking-rules-card" style="margin-top: 1.5rem; text-align: left;">
+                <h2 class="hero-title" style="margin-bottom: 1rem;">2027 Train Booking Calendars</h2>
+                <p style="margin-bottom: 1rem; color: var(--text-secondary);">Browse monthly calendars for general and
+                    Tatkal booking opening dates:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                    <a href="pages/bookingdate/2027/january-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">January Booking Dates</a>
+                    <a href="pages/bookingdate/2027/february-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">February Booking Dates</a>
+                    <a href="pages/bookingdate/2027/march-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">March Booking Dates</a>
+                    <a href="pages/bookingdate/2027/april-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">April Booking Dates</a>
+                    <a href="pages/bookingdate/2027/may-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">May Booking Dates</a>
+                    <a href="pages/bookingdate/2027/june-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">June Booking Dates</a>
+                    <a href="pages/bookingdate/2027/july-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">July Booking Dates</a>
+                    <a href="pages/bookingdate/2027/august-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">August Booking Dates</a>
+                    <a href="pages/bookingdate/2027/september-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">September Booking Dates</a>
+                    <a href="pages/bookingdate/2027/october-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">October Booking Dates</a>
+                    <a href="pages/bookingdate/2027/november-booking-date.html" class="action-btn"
+                        style="justify-content: center; text-decoration: none;">November Booking Dates</a>
+                    <a href="pages/bookingdate/2027/december-booking-date.html" class="action-btn"
                         style="justify-content: center; text-decoration: none;">December Booking Dates</a>
                 </div>
             </section>

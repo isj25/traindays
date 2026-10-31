@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://railbookingdate.com/</loc>
-        <lastmod>2026-02-22</lastmod>
+        <lastmod>2026-10-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://railbookingdate.com/pages/tatkal.html</loc>
-        <lastmod>2026-02-08</lastmod>
+        <lastmod>2026-10-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -365,6 +365,85 @@
     <url>
         <loc>https://railbookingdate.com/pages/bookingdate/december-booking-date.html</loc>
         <lastmod>2026-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/holidays-2027.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 2027 Booking Date Pages -->
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/january-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/february-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/march-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/april-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/may-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/june-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/july-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/august-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/september-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/october-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/november-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/bookingdate/2027/december-booking-date.html</loc>
+        <lastmod>2026-10-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

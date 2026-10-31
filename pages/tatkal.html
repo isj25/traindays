@@ -34,34 +34,44 @@
 
     <style>
         :root {
-            --bg-app: #f8fafc;
+            --bg-app: #fef7ed;
             --bg-card: #ffffff;
-            --text-primary: #102a43;
-            --text-secondary: #486581;
-            --text-tertiary: #627d98;
-            --primary: #f97316;
-            --primary-dark: #ea580c;
-            --primary-soft: #fff7ed;
-            --accent-ac: #2563eb;
-            --accent-sl: #059669;
-            --accent-open: #15803d;
+            --text-primary: #1a365d;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --primary: #ff6b00;
+            --primary-light: #fff3e6;
+            --primary-dark: #e55a00;
+            --accent-tatkal: #dc2626;
+            --accent-tatkal-light: #fee2e2;
+            --accent-tatkal-dark: #b91c1c;
+            --accent-open: #16a34a;
+            --accent-open-light: #dcfce7;
             --accent-late: #b45309;
-            --border-light: #e2e8f0;
-            --shadow-card: 0 14px 30px rgba(15, 23, 42, 0.08);
+            --border-light: #fed7aa;
+            --shadow-sm: 0 1px 3px 0 rgb(26 54 93 / 0.08);
+            --shadow-md: 0 4px 8px -1px rgb(26 54 93 / 0.12);
+            --shadow-card: var(--shadow-sm);
             --font-heading: 'DM Sans', system-ui, -apple-system, sans-serif;
             --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --transition-fast: 0.1s ease-out;
         }
 
         [data-theme="dark"] {
-            --bg-app: #0b1220;
-            --bg-card: #121c2e;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-tertiary: #94a3b8;
-            --primary: #fb923c;
-            --primary-dark: #f97316;
-            --primary-soft: #2c1d0f;
-            --border-light: #243249;
+            --bg-app: #0f1729;
+            --bg-card: #1a2744;
+            --text-primary: #f7fafc;
+            --text-secondary: #cbd5e0;
+            --text-tertiary: #a0aec0;
+            --primary: #ff8533;
+            --primary-light: #2d1f0f;
+            --primary-dark: #ff6b00;
+            --accent-tatkal: #f87171;
+            --accent-tatkal-light: #450a0a;
+            --accent-tatkal-dark: #ef4444;
+            --accent-open: #4ade80;
+            --accent-open-light: #052e16;
+            --border-light: #3d4f6f;
             --shadow-card: 0 14px 30px rgba(0, 0, 0, 0.35);
         }
 
@@ -74,10 +84,7 @@
             font-family: var(--font-body);
             color: var(--text-primary);
             line-height: 1.55;
-            background:
-                radial-gradient(circle at 12% 20%, rgba(249, 115, 22, 0.12), transparent 38%),
-                radial-gradient(circle at 90% 0%, rgba(37, 99, 235, 0.08), transparent 35%),
-                var(--bg-app);
+            background: var(--bg-app);
             min-height: 100vh;
         }
 
@@ -127,126 +134,67 @@
             margin-bottom: 1rem;
         }
 
-        .tatkal-ticket {
-            padding: 0;
-            overflow: hidden;
-            border-radius: 20px;
-            border-color: #fdba74;
-        }
-
-        .ticket-topbar {
+        .main-content {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.75rem 1rem;
-            background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
-            color: #fff;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .ticket-topbar .muted {
-            opacity: 0.9;
-            font-weight: 600;
-            letter-spacing: 0.02em;
+        .date-selector-hero {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow-sm);
         }
 
-        .ticket-body {
-            padding: 1rem;
-            background:
-                linear-gradient(180deg, rgba(249, 115, 22, 0.06), transparent 42%),
-                var(--bg-card);
-            position: relative;
-        }
-
-        .ticket-body::before,
-        .ticket-body::after {
-            content: "";
-            position: absolute;
-            top: 130px;
-            width: 24px;
-            height: 24px;
-            background: var(--bg-app);
-            border-radius: 50%;
-            border: 1px solid var(--border-light);
-        }
-
-        .ticket-body::before {
-            left: -12px;
-        }
-
-        .ticket-body::after {
-            right: -12px;
-        }
-
-        .ticket-row {
+        .hero-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 0.75rem;
-            font-size: 0.82rem;
-        }
-
-        .ticket-chip {
-            border: 1px solid #fdba74;
-            background: #fff7ed;
-            color: #9a3412;
-            border-radius: 999px;
-            padding: 0.22rem 0.58rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-        }
-
-        [data-theme="dark"] .ticket-chip {
-            background: #2c1d0f;
-            color: #fdba74;
-            border-color: #9a3412;
-        }
-
-        .ticket-divider {
-            border-top: 2px dashed #fdba74;
-            margin: 0.75rem 0 0.9rem;
-        }
-
-        .calculator-grid {
-            display: grid;
-            gap: 0.9rem;
-            grid-template-columns: 1fr;
-        }
-
-        .field-row {
-            display: grid;
             gap: 0.75rem;
-            align-items: end;
-            grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .train-icon {
+            display: inline-block;
+            font-size: 1.3em;
+            animation: trainMove 3s ease-in-out infinite;
+        }
+
+        @keyframes trainMove {
+            0%,
+            100% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
         .hero-input-wrapper {
             width: 100%;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .input-wrapper-hero {
+            position: relative;
             width: 100%;
             max-width: 360px;
-        }
-
-        .date-input-wrap {
-            position: relative;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.45rem;
         }
 
         .modern-input-hero {
@@ -259,8 +207,13 @@
             background: var(--bg-app);
             border: 2px solid var(--border-light);
             border-radius: 12px;
+            cursor: pointer;
             text-align: center;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .modern-input-hero::placeholder {
+            color: var(--text-secondary);
         }
 
         .modern-input-hero:hover {
@@ -270,10 +223,10 @@
         .modern-input-hero:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.17);
+            box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        .date-input-wrap .calendar-icon {
+        .input-wrapper-hero .calendar-icon {
             position: absolute;
             left: 1rem;
             top: 50%;
@@ -284,220 +237,492 @@
             pointer-events: none;
         }
 
-        .quick-status {
-            font-size: 0.98rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            background: rgba(148, 163, 184, 0.09);
-            padding: 0.75rem 0.85rem;
+        .booking-message {
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .quick-status strong {
-            color: var(--text-primary);
+        .booking-message:empty {
+            display: none;
         }
 
-        .result-box {
-            border: 1px solid var(--border-light);
-            border-radius: 14px;
-            padding: 0.95rem 1rem;
-            background: var(--primary-soft);
-            font-size: 0.92rem;
-            margin-top: 0.4rem;
+        .booking-message.booking-open {
+            background-color: var(--accent-open-light);
+            color: #064e3b;
         }
 
-        .result-box.open {
-            border-color: rgba(22, 163, 74, 0.45);
-            background: rgba(22, 163, 74, 0.11);
+        [data-theme="dark"] .booking-message.booking-open {
             color: var(--accent-open);
         }
 
-        .result-box.future {
-            border-color: rgba(37, 99, 235, 0.35);
-            background: rgba(37, 99, 235, 0.12);
-            color: var(--accent-ac);
+        .booking-message.booking-future {
+            background-color: var(--accent-tatkal-light);
+            color: #7c2d12;
         }
 
-        .result-box.passed {
-            border-color: rgba(180, 83, 9, 0.45);
-            background: rgba(217, 119, 6, 0.13);
+        [data-theme="dark"] .booking-message.booking-future {
+            color: var(--accent-tatkal);
+        }
+
+        .booking-message.booking-passed {
+            background-color: #fff7ed;
             color: var(--accent-late);
         }
 
-        .result-main {
-            margin: 0;
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 1rem;
+        [data-theme="dark"] .booking-message.booking-passed {
+            background-color: #2d1f0f;
+            color: #fdba74;
         }
 
-        .result-caption {
-            margin: 0 0 0.3rem;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-secondary);
+        .booking-actions {
+            display: none;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .result-status {
-            margin: 0.6rem 0 0.35rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .result-sub {
-            margin: 0;
-            display: grid;
-            gap: 0.42rem;
-        }
-
-        .result-row {
+        .booking-actions.show {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.45rem;
-            border: 1px dashed rgba(100, 116, 139, 0.35);
-            border-radius: 10px;
-            padding: 0.42rem 0.55rem;
-            background: rgba(255, 255, 255, 0.52);
         }
 
-        [data-theme="dark"] .result-row {
-            background: rgba(15, 23, 42, 0.35);
-        }
-
-        .result-row-label {
-            font-size: 0.76rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-secondary);
-            flex: 0 0 auto;
-        }
-
-        .result-row-value {
-            text-align: right;
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 0.86rem;
-        }
-
-        .pill-mini {
+        .action-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            min-width: 42px;
-            padding: 0.16rem 0.38rem;
-            border-radius: 999px;
-            color: #fff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            margin-right: 0.35rem;
-        }
-
-        .pill-mini.ac {
-            background: var(--accent-ac);
-        }
-
-        .pill-mini.sl {
-            background: var(--accent-sl);
-        }
-
-        .result-note {
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            font-size: 0.87rem;
+            background: var(--bg-app);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background var(--transition-fast), color var(--transition-fast);
+        }
+
+        .action-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .action-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .action-btn-primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .action-btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: white;
+        }
+
+        .action-btn-book {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-color: #059669;
+            font-weight: 700;
+            padding: 0.625rem 1.25rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .action-btn-book:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-color: #047857;
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .action-btn-book svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        }
+
+        [data-theme="dark"] .action-btn-book {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            border-color: #10b981;
+        }
+
+        .action-btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+            font-weight: 600;
+        }
+
+        .action-btn-whatsapp:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .booking-status-card {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .booking-status-card {
+            background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+        }
+
+        .booking-info-text {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .booking-info-text strong {
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            text-decoration-color: #ff6b00;
+        }
+
+        .custom-calendar-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-card);
+            width: 90%;
+            max-width: 380px;
+            max-height: 80vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.2);
+            z-index: 1000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            border: 1px solid var(--border-light);
+            transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+        }
+
+        .custom-calendar-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-calendar-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+        }
+
+        .popup-header-row {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg-app);
+        }
+
+        .calendar-picker-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
             margin: 0;
         }
 
-        .action-row {
-            display: grid;
-            gap: 0.55rem;
-            margin-top: 0.8rem;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .btn {
-            border: 1px solid var(--border-light);
-            border-radius: 10px;
-            padding: 0.6rem 0.75rem;
-            background: var(--bg-card);
-            color: var(--text-primary);
+        .calendar-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
             cursor: pointer;
-            font-weight: 600;
-            font-family: inherit;
-            font-size: 0.88rem;
+            line-height: 1;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
         }
 
-        .btn:hover {
-            border-color: var(--primary);
-            color: var(--primary-dark);
+        .calendar-close-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
         }
 
-        .btn.primary {
+        .calendar-year-nav {
+            flex-shrink: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin: 0.75rem 1.25rem 0.25rem;
+            padding: 4px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: var(--bg-app);
+        }
+
+        .calendar-year-btn {
+            appearance: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .calendar-year-btn:hover {
+            color: var(--text-primary);
+            background: var(--primary-light);
+        }
+
+        .calendar-year-btn.active,
+        .calendar-year-btn.active:hover {
             background: var(--primary);
             color: #fff;
-            border-color: var(--primary);
         }
 
-        .btn.primary:hover {
-            background: var(--primary-dark);
+        .calendar-scroll-content {
+            position: relative;
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 1rem;
+            overscroll-behavior: contain;
+        }
+
+        .calendar-picker-month {
+            padding: 1rem 1.25rem;
+        }
+
+        .calendar-picker-month-header {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 0.75rem;
+            text-align: center;
+        }
+
+        .calendar-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+        }
+
+        .calendar-picker-header {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-align: center;
+            padding-bottom: 0.25rem;
+        }
+
+        .calendar-picker-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .calendar-picker-day.empty {
+            pointer-events: none;
+        }
+
+        .calendar-picker-day:hover:not(.disabled):not(.empty) {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .calendar-picker-day.disabled {
+            color: var(--text-tertiary);
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        .calendar-picker-day.today {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .calendar-picker-day.selected {
+            background: var(--primary);
             color: #fff;
+            font-weight: 700;
+        }
+
+        .countdown-section-title,
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 0 0 1rem;
         }
 
         .countdown-grid {
             display: grid;
-            gap: 0.8rem;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
         .countdown-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.25rem;
             border: 1px solid var(--border-light);
-            border-radius: 14px;
-            padding: 0.9rem;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent), var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
         }
 
-        [data-theme="dark"] .countdown-card {
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.25), transparent), var(--bg-card);
+        .countdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
         }
 
-        .pill {
+        .countdown-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .badge-tatkal-ac {
+            background: var(--accent-tatkal-light);
+            color: #991b1b;
+        }
+
+        [data-theme="dark"] .badge-tatkal-ac {
+            color: var(--accent-tatkal);
+        }
+
+        .badge-tatkal-sleeper {
+            background: #fff3e6;
+            color: #e55a00;
+        }
+
+        [data-theme="dark"] .badge-tatkal-sleeper {
+            background: #2d1f0f;
+            color: #ff8533;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .tatkal-note {
             display: inline-block;
-            padding: 0.2rem 0.45rem;
-            border-radius: 999px;
-            font-size: 0.76rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-right: 0.35rem;
             color: #fff;
-        }
-
-        .pill.ac {
-            background: var(--accent-ac);
-        }
-
-        .pill.sl {
-            background: var(--accent-sl);
-        }
-
-        .countdown-title {
-            margin: 0 0 0.35rem;
-            font-size: 0.98rem;
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-tatkal) 0%, var(--accent-tatkal-dark) 100%);
+            padding: 0.4rem 0.875rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
         }
 
         .countdown-date {
-            font-size: 0.86rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-secondary);
-            margin-bottom: 0.55rem;
+            margin-bottom: 0.75rem;
         }
 
-        .timer {
-            font-size: 1.4rem;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-            letter-spacing: 0.04em;
+        .opens-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 48px;
+        }
+
+        .countdown-value {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--text-primary);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-text {
+            font-size: 0.65rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        .countdown-separator {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .countdown-tatkal-ac {
+            border-top: 3px solid var(--accent-tatkal);
+        }
+
+        .countdown-tatkal-sleeper {
+            border-top: 3px solid #ff6b00;
+        }
+
+        .countdown-urgent .countdown-value {
+            color: #dc2626;
         }
 
         .table-wrap {
@@ -531,8 +756,12 @@
         }
 
         .status-upcoming {
-            color: var(--accent-ac);
+            color: #1d4ed8;
             font-weight: 700;
+        }
+
+        [data-theme="dark"] .status-upcoming {
+            color: #93c5fd;
         }
 
         .status-past {
@@ -557,38 +786,30 @@
             font-size: 0.88rem;
         }
 
-        @media (min-width: 760px) {
-            .field-row {
-                grid-template-columns: 1.1fr 1fr;
+        @media (max-width: 600px) {
+            .date-selector-hero {
+                padding: 1.25rem 1rem;
             }
 
-            .calculator-grid {
-                grid-template-columns: 1.1fr 1fr;
-                align-items: start;
+            .hero-title {
+                font-size: 1.1rem;
             }
 
-            .action-row {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+            .modern-input-hero {
+                font-size: 0.95rem;
             }
 
-            .ticket-body::before,
-            .ticket-body::after {
-                top: 150px;
-            }
-        }
-
-        @media (max-width: 640px) {
             .countdown-grid {
                 grid-template-columns: 1fr;
             }
 
-            .action-row {
-                grid-template-columns: 1fr;
+            .booking-actions {
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .ticket-topbar {
-                flex-direction: column;
-                align-items: flex-start;
+            .action-btn {
+                justify-content: center;
             }
         }
     </style>
@@ -626,82 +847,144 @@
             <p>Find the exact Tatkal opening date and time for your journey (AC at 10:00 AM, Sleeper/2S at 11:00 AM IST).</p>
         </header>
 
-        <main>
-            <section class="card tatkal-ticket">
-                <div class="ticket-topbar">
-                    <span>TATKAL E-TICKET CALCULATOR</span>
-                    <span class="muted">IRCTC | AC 10:00 AM | SL 11:00 AM</span>
+        <main class="main-content">
+            <section class="date-selector-hero" aria-label="Select Journey Date for Tatkal Booking">
+                <div class="hero-content">
+                    <h2 class="hero-title"><span class="train-icon">🚂</span> Find Tatkal Booking Open Date</h2>
+                    <p class="hero-subtitle">AC at 10:00 AM, Sleeper/2S at 11:00 AM, one day before journey</p>
+                    <div class="hero-input-wrapper">
+                        <div class="input-wrapper-hero">
+                            <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <input type="text" id="journey-date" class="modern-input-hero" readonly
+                                placeholder="Select a date"
+                                aria-label="Select journey date for Tatkal booking date calculation">
+                        </div>
+                    </div>
+                    <div id="booking-message" class="booking-message" role="status" aria-live="polite"></div>
+                    <div id="booking-actions" class="booking-actions">
+                        <a id="book-now-btn" href="https://www.irctc.co.in/nget/train-search" target="_blank"
+                            rel="noopener noreferrer" class="action-btn action-btn-book"
+                            aria-label="Book train tickets on IRCTC">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
+                            Book Now on IRCTC
+                        </a>
+                        <button id="copy-btn" class="action-btn" type="button" aria-label="Copy Tatkal booking information">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                        <button id="share-btn" class="action-btn" type="button" aria-label="Share Tatkal booking date">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            Share
+                        </button>
+                        <a id="whatsapp-btn" class="action-btn action-btn-whatsapp" aria-label="Share on WhatsApp"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <button id="calendar-btn" class="action-btn action-btn-primary" type="button"
+                            aria-label="Add Tatkal reminder to calendar">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                <line x1="12" y1="14" x2="12" y2="18"></line>
+                                <line x1="10" y1="16" x2="14" y2="16"></line>
+                            </svg>
+                            Add to Calendar
+                        </button>
+                    </div>
                 </div>
-                <div class="ticket-body">
-                    <div class="ticket-row">
-                        <span class="ticket-chip">QUOTA: TQ</span>
-                        <span class="ticket-chip">PNR: AUTO</span>
-                        <span class="ticket-chip">MODE: ONLINE</span>
-                    </div>
-                    <div class="ticket-divider"></div>
-                    <div class="field-row">
-                        <div class="field">
-                            <div class="hero-input-wrapper">
-                                <div class="input-wrapper-hero">
-                                    <label class="input-label" for="journey-date">Select Journey Date</label>
-                                    <div class="date-input-wrap">
-                                        <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                                        </svg>
-                                        <input id="journey-date" class="modern-input-hero" type="date"
-                                            aria-label="Select journey date for Tatkal booking date calculation">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick-status" id="quick-status">Checking Tatkal eligibility for today...</div>
-                    </div>
+                <div id="custom-calendar" class="custom-calendar-popup"></div>
+            </section>
 
-                    <div class="calculator-grid">
-                        <div>
-                            <div class="result-box future" id="result-box">
-                                <p class="result-caption">Journey Date</p>
-                                <p class="result-main" id="result-main">Select a journey date</p>
-                                <p class="result-status" id="result-status">Tatkal schedule will appear here.</p>
-                                <div class="result-sub" id="result-sub">
-                                    <p class="result-note">Tatkal opens one day before the train journey date.</p>
-                                </div>
-                            </div>
-                            <div class="action-row">
-                                <button class="btn" id="copy-btn" type="button">Copy Result</button>
-                                <button class="btn" id="share-btn" type="button">Share</button>
-                                <button class="btn" id="whatsapp-btn" type="button">WhatsApp</button>
-                                <button class="btn" id="calendar-btn" type="button">Add Reminder</button>
-                                <button class="btn primary" id="book-btn" type="button">Book on IRCTC</button>
-                            </div>
-                        </div>
+            <section class="booking-status-card" aria-label="Current Tatkal Booking Status">
+                <div id="quick-status" class="booking-info-text">Checking Tatkal eligibility for today...</div>
+            </section>
 
-                        <div>
-                            <h2 class="countdown-title">Next Tatkal Windows</h2>
-                            <div class="countdown-grid">
-                                <article class="countdown-card">
-                                    <div><span class="pill ac">10:00 AM</span>AC Tatkal</div>
-                                    <div class="countdown-date" id="ac-next-date">Loading...</div>
-                                    <div class="timer" id="ac-countdown">--:--:--</div>
-                                </article>
-                                <article class="countdown-card">
-                                    <div><span class="pill sl">11:00 AM</span>Sleeper/2S Tatkal</div>
-                                    <div class="countdown-date" id="sl-next-date">Loading...</div>
-                                    <div class="timer" id="sl-countdown">--:--:--</div>
-                                </article>
+            <section class="countdown-section" aria-label="Tatkal Countdown Timers">
+                <h2 class="countdown-section-title">⏰ Next Tatkal Windows</h2>
+                <div class="countdown-grid">
+                    <article class="countdown-card countdown-tatkal-ac">
+                        <div class="countdown-header">
+                            <span class="countdown-badge badge-tatkal-ac">10:00 AM</span>
+                            <span class="countdown-label">Tatkal AC</span>
+                        </div>
+                        <div class="tatkal-note">Book today → Travel tomorrow</div>
+                        <div class="countdown-date" id="ac-next-date">Loading...</div>
+                        <div class="opens-label" id="ac-opens-label">Booking opens in:</div>
+                        <div class="countdown-timer" id="ac-countdown">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="ac-hours">--</span>
+                                <span class="countdown-text">hrs</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="ac-minutes">--</span>
+                                <span class="countdown-text">min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="ac-seconds">--</span>
+                                <span class="countdown-text">sec</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
+                    <article class="countdown-card countdown-tatkal-sleeper">
+                        <div class="countdown-header">
+                            <span class="countdown-badge badge-tatkal-sleeper">11:00 AM</span>
+                            <span class="countdown-label">Tatkal Sleeper</span>
+                        </div>
+                        <div class="tatkal-note">Book today → Travel tomorrow</div>
+                        <div class="countdown-date" id="sl-next-date">Loading...</div>
+                        <div class="opens-label" id="sl-opens-label">Booking opens in:</div>
+                        <div class="countdown-timer" id="sl-countdown">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="sl-hours">--</span>
+                                <span class="countdown-text">hrs</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="sl-minutes">--</span>
+                                <span class="countdown-text">min</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="sl-seconds">--</span>
+                                <span class="countdown-text">sec</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
             <section class="card">
-                <h2 class="countdown-title">Tatkal Booking Availability (Next 7 Journey Days)</h2>
+                <h2 class="section-title">Tatkal Booking Availability (Next 7 Journey Days)</h2>
                 <div class="table-wrap">
                     <table>
                         <thead>
@@ -719,7 +1002,7 @@
             </section>
 
             <section class="card">
-                <h2 class="countdown-title">Tatkal Rules & Tips</h2>
+                <h2 class="section-title">Tatkal Rules & Tips</h2>
                 <ul class="rules-list">
                     <li><strong>Window:</strong> Tatkal opens <strong>1 day before journey</strong> (from train origin logic as per IRCTC rules).</li>
                     <li><strong>AC Classes:</strong> 1A, 2A, 3A, CC, EC, 3E open at <strong>10:00 AM IST</strong>.</li>
@@ -754,16 +1037,23 @@
     <script>
         (function () {
             const journeyInput = document.getElementById('journey-date');
+            const customCalendar = document.getElementById('custom-calendar');
+            const bookingMessage = document.getElementById('booking-message');
+            const bookingActions = document.getElementById('booking-actions');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
             const quickStatus = document.getElementById('quick-status');
-            const resultBox = document.getElementById('result-box');
-            const resultMain = document.getElementById('result-main');
-            const resultStatus = document.getElementById('result-status');
-            const resultSub = document.getElementById('result-sub');
             const availabilityBody = document.getElementById('availability-body');
             const acDateEl = document.getElementById('ac-next-date');
             const slDateEl = document.getElementById('sl-next-date');
-            const acCountdownEl = document.getElementById('ac-countdown');
-            const slCountdownEl = document.getElementById('sl-countdown');
+            const acHours = document.getElementById('ac-hours');
+            const acMinutes = document.getElementById('ac-minutes');
+            const acSeconds = document.getElementById('ac-seconds');
+            const slHours = document.getElementById('sl-hours');
+            const slMinutes = document.getElementById('sl-minutes');
+            const slSeconds = document.getElementById('sl-seconds');
+            const acCard = document.querySelector('.countdown-tatkal-ac');
+            const slCard = document.querySelector('.countdown-tatkal-sleeper');
+            let selectedJourneyDate = null;
 
             function getISTNow() {
                 const localNow = new Date();
@@ -793,6 +1083,14 @@
                 });
             }
 
+            function formatDateShort(date) {
+                return date.toLocaleDateString('en-IN', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                });
+            }
+
             function formatTime(date) {
                 return date.toLocaleTimeString('en-IN', {
                     hour: '2-digit',
@@ -815,48 +1113,38 @@
                 return { bookingDate, acOpen, sleeperOpen };
             }
 
-            function setResultState(state) {
-                resultBox.classList.remove('open', 'future', 'passed');
-                resultBox.classList.add(state);
+            function setMessageState(state) {
+                bookingMessage.className = 'booking-message booking-' + state;
             }
 
             function updateCalculator() {
-                if (!journeyInput.value) {
-                    setResultState('future');
-                    resultMain.textContent = 'Select a journey date';
-                    resultStatus.textContent = 'Tatkal schedule will appear here.';
-                    resultSub.innerHTML = '<p class="result-note">Tatkal opens one day before the train journey date.</p>';
+                if (!selectedJourneyDate) {
+                    bookingMessage.textContent = '';
+                    bookingMessage.className = 'booking-message';
+                    bookingActions.classList.remove('show');
                     return;
                 }
 
                 const now = getISTNow();
-                const journeyDate = parseYmd(journeyInput.value);
-                const tatkal = getTatkalForJourney(journeyDate);
-
-                resultMain.textContent = formatDate(journeyDate);
-                resultSub.innerHTML =
-                    '<div class="result-row">' +
-                    '<span class="result-row-label"><span class="pill-mini ac">AC</span>Opens</span>' +
-                    '<span class="result-row-value">' + formatDate(tatkal.acOpen) + ' • 10:00 AM IST</span>' +
-                    '</div>' +
-                    '<div class="result-row">' +
-                    '<span class="result-row-label"><span class="pill-mini sl">SL</span>Opens</span>' +
-                    '<span class="result-row-value">' + formatDate(tatkal.sleeperOpen) + ' • 11:00 AM IST</span>' +
-                    '</div>';
+                const tatkal = getTatkalForJourney(selectedJourneyDate);
+                const openLine = 'AC opens ' + formatDate(tatkal.acOpen) + ' at 10:00 AM. Sleeper/2S opens at 11:00 AM.';
 
                 if (now < tatkal.acOpen) {
-                    setResultState('future');
-                    resultStatus.textContent = 'Booking not opened yet for this journey.';
+                    setMessageState('future');
+                    bookingMessage.innerHTML = 'Tatkal opens on <strong>' + formatDate(tatkal.bookingDate) + '</strong>. ' + openLine;
                 } else if (now >= tatkal.acOpen && now < tatkal.sleeperOpen) {
-                    setResultState('open');
-                    resultStatus.textContent = 'AC Tatkal is OPEN now. Sleeper opens at 11:00 AM.';
+                    setMessageState('open');
+                    bookingMessage.innerHTML = 'AC Tatkal is open now. Sleeper/2S opens at <strong>11:00 AM</strong>.';
                 } else if (now.toDateString() === tatkal.bookingDate.toDateString()) {
-                    setResultState('open');
-                    resultStatus.textContent = 'Tatkal booking is OPEN now (subject to quota availability).';
+                    setMessageState('open');
+                    bookingMessage.textContent = 'Tatkal booking is open now.';
                 } else {
-                    setResultState('passed');
-                    resultStatus.textContent = 'Tatkal opening window has passed for this journey date.';
+                    setMessageState('passed');
+                    bookingMessage.textContent = 'Tatkal opening window has passed for this journey date.';
                 }
+
+                bookingActions.classList.add('show');
+                updateWhatsAppLink();
             }
 
             function getNextWindow(hour) {
@@ -869,25 +1157,41 @@
                 return target;
             }
 
-            function formatTimer(ms) {
-                if (ms <= 0) return '00:00:00';
+            function splitTimer(ms) {
+                if (ms <= 0) return { h: '00', m: '00', s: '00', urgent: true };
                 const total = Math.floor(ms / 1000);
-                const h = Math.floor(total / 3600);
-                const m = Math.floor((total % 3600) / 60);
-                const s = total % 60;
-                return pad(h) + ':' + pad(m) + ':' + pad(s);
+                return {
+                    h: pad(Math.floor(total / 3600)),
+                    m: pad(Math.floor((total % 3600) / 60)),
+                    s: pad(total % 60),
+                    urgent: total < 300
+                };
+            }
+
+            function paintCountdown(card, dateEl, hoursEl, minutesEl, secondsEl, opensEl, target, now, openText) {
+                const timerEl = card.querySelector('.countdown-timer');
+                const openedToday = startOfDay(target).getTime() > startOfDay(now).getTime();
+                if (openedToday) {
+                    dateEl.innerHTML = '<strong style="color: var(--accent-open); font-size: 1.1rem;">' + openText + '</strong>';
+                    timerEl.style.display = 'none';
+                    opensEl.style.display = 'none';
+                    card.classList.remove('countdown-urgent');
+                    return;
+                }
+                const parts = splitTimer(target - now);
+                dateEl.textContent = formatDate(target);
+                timerEl.style.display = 'flex';
+                opensEl.style.display = 'block';
+                hoursEl.textContent = parts.h;
+                minutesEl.textContent = parts.m;
+                secondsEl.textContent = parts.s;
+                card.classList.toggle('countdown-urgent', parts.urgent);
             }
 
             function updateCountdowns() {
                 const now = getISTNow();
-                const acTarget = getNextWindow(10);
-                const slTarget = getNextWindow(11);
-
-                acDateEl.textContent = 'Opens: ' + formatDate(acTarget);
-                slDateEl.textContent = 'Opens: ' + formatDate(slTarget);
-
-                acCountdownEl.textContent = formatTimer(acTarget - now);
-                slCountdownEl.textContent = formatTimer(slTarget - now);
+                paintCountdown(acCard, acDateEl, acHours, acMinutes, acSeconds, document.getElementById('ac-opens-label'), getNextWindow(10), now, '✅ Tatkal AC Booking is OPEN!');
+                paintCountdown(slCard, slDateEl, slHours, slMinutes, slSeconds, document.getElementById('sl-opens-label'), getNextWindow(11), now, '✅ Tatkal Sleeper Booking is OPEN!');
             }
 
             function updateQuickStatus() {
@@ -931,17 +1235,22 @@
             }
 
             function getShareText() {
-                const dateText = journeyInput.value ? formatDate(parseYmd(journeyInput.value)) : 'selected journey date';
-                return 'Tatkal Booking Date Calculator\nJourney: ' + dateText + '\n' + resultSub.textContent + '\nhttps://railbookingdate.com/pages/tatkal.html';
+                const dateText = selectedJourneyDate ? formatDate(selectedJourneyDate) : 'selected journey date';
+                const detail = bookingMessage.textContent || 'Tatkal opens one day before the journey.';
+                return 'Tatkal Booking Date Calculator\nJourney: ' + dateText + '\n' + detail + '\nhttps://railbookingdate.com/pages/tatkal.html';
+            }
+
+            function updateWhatsAppLink() {
+                whatsappBtn.href = 'https://wa.me/?text=' + encodeURIComponent(getShareText());
             }
 
             function downloadIcs() {
-                if (!journeyInput.value) {
+                if (!selectedJourneyDate) {
                     alert('Select a journey date first.');
                     return;
                 }
 
-                const journeyDate = parseYmd(journeyInput.value);
+                const journeyDate = selectedJourneyDate;
                 const tatkal = getTatkalForJourney(journeyDate);
                 const start = tatkal.acOpen;
                 const end = new Date(start.getTime() + 15 * 60000);
@@ -996,40 +1305,161 @@
                     }
                 });
 
-                document.getElementById('whatsapp-btn').addEventListener('click', function () {
-                    const url = 'https://wa.me/?text=' + encodeURIComponent(getShareText());
-                    window.open(url, '_blank', 'noopener');
-                });
-
                 document.getElementById('calendar-btn').addEventListener('click', downloadIcs);
-
-                document.getElementById('book-btn').addEventListener('click', function () {
-                    window.open('https://www.irctc.co.in/nget/train-search', '_blank', 'noopener');
-                });
             }
 
-            function initDatePickerBehavior() {
-                const supportsShowPicker = typeof journeyInput.showPicker === 'function';
-                if (!supportsShowPicker) return;
+            function startOfDay(date) {
+                const d = new Date(date);
+                d.setHours(0, 0, 0, 0);
+                return d;
+            }
 
-                const openPicker = function () {
-                    try {
-                        journeyInput.showPicker();
-                    } catch (e) {
-                        // Ignore if browser blocks programmatic picker opening.
+            function selectJourneyDate(date) {
+                selectedJourneyDate = startOfDay(date);
+                journeyInput.value = formatDateShort(selectedJourneyDate);
+                customCalendar.classList.remove('show');
+                updateCalculator();
+            }
+
+            function generateCustomCalendar() {
+                const today = startOfDay(getISTNow());
+                const todayTime = today.getTime();
+                const end = new Date(2027, 11, 31);
+                const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+                const months = [];
+                let current = new Date(today);
+
+                while (current <= end) {
+                    const key = current.getFullYear() * 12 + current.getMonth();
+                    let monthData = null;
+                    for (let i = 0; i < months.length; i++) {
+                        if (months[i].key === key) {
+                            monthData = months[i];
+                            break;
+                        }
+                    }
+                    if (!monthData) {
+                        monthData = {
+                            key: key,
+                            year: current.getFullYear(),
+                            month: current.getMonth(),
+                            name: current.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' }),
+                            days: [],
+                            firstDayOfWeek: current.getDay()
+                        };
+                        months.push(monthData);
+                    }
+                    monthData.days.push({
+                        date: current.getDate(),
+                        time: current.getTime(),
+                        isToday: current.getTime() === todayTime
+                    });
+                    current = new Date(current.getFullYear(), current.getMonth(), current.getDate() + 1);
+                }
+
+                const years = [];
+                months.forEach(function (monthData) {
+                    if (years.indexOf(monthData.year) === -1) years.push(monthData.year);
+                });
+
+                let html = '<div class="custom-calendar-wrapper">';
+                html += '<div class="popup-header-row">';
+                html += '<h3 class="calendar-picker-title">Select Date</h3>';
+                html += '<button class="calendar-close-btn" type="button" aria-label="Close calendar">&times;</button>';
+                html += '</div>';
+                html += '<div class="calendar-year-nav" role="tablist" aria-label="Jump to year">';
+                years.forEach(function (year) {
+                    const isCurrentYear = year === today.getFullYear();
+                    html += '<button type="button" class="calendar-year-btn' + (isCurrentYear ? ' active' : '') + '" data-year="' + year + '" role="tab" aria-selected="' + isCurrentYear + '">' + year + '</button>';
+                });
+                html += '</div><div class="calendar-scroll-content">';
+
+                months.forEach(function (monthData) {
+                    html += '<div class="calendar-picker-month" id="picker-month-' + monthData.year + '-' + monthData.month + '">';
+                    html += '<h4 class="calendar-picker-month-header">' + monthData.name + '</h4>';
+                    html += '<div class="calendar-picker-grid">';
+                    dayHeaders.forEach(function (d) {
+                        html += '<div class="calendar-picker-header">' + d + '</div>';
+                    });
+                    for (let i = 0; i < monthData.firstDayOfWeek; i++) {
+                        html += '<div class="calendar-picker-day disabled empty"></div>';
+                    }
+                    monthData.days.forEach(function (dayData) {
+                        const selected = selectedJourneyDate && dayData.time === selectedJourneyDate.getTime();
+                        let classes = 'calendar-picker-day';
+                        if (dayData.isToday) classes += ' today';
+                        if (selected) classes += ' selected';
+                        html += '<div class="' + classes + '" data-time="' + dayData.time + '" tabindex="0" role="button">' + dayData.date + '</div>';
+                    });
+                    const totalCells = monthData.firstDayOfWeek + monthData.days.length;
+                    const remaining = (7 - (totalCells % 7)) % 7;
+                    for (let i = 0; i < remaining; i++) {
+                        html += '<div class="calendar-picker-day disabled empty"></div>';
+                    }
+                    html += '</div></div>';
+                });
+                html += '</div></div>';
+                customCalendar.innerHTML = html;
+                customCalendar.classList.add('show');
+
+                customCalendar.querySelector('.calendar-close-btn').onclick = function (e) {
+                    e.stopPropagation();
+                    customCalendar.classList.remove('show');
+                };
+
+                customCalendar.querySelector('.calendar-scroll-content').onclick = function (e) {
+                    const target = e.target;
+                    if (target.classList.contains('calendar-picker-day') && !target.classList.contains('disabled')) {
+                        selectJourneyDate(new Date(parseInt(target.dataset.time, 10)));
                     }
                 };
 
-                journeyInput.addEventListener('click', openPicker);
-                journeyInput.addEventListener('focus', openPicker);
+                customCalendar.querySelectorAll('.calendar-year-btn').forEach(function (button) {
+                    button.onclick = function (e) {
+                        e.stopPropagation();
+                        const year = button.dataset.year;
+                        const targetMonth = year === String(today.getFullYear()) ? today.getMonth() : 0;
+                        const target = customCalendar.querySelector('#picker-month-' + year + '-' + targetMonth)
+                            || customCalendar.querySelector('[id^="picker-month-' + year + '-"]');
+                        const scrollContent = customCalendar.querySelector('.calendar-scroll-content');
+                        if (target && scrollContent) {
+                            scrollContent.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                        }
+                        customCalendar.querySelectorAll('.calendar-year-btn').forEach(function (yearButton) {
+                            const isActive = yearButton === button;
+                            yearButton.classList.toggle('active', isActive);
+                            yearButton.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        });
+                    };
+                });
+            }
+
+            function initDatePicker() {
+                journeyInput.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    generateCustomCalendar();
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!customCalendar.contains(event.target) &&
+                        event.target !== journeyInput &&
+                        customCalendar.classList.contains('show')) {
+                        customCalendar.classList.remove('show');
+                    }
+                });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && customCalendar.classList.contains('show')) {
+                        customCalendar.classList.remove('show');
+                    }
+                });
             }
 
             function setDefaultDate() {
                 const now = getISTNow();
                 const defaultJourney = new Date(now);
                 defaultJourney.setDate(defaultJourney.getDate() + 1);
-                journeyInput.min = toYmd(now);
-                journeyInput.value = toYmd(defaultJourney);
+                selectJourneyDate(defaultJourney);
             }
 
             function refreshAll() {
@@ -1039,10 +1469,9 @@
                 updateCountdowns();
             }
 
-            setDefaultDate();
-            initDatePickerBehavior();
+            initDatePicker();
             initActions();
-            journeyInput.addEventListener('change', refreshAll);
+            setDefaultDate();
             refreshAll();
             setInterval(function () {
                 updateCountdowns();

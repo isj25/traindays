@@ -10,10 +10,15 @@ const BOOKING_CONFIG = {
     ADVANCE_DAYS: 60,
     CALENDAR_DAYS: 90,
     PICKER_DAYS: 120,
+    CALENDAR_END_YEAR: 2027,
     BOOKING_OPEN_TIME: '8:00 AM',
     TATKAL_AC_TIME: '10:00 AM',
     TATKAL_SLEEPER_TIME: '11:00 AM'
 };
+
+function getCalendarEndTime() {
+    return new Date(BOOKING_CONFIG.CALENDAR_END_YEAR, 11, 31).getTime();
+}
 
 // Cache DOM elements
 let cachedElements = null;
@@ -331,7 +336,7 @@ function generate2026Calendar() {
 
     // Start from current month
     const startTime = new Date(today.getFullYear(), today.getMonth(), 1).getTime();
-    const endTime = new Date('2026-12-31T23:59:59+05:30').getTime();
+    const endTime = getCalendarEndTime();
 
     // Update booking info card
     const sixtyDaysLater = new Date(sixtyDaysTime);
@@ -557,7 +562,7 @@ function generateCustomCalendar() {
     const customCalendar = elements.customCalendar;
     const today = getIndianDate();
     const todayTime = today.getTime();
-    const endTime = todayTime + (BOOKING_CONFIG.PICKER_DAYS * 86400000);
+    const endTime = getCalendarEndTime();
 
     // Build calendar HTML using template strings (faster than DOM manipulation)
     const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -572,6 +577,8 @@ function generateCustomCalendar() {
         if (!monthData) {
             monthData = {
                 key: monthKey,
+                year: currentDate.getFullYear(),
+                month: currentDate.getMonth(),
                 name: currentDate.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' }),
                 days: [],
                 firstDayOfWeek: null
@@ -593,15 +600,23 @@ function generateCustomCalendar() {
         currentTime += 86400000;
     }
 
+    const years = [...new Set(months.map(monthData => monthData.year))];
+
     let html = '<div class="custom-calendar-wrapper">';
     html += '<div class="popup-header-row">';
     html += '<h3 class="calendar-picker-title">Select Date</h3>';
     html += '<button class="calendar-close-btn" aria-label="Close calendar">&times;</button>';
     html += '</div>';
+    html += '<div class="calendar-year-nav" role="tablist" aria-label="Jump to year">';
+    years.forEach(year => {
+        const isCurrentYear = year === today.getFullYear();
+        html += `<button type="button" class="calendar-year-btn${isCurrentYear ? ' active' : ''}" data-year="${year}" role="tab" aria-selected="${isCurrentYear}">${year}</button>`;
+    });
+    html += '</div>';
     html += '<div class="calendar-scroll-content">';
 
     months.forEach(monthData => {
-        html += '<div class="calendar-picker-month">';
+        html += `<div class="calendar-picker-month" id="picker-month-${monthData.year}-${monthData.month}">`;
         html += `<h4 class="calendar-picker-month-header">${monthData.name}</h4>`;
         html += '<div class="calendar-picker-grid">';
 
@@ -653,6 +668,25 @@ function generateCustomCalendar() {
         e.stopPropagation();
         customCalendar.classList.remove('show');
     };
+
+    customCalendar.querySelectorAll('.calendar-year-btn').forEach(button => {
+        button.onclick = (e) => {
+            e.stopPropagation();
+            const year = button.dataset.year;
+            const targetMonth = year === String(today.getFullYear()) ? today.getMonth() : 0;
+            const target = customCalendar.querySelector(`#picker-month-${year}-${targetMonth}`)
+                || customCalendar.querySelector(`[id^="picker-month-${year}-"]`);
+            const scrollContent = customCalendar.querySelector('.calendar-scroll-content');
+            if (target && scrollContent) {
+                scrollContent.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+            }
+            customCalendar.querySelectorAll('.calendar-year-btn').forEach(yearButton => {
+                const isActive = yearButton === button;
+                yearButton.classList.toggle('active', isActive);
+                yearButton.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+        };
+    });
 }
 
 function handleCalendarClick(e) {
@@ -737,9 +771,10 @@ function handleDateSelection() {
         const bookingDate = new Date(selectedTime - (BOOKING_CONFIG.ADVANCE_DAYS * 86400000));
         const bookingDay = bookingDate.getDate();
         const bookingMonth = bookingDate.toLocaleDateString('en-IN', { month: 'long' });
+        const bookingYear = bookingDate.getFullYear();
         const bookingWeekday = bookingDate.toLocaleDateString('en-IN', { weekday: 'long' });
 
-        elements.bookingMessage.innerHTML = `Booking opens on <strong>${bookingDay} ${bookingMonth}</strong> (${bookingWeekday}) at ${BOOKING_CONFIG.BOOKING_OPEN_TIME}`;
+        elements.bookingMessage.innerHTML = `Booking opens on <strong>${bookingDay} ${bookingMonth} ${bookingYear}</strong> (${bookingWeekday}) at ${BOOKING_CONFIG.BOOKING_OPEN_TIME}`;
         elements.bookingMessage.className = 'booking-message booking-future';
 
         // Show calendar button for future booking dates
