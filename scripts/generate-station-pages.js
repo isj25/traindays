@@ -187,6 +187,8 @@ function stationPage(station, related) {
 
 <head>
     <meta name="google-adsense-account" content="ca-pub-5018644317959743">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
+        crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -398,6 +400,8 @@ function indexPage(stations) {
 
 <head>
     <meta name="google-adsense-account" content="ca-pub-5018644317959743">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
+        crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -508,6 +512,8 @@ function trainsSearchPage(stations) {
 
 <head>
     <meta name="google-adsense-account" content="ca-pub-5018644317959743">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
+        crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NL4NTX1D6V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

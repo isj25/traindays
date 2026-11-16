@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
+        crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2027 Holiday Train Booking Dates | 1 Day Earlier | IRCTC</title>
-    <meta name="description" content="2027 India holiday calendar with IRCTC train booking dates. Each booking date is shown 1 day earlier than the 60-day opening so you can be ready before tickets go on sale at 8:00 AM.">
+    <title>2027 Holiday Train Booking Dates | Long Weekends | IRCTC</title>
+    <meta name="description" content="2027 India holiday calendar with IRCTC train booking dates. See when to book the holiday, the day before, and two days before, plus which holidays make a long weekend.">
     <link rel="canonical" href="https://railbookingdate.com/pages/holidays-2027.html">
     <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96.png">
     <link rel="shortcut icon" href="../favicon.ico">
@@ -37,7 +39,7 @@
             background: var(--bg-app);
             line-height: 1.5;
         }
-        .app-container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+        .app-container { max-width: 1320px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
         h1 {
             font-family: var(--font-heading);
             font-size: clamp(1.6rem, 4vw, 2.3rem);
@@ -63,7 +65,7 @@
             overflow-x: auto;
             box-shadow: 0 8px 24px rgb(26 54 93 / 0.06);
         }
-        table { width: 100%; border-collapse: collapse; min-width: 860px; }
+        table { width: 100%; border-collapse: collapse; min-width: 1380px; }
         th, td { padding: 0.85rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border-light); vertical-align: top; }
         th {
             font-size: 0.75rem;
@@ -73,7 +75,28 @@
             background: var(--bg-app);
             position: sticky;
             top: 0;
+            z-index: 2;
         }
+        th:first-child, td:first-child,
+        th:nth-child(2), td:nth-child(2) {
+            position: sticky;
+            background: var(--bg-card);
+            z-index: 1;
+        }
+        th:first-child, td:first-child { left: 0; min-width: 11.5rem; }
+        th:nth-child(2), td:nth-child(2) {
+            left: 11.5rem;
+            min-width: 9.5rem;
+            box-shadow: 8px 0 8px -8px rgb(26 54 93 / 0.28);
+        }
+        thead th:first-child, thead th:nth-child(2) {
+            z-index: 3;
+            background: var(--bg-app);
+        }
+        tr.long-weekend td:first-child,
+        tr.long-weekend td:nth-child(2) { background: #f0fdf4; }
+        [data-theme="dark"] tr.long-weekend td:first-child,
+        [data-theme="dark"] tr.long-weekend td:nth-child(2) { background: #052e26; }
         td.earlier {
             background: #fff3e6;
             font-weight: 700;
@@ -91,6 +114,66 @@
             color: var(--text-secondary);
         }
         td.earlier .time { color: var(--primary); }
+        .th-sub {
+            display: block;
+            margin-top: 0.15rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: none;
+            color: var(--text-primary);
+        }
+        .board-date { display: block; font-weight: 700; }
+        .time.ready { color: var(--primary); text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+        .time.opens { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+        .lw-badge {
+            display: block;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 8px;
+            padding: 0.4rem 0.55rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .lw-badge + .lw-badge { margin-top: 0.35rem; }
+        .lw-gap { display: none; }
+        .lw-sub { display: block; font-size: 0.75rem; font-weight: 700; }
+        .lw-none { color: var(--text-secondary); }
+        tr.long-weekend { background: #f0fdf4; }
+        [data-theme="dark"] .lw-badge { background: #064e3b; color: #a7f3d0; }
+        [data-theme="dark"] tr.long-weekend { background: #052e26; }
+        .weekends { margin: 0 0 1.25rem; }
+        .weekends h2 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin: 0 0 0.35rem;
+        }
+        .weekends > p { margin: 0; color: var(--text-secondary); }
+        .weekend-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.75rem;
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0;
+        }
+        .weekend-list a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-left: 4px solid #059669;
+            border-radius: 12px;
+            padding: 0.8rem 0.9rem;
+        }
+        .weekend-list a:hover { border-color: #059669; }
+        .weekend-list strong { display: block; }
+        .wk-names, .wk-how { display: block; color: var(--text-secondary); font-size: 0.86rem; }
+        .wk-how { margin-top: 0.2rem; font-weight: 700; color: #065f46; }
+        [data-theme="dark"] .wk-how { color: #a7f3d0; }
+        tbody tr { scroll-margin-top: 0.75rem; }
         tbody tr { cursor: help; }
         .row-tip {
             position: fixed;
@@ -132,7 +215,11 @@
                 text-transform: uppercase;
                 color: var(--text-secondary);
             }
-            td.earlier { border-radius: 10px; padding: 0.55rem 0.7rem; margin-top: 0.35rem; }
+            th:first-child, td:first-child,
+            th:nth-child(2), td:nth-child(2) { position: static; left: auto; min-width: 0; box-shadow: none; }
+            td.earlier, td.board, td.lw { border-radius: 10px; padding: 0.55rem 0.7rem; margin-top: 0.35rem; }
+            td.board { background: #fff; }
+            [data-theme="dark"] td.board { background: transparent; }
         }
     </style>
 </head>
@@ -147,14 +234,201 @@
         </nav>
         <header>
             <h1>2027 Holiday Train Booking Dates</h1>
-            <p class="subtitle">India holiday calendar for 2027, with the IRCTC reservation date shown 1 day earlier.</p>
+            <p class="subtitle">When to book trains for each 2027 holiday, including the day before and two days before, and which dates make a long weekend.</p>
         </header>
         <div class="notice">
-            <strong>Booking date is 1 day earlier.</strong>
-            <p>IRCTC general booking opens at 8:00 AM, exactly 60 days before the journey. The highlighted date on this page is <strong>1 day before that opening day</strong>. Use it to log in and keep passenger details ready. Tickets themselves open the next morning at 8:00 AM, which is the date in the “IRCTC opens” column.</p>
+            <strong>Booking opens at 8:00 AM, 60 days before you board.</strong>
+            <p>The orange date is the day before tickets open. Use it to log in and keep passenger details and payment ready. Tickets open the next morning at 8:00 AM. That morning is the date in the “IRCTC opens” column.</p>
+            <p><strong>Friday, 1 January 2027</strong> is New Year’s Day. To board on <strong>Thursday, 31 December 2026</strong>, IRCTC opens on Sunday, 1 November 2026 at 8:00 AM. To board on <strong>Wednesday, 30 December 2026</strong>, IRCTC opens on Saturday, 31 October 2026 at 8:00 AM. Every holiday below has those same two columns.</p>
+            <p>Green rows are long weekends: a holiday already joined to Saturday and Sunday, or one leave day that joins them.</p>
             <p>Lunar festivals marked tentative, including Ramadan, Ramzan Id, Bakrid, Muharram, and Milad un-Nabi, can shift by a day when the moon is sighted.</p>
-            <p>Hover any row to see why the earlier date is preferred, with an example for that holiday.</p>
         </div>
+        <section class="weekends" aria-labelledby="long-weekends-title">
+            <h2 id="long-weekends-title">Long weekend opportunities</h2>
+            <p>A Friday or Monday holiday already joins Saturday and Sunday. A Tuesday or Thursday holiday becomes a longer break when you take the single day between the holiday and the weekend. “If observed” means the weekday is a restricted holiday, so only some offices close.</p>
+            <ul class="weekend-list">
+<li><a href="#h-2027-01-01">
+<strong>Fri 1 Jan – Sun 3 Jan</strong>
+<span class="wk-names">New Year's Day</span>
+<span class="wk-how">3-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-01-14">
+<strong>Thu 14 Jan – Sun 17 Jan</strong>
+<span class="wk-names">Makar Sankranti, Pongal, Guru Govind Singh Jayanti</span>
+<span class="wk-how">4-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-01-26">
+<strong>Sat 23 Jan – Tue 26 Jan</strong>
+<span class="wk-names">Republic Day</span>
+<span class="wk-how">Take Mon 25 Jan off</span>
+</a></li>
+<li><a href="#h-2027-02-11">
+<strong>Thu 11 Feb – Sun 14 Feb</strong>
+<span class="wk-names">Vasant Panchami</span>
+<span class="wk-how">Take Fri 12 Feb off · if observed</span>
+</a></li>
+<li><a href="#h-2027-02-19">
+<strong>Fri 19 Feb – Sun 21 Feb</strong>
+<span class="wk-names">Shivaji Jayanti, Guru Ravidas Jayanti</span>
+<span class="wk-how">3-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-03-02">
+<strong>Sat 27 Feb – Tue 2 Mar</strong>
+<span class="wk-names">Maharishi Dayanand Saraswati Jayanti</span>
+<span class="wk-how">Take Mon 1 Mar off · if observed</span>
+</a></li>
+<li><a href="#h-2027-03-05">
+<strong>Fri 5 Mar – Sun 7 Mar</strong>
+<span class="wk-names">Jamat Ul-Vida, Maha Shivaratri</span>
+<span class="wk-how">3-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-03-22">
+<strong>Sat 20 Mar – Mon 22 Mar</strong>
+<span class="wk-names">Holi, Dolyatra, Holika Dahana</span>
+<span class="wk-how">3-day weekend</span>
+</a></li>
+<li><a href="#h-2027-03-26">
+<strong>Fri 26 Mar – Sun 28 Mar</strong>
+<span class="wk-names">Good Friday, Easter Day</span>
+<span class="wk-how">3-day weekend</span>
+</a></li>
+<li><a href="#h-2027-04-14">
+<strong>Wed 14 Apr – Mon 19 Apr</strong>
+<span class="wk-names">Vaisakhi, Vishu, Mesadi, Ambedkar Jayanti, Rama Navami, Bahag Bihu (Assam), Vaisakhadi (Bengal), Mahavir Jayanti</span>
+<span class="wk-how">Take Fri 16 Apr off · if observed</span>
+</a></li>
+<li><a href="#h-2027-04-15">
+<strong>Thu 15 Apr – Mon 19 Apr</strong>
+<span class="wk-names">Rama Navami, Bahag Bihu (Assam), Vaisakhadi (Bengal), Mahavir Jayanti</span>
+<span class="wk-how">Take Fri 16 Apr off</span>
+</a></li>
+<li><a href="#h-2027-04-19">
+<strong>Sat 17 Apr – Mon 19 Apr</strong>
+<span class="wk-names">Mahavir Jayanti</span>
+<span class="wk-how">3-day weekend</span>
+</a></li>
+<li><a href="#h-2027-05-09">
+<strong>Fri 7 May – Sun 9 May</strong>
+<span class="wk-names">Mother's Day, Birthday of Rabindranath</span>
+<span class="wk-how">Take Fri 7 May off</span>
+</a></li>
+<li><a href="#h-2027-05-09">
+<strong>Sat 8 May – Mon 10 May</strong>
+<span class="wk-names">Mother's Day, Birthday of Rabindranath</span>
+<span class="wk-how">Take Mon 10 May off</span>
+</a></li>
+<li><a href="#h-2027-05-17">
+<strong>Sat 15 May – Mon 17 May</strong>
+<span class="wk-names">Bakrid (Tentative Date)</span>
+<span class="wk-how">3-day weekend</span>
+</a></li>
+<li><a href="#h-2027-05-20">
+<strong>Thu 20 May – Sun 23 May</strong>
+<span class="wk-names">Buddha Purnima</span>
+<span class="wk-how">Take Fri 21 May off</span>
+</a></li>
+<li><a href="#h-2027-07-05">
+<strong>Sat 3 Jul – Mon 5 Jul</strong>
+<span class="wk-names">Rath Yatra</span>
+<span class="wk-how">3-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-08-15">
+<strong>Fri 13 Aug – Sun 15 Aug</strong>
+<span class="wk-names">Independence Day, Milad un-Nabi (Tentative Date), Parsi New Year</span>
+<span class="wk-how">Take Fri 13 Aug off</span>
+</a></li>
+<li><a href="#h-2027-08-15">
+<strong>Sat 14 Aug – Mon 16 Aug</strong>
+<span class="wk-names">Independence Day, Milad un-Nabi (Tentative Date), Parsi New Year</span>
+<span class="wk-how">Take Mon 16 Aug off</span>
+</a></li>
+<li><a href="#h-2027-08-15">
+<strong>Sat 14 Aug – Tue 17 Aug</strong>
+<span class="wk-names">Independence Day, Milad un-Nabi (Tentative Date), Parsi New Year, Raksha Bandhan</span>
+<span class="wk-how">Take Mon 16 Aug off · if observed</span>
+</a></li>
+<li><a href="#h-2027-09-04">
+<strong>Fri 3 Sep – Sun 5 Sep</strong>
+<span class="wk-names">Ganesh Chaturthi</span>
+<span class="wk-how">Take Fri 3 Sep off</span>
+</a></li>
+<li><a href="#h-2027-09-04">
+<strong>Sat 4 Sep – Mon 6 Sep</strong>
+<span class="wk-names">Ganesh Chaturthi</span>
+<span class="wk-how">Take Mon 6 Sep off</span>
+</a></li>
+<li><a href="#h-2027-09-12">
+<strong>Fri 10 Sep – Sun 12 Sep</strong>
+<span class="wk-names">Onam</span>
+<span class="wk-how">Take Fri 10 Sep off</span>
+</a></li>
+<li><a href="#h-2027-09-12">
+<strong>Sat 11 Sep – Mon 13 Sep</strong>
+<span class="wk-names">Onam</span>
+<span class="wk-how">Take Mon 13 Sep off</span>
+</a></li>
+<li><a href="#h-2027-10-02">
+<strong>Fri 1 Oct – Sun 3 Oct</strong>
+<span class="wk-names">Mahatma Gandhi Jayanti</span>
+<span class="wk-how">Take Fri 1 Oct off</span>
+</a></li>
+<li><a href="#h-2027-10-02">
+<strong>Sat 2 Oct – Mon 4 Oct</strong>
+<span class="wk-names">Mahatma Gandhi Jayanti</span>
+<span class="wk-how">Take Mon 4 Oct off</span>
+</a></li>
+<li><a href="#h-2027-10-06">
+<strong>Wed 6 Oct – Sun 10 Oct</strong>
+<span class="wk-names">Maha Saptami, Maha Ashtami, Maha Navami, Dussehra</span>
+<span class="wk-how">5-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-10-15">
+<strong>Fri 15 Oct – Mon 18 Oct</strong>
+<span class="wk-names">Maharishi Valmiki Jayanti, Karaka Chaturthi</span>
+<span class="wk-how">4-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-10-28">
+<strong>Thu 28 Oct – Sun 31 Oct</strong>
+<span class="wk-names">Naraka Chaturdasi, Diwali/Deepavali, Govardhan Puja, Halloween, Bhai Duj</span>
+<span class="wk-how">4-day weekend · if observed</span>
+</a></li>
+<li><a href="#h-2027-10-29">
+<strong>Fri 29 Oct – Sun 31 Oct</strong>
+<span class="wk-names">Diwali/Deepavali, Govardhan Puja, Halloween, Bhai Duj</span>
+<span class="wk-how">3-day weekend</span>
+</a></li>
+<li><a href="#h-2027-11-04">
+<strong>Thu 4 Nov – Sun 7 Nov</strong>
+<span class="wk-names">Chhat Puja (Pratihar Sashthi/Surya Sashthi)</span>
+<span class="wk-how">Take Fri 5 Nov off · if observed</span>
+</a></li>
+<li><a href="#h-2027-11-14">
+<strong>Fri 12 Nov – Sun 14 Nov</strong>
+<span class="wk-names">Guru Nanak Jayanti</span>
+<span class="wk-how">Take Fri 12 Nov off</span>
+</a></li>
+<li><a href="#h-2027-11-14">
+<strong>Sat 13 Nov – Mon 15 Nov</strong>
+<span class="wk-names">Guru Nanak Jayanti</span>
+<span class="wk-how">Take Mon 15 Nov off</span>
+</a></li>
+<li><a href="#h-2027-12-12">
+<strong>Fri 10 Dec – Sun 12 Dec</strong>
+<span class="wk-names">Hazarat Ali's Birthday</span>
+<span class="wk-how">Take Fri 10 Dec off</span>
+</a></li>
+<li><a href="#h-2027-12-12">
+<strong>Sat 11 Dec – Mon 13 Dec</strong>
+<span class="wk-names">Hazarat Ali's Birthday</span>
+<span class="wk-how">Take Mon 13 Dec off</span>
+</a></li>
+<li><a href="#h-2027-12-24">
+<strong>Fri 24 Dec – Sun 26 Dec</strong>
+<span class="wk-names">Christmas Eve, First Day of Hanukkah, Christmas</span>
+<span class="wk-how">3-day weekend · if observed</span>
+</a></li>
+            </ul>
+        </section>
         <div class="card">
             <table>
                 <thead>
@@ -163,429 +437,1092 @@
                         <th>Name</th>
                         <th>Type</th>
                         <th>IRCTC opens (60 days)</th>
-                        <th>Book 1 day earlier</th>
+                        <th>Be ready<span class="th-sub">Day before tickets open</span></th>
+                        <th>Board 1 day before<span class="th-sub">When to book</span></th>
+                        <th>Board 2 days before<span class="th-sub">When to book</span></th>
+                        <th>Long weekend</th>
                     </tr>
                 </thead>
                 <tbody>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-01-01">
 <td data-label="Holiday">Friday, 1 January 2027</td>
 <td data-label="Name">New Year's Day</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 2 November 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 1 November 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 1 November 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 31 December 2026</span>
+<span class="time opens">Opens Sunday, 1 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 31 October 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 30 December 2026</span>
+<span class="time opens">Opens Saturday, 31 October 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 30 October 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 1 Jan – Sun 3 Jan<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-01-14">
 <td data-label="Holiday">Thursday, 14 January 2027</td>
 <td data-label="Name">Makar Sankranti</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 15 November 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 14 November 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 14 November 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 13 January 2027</span>
+<span class="time opens">Opens Saturday, 14 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 13 November 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 12 January 2027</span>
+<span class="time opens">Opens Friday, 13 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 12 November 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 14 Jan – Sun 17 Jan<span class="lw-gap">. </span><span class="lw-sub">4-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-01-15">
 <td data-label="Holiday">Friday, 15 January 2027</td>
 <td data-label="Name">Pongal<br>Guru Govind Singh Jayanti</td>
 <td data-label="Type">Restricted Holiday<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 16 November 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 15 November 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 15 November 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 14 January 2027</span>
+<span class="time opens">Opens Sunday, 15 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 14 November 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 13 January 2027</span>
+<span class="time opens">Opens Saturday, 14 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 13 November 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 14 Jan – Sun 17 Jan<span class="lw-gap">. </span><span class="lw-sub">4-day weekend · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-01-26">
 <td data-label="Holiday">Tuesday, 26 January 2027</td>
 <td data-label="Name">Republic Day</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Friday, 27 November 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Thursday, 26 November 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Thursday, 26 November 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Monday, 25 January 2027</span>
+<span class="time opens">Opens Thursday, 26 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 25 November 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Sunday, 24 January 2027</span>
+<span class="time opens">Opens Wednesday, 25 November 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 24 November 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 23 Jan – Tue 26 Jan<span class="lw-gap">. </span><span class="lw-sub">Take Mon 25 Jan off</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-02-06">
 <td data-label="Holiday">Saturday, 6 February 2027</td>
 <td data-label="Name">Lunar New Year</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Tuesday, 8 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 7 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 7 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 5 February 2027</span>
+<span class="time opens">Opens Monday, 7 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 6 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 4 February 2027</span>
+<span class="time opens">Opens Sunday, 6 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 5 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-02-09">
 <td data-label="Holiday">Tuesday, 9 February 2027</td>
 <td data-label="Name">Ramadan Start (Tentative Date)</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Friday, 11 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Thursday, 10 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Thursday, 10 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Monday, 8 February 2027</span>
+<span class="time opens">Opens Thursday, 10 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 9 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Sunday, 7 February 2027</span>
+<span class="time opens">Opens Wednesday, 9 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 8 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-02-11">
 <td data-label="Holiday">Thursday, 11 February 2027</td>
 <td data-label="Name">Vasant Panchami</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 13 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 12 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 12 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 10 February 2027</span>
+<span class="time opens">Opens Saturday, 12 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 11 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 9 February 2027</span>
+<span class="time opens">Opens Friday, 11 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 10 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 11 Feb – Sun 14 Feb<span class="lw-gap">. </span><span class="lw-sub">Take Fri 12 Feb off · if observed</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-02-14">
 <td data-label="Holiday">Sunday, 14 February 2027</td>
 <td data-label="Name">Valentine's Day</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Wednesday, 16 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 15 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 15 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 13 February 2027</span>
+<span class="time opens">Opens Tuesday, 15 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 14 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 12 February 2027</span>
+<span class="time opens">Opens Monday, 14 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 13 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-02-19">
 <td data-label="Holiday">Friday, 19 February 2027</td>
 <td data-label="Name">Shivaji Jayanti</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 21 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 20 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 20 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 18 February 2027</span>
+<span class="time opens">Opens Sunday, 20 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 19 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 17 February 2027</span>
+<span class="time opens">Opens Saturday, 19 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 18 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 19 Feb – Sun 21 Feb<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-02-20">
 <td data-label="Holiday">Saturday, 20 February 2027</td>
 <td data-label="Name">Guru Ravidas Jayanti</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 22 December 2026<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 21 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 21 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 19 February 2027</span>
+<span class="time opens">Opens Monday, 21 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 20 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 18 February 2027</span>
+<span class="time opens">Opens Sunday, 20 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 19 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 19 Feb – Sun 21 Feb<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-03-02">
 <td data-label="Holiday">Tuesday, 2 March 2027</td>
 <td data-label="Name">Maharishi Dayanand Saraswati Jayanti</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Friday, 1 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Thursday, 31 December 2026<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Thursday, 31 December 2026<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Monday, 1 March 2027</span>
+<span class="time opens">Opens Thursday, 31 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 30 December 2026</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Sunday, 28 February 2027</span>
+<span class="time opens">Opens Wednesday, 30 December 2026 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 29 December 2026</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 27 Feb – Tue 2 Mar<span class="lw-gap">. </span><span class="lw-sub">Take Mon 1 Mar off · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-03-05">
 <td data-label="Holiday">Friday, 5 March 2027</td>
 <td data-label="Name">Jamat Ul-Vida</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 4 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 3 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 3 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 4 March 2027</span>
+<span class="time opens">Opens Sunday, 3 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 2 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 3 March 2027</span>
+<span class="time opens">Opens Saturday, 2 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 1 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 5 Mar – Sun 7 Mar<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-03-06">
 <td data-label="Holiday">Saturday, 6 March 2027</td>
 <td data-label="Name">Maha Shivaratri</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 5 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 4 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 4 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 5 March 2027</span>
+<span class="time opens">Opens Monday, 4 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 3 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 4 March 2027</span>
+<span class="time opens">Opens Sunday, 3 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 2 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 5 Mar – Sun 7 Mar<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted" id="h-2027-03-10">
 <td data-label="Holiday">Wednesday, 10 March 2027</td>
 <td data-label="Name">Ramzan Id (Tentative Date)</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Saturday, 9 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 8 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 8 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 9 March 2027</span>
+<span class="time opens">Opens Friday, 8 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 7 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 8 March 2027</span>
+<span class="time opens">Opens Thursday, 7 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 6 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-03-21">
 <td data-label="Holiday">Sunday, 21 March 2027</td>
 <td data-label="Name">March Equinox</td>
 <td data-label="Type">Season</td>
 <td data-label="IRCTC opens">Wednesday, 20 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 19 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 19 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 20 March 2027</span>
+<span class="time opens">Opens Tuesday, 19 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 18 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 19 March 2027</span>
+<span class="time opens">Opens Monday, 18 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 17 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-03-22">
 <td data-label="Holiday">Monday, 22 March 2027</td>
 <td data-label="Name">Holi<br>Dolyatra<br>Holika Dahana</td>
 <td data-label="Type">Gazetted Holiday<br>Restricted Holiday<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Thursday, 21 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 20 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 20 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 21 March 2027</span>
+<span class="time opens">Opens Wednesday, 20 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 19 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 20 March 2027</span>
+<span class="time opens">Opens Tuesday, 19 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 18 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 20 Mar – Mon 22 Mar<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-03-25">
 <td data-label="Holiday">Thursday, 25 March 2027</td>
 <td data-label="Name">Maundy Thursday</td>
 <td data-label="Type">Observance, Christian</td>
 <td data-label="IRCTC opens">Sunday, 24 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 23 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 23 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 24 March 2027</span>
+<span class="time opens">Opens Saturday, 23 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 22 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 23 March 2027</span>
+<span class="time opens">Opens Friday, 22 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 21 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-03-26">
 <td data-label="Holiday">Friday, 26 March 2027</td>
 <td data-label="Name">Good Friday</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Monday, 25 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 24 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 24 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 25 March 2027</span>
+<span class="time opens">Opens Sunday, 24 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 23 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 24 March 2027</span>
+<span class="time opens">Opens Saturday, 23 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 22 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 26 Mar – Sun 28 Mar<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-03-28">
 <td data-label="Holiday">Sunday, 28 March 2027</td>
 <td data-label="Name">Easter Day</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 27 January 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 26 January 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 26 January 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 27 March 2027</span>
+<span class="time opens">Opens Tuesday, 26 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 25 January 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 26 March 2027</span>
+<span class="time opens">Opens Monday, 25 January 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 24 January 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 26 Mar – Sun 28 Mar<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted" id="h-2027-04-07">
 <td data-label="Holiday">Wednesday, 7 April 2027</td>
 <td data-label="Name">Chaitra Sukhladi<br>Ugadi<br>Gudi Padwa<br>Cheti Chand</td>
 <td data-label="Type">Restricted Holiday<br>Restricted Holiday<br>Restricted Holiday<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Saturday, 6 February 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 5 February 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 5 February 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 6 April 2027</span>
+<span class="time opens">Opens Friday, 5 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 4 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 5 April 2027</span>
+<span class="time opens">Opens Thursday, 4 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 3 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-04-14">
 <td data-label="Holiday">Wednesday, 14 April 2027</td>
 <td data-label="Name">Vaisakhi<br>Vishu<br>Mesadi<br>Ambedkar Jayanti</td>
 <td data-label="Type">Restricted Holiday<br>Restricted Holiday<br>Restricted Holiday<br>Observance</td>
 <td data-label="IRCTC opens">Saturday, 13 February 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 12 February 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 12 February 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 13 April 2027</span>
+<span class="time opens">Opens Friday, 12 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 11 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 12 April 2027</span>
+<span class="time opens">Opens Thursday, 11 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 10 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Wed 14 Apr – Mon 19 Apr<span class="lw-gap">. </span><span class="lw-sub">Take Fri 16 Apr off · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-04-15">
 <td data-label="Holiday">Thursday, 15 April 2027</td>
 <td data-label="Name">Rama Navami<br>Bahag Bihu (Assam)<br>Vaisakhadi (Bengal)</td>
 <td data-label="Type">Gazetted Holiday<br>Restricted Holiday<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 14 February 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 13 February 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 13 February 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 14 April 2027</span>
+<span class="time opens">Opens Saturday, 13 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 12 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 13 April 2027</span>
+<span class="time opens">Opens Friday, 12 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 11 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 15 Apr – Mon 19 Apr<span class="lw-gap">. </span><span class="lw-sub">Take Fri 16 Apr off</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-04-19">
 <td data-label="Holiday">Monday, 19 April 2027</td>
 <td data-label="Name">Mahavir Jayanti</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Thursday, 18 February 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 17 February 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 17 February 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 18 April 2027</span>
+<span class="time opens">Opens Wednesday, 17 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 16 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 17 April 2027</span>
+<span class="time opens">Opens Tuesday, 16 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 15 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 17 Apr – Mon 19 Apr<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-04-22">
 <td data-label="Holiday">Thursday, 22 April 2027</td>
 <td data-label="Name">First day of Passover</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Sunday, 21 February 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 20 February 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 20 February 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 21 April 2027</span>
+<span class="time opens">Opens Saturday, 20 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 19 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 20 April 2027</span>
+<span class="time opens">Opens Friday, 19 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 18 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-05-01">
 <td data-label="Holiday">Saturday, 1 May 2027</td>
 <td data-label="Name">International Worker's Day</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Tuesday, 2 March 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 1 March 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 1 March 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 30 April 2027</span>
+<span class="time opens">Opens Monday, 1 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 28 February 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 29 April 2027</span>
+<span class="time opens">Opens Sunday, 28 February 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 27 February 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-05-09">
 <td data-label="Holiday">Sunday, 9 May 2027</td>
 <td data-label="Name">Mother's Day<br>Birthday of Rabindranath</td>
 <td data-label="Type">Observance<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 10 March 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 9 March 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 9 March 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 8 May 2027</span>
+<span class="time opens">Opens Tuesday, 9 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 8 March 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 7 May 2027</span>
+<span class="time opens">Opens Monday, 8 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 7 March 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 7 May – Sun 9 May<span class="lw-gap">. </span><span class="lw-sub">Take Fri 7 May off</span></span><span class="lw-badge">Sat 8 May – Mon 10 May<span class="lw-gap">. </span><span class="lw-sub">Take Mon 10 May off</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-05-17">
 <td data-label="Holiday">Monday, 17 May 2027</td>
 <td data-label="Name">Bakrid (Tentative Date)</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Thursday, 18 March 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 17 March 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 17 March 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 16 May 2027</span>
+<span class="time opens">Opens Wednesday, 17 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 16 March 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 15 May 2027</span>
+<span class="time opens">Opens Tuesday, 16 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 15 March 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 15 May – Mon 17 May<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-05-20">
 <td data-label="Holiday">Thursday, 20 May 2027</td>
 <td data-label="Name">Buddha Purnima</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 21 March 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 20 March 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 20 March 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 19 May 2027</span>
+<span class="time opens">Opens Saturday, 20 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 19 March 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 18 May 2027</span>
+<span class="time opens">Opens Friday, 19 March 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 18 March 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 20 May – Sun 23 May<span class="lw-gap">. </span><span class="lw-sub">Take Fri 21 May off</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted" id="h-2027-06-16">
 <td data-label="Holiday">Wednesday, 16 June 2027</td>
 <td data-label="Name">Muharram/Ashura (Tentative Date)</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Saturday, 17 April 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 16 April 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 16 April 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 15 June 2027</span>
+<span class="time opens">Opens Friday, 16 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 15 April 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 14 June 2027</span>
+<span class="time opens">Opens Thursday, 15 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 14 April 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-06-20">
 <td data-label="Holiday">Sunday, 20 June 2027</td>
 <td data-label="Name">Father's Day</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Wednesday, 21 April 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 20 April 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 20 April 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 19 June 2027</span>
+<span class="time opens">Opens Tuesday, 20 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 19 April 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 18 June 2027</span>
+<span class="time opens">Opens Monday, 19 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 18 April 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-06-21">
 <td data-label="Holiday">Monday, 21 June 2027</td>
 <td data-label="Name">June Solstice</td>
 <td data-label="Type">Season</td>
 <td data-label="IRCTC opens">Thursday, 22 April 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 21 April 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 21 April 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 20 June 2027</span>
+<span class="time opens">Opens Wednesday, 21 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 20 April 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 19 June 2027</span>
+<span class="time opens">Opens Tuesday, 20 April 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 19 April 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-07-05">
 <td data-label="Holiday">Monday, 5 July 2027</td>
 <td data-label="Name">Rath Yatra</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Thursday, 6 May 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 5 May 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 5 May 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 4 July 2027</span>
+<span class="time opens">Opens Wednesday, 5 May 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 4 May 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 3 July 2027</span>
+<span class="time opens">Opens Tuesday, 4 May 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 3 May 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 3 Jul – Mon 5 Jul<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-08-01">
 <td data-label="Holiday">Sunday, 1 August 2027</td>
 <td data-label="Name">Friendship Day</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Wednesday, 2 June 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 1 June 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 1 June 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 31 July 2027</span>
+<span class="time opens">Opens Tuesday, 1 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 31 May 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 30 July 2027</span>
+<span class="time opens">Opens Monday, 31 May 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 30 May 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-08-15">
 <td data-label="Holiday">Sunday, 15 August 2027</td>
 <td data-label="Name">Independence Day<br>Milad un-Nabi (Tentative Date)<br>Parsi New Year</td>
 <td data-label="Type">Gazetted Holiday<br>Gazetted Holiday<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 16 June 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 15 June 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 15 June 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 14 August 2027</span>
+<span class="time opens">Opens Tuesday, 15 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 14 June 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 13 August 2027</span>
+<span class="time opens">Opens Monday, 14 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 13 June 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 13 Aug – Sun 15 Aug<span class="lw-gap">. </span><span class="lw-sub">Take Fri 13 Aug off</span></span><span class="lw-badge">Sat 14 Aug – Mon 16 Aug<span class="lw-gap">. </span><span class="lw-sub">Take Mon 16 Aug off</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-08-17">
 <td data-label="Holiday">Tuesday, 17 August 2027</td>
 <td data-label="Name">Raksha Bandhan</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Friday, 18 June 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Thursday, 17 June 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Thursday, 17 June 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Monday, 16 August 2027</span>
+<span class="time opens">Opens Thursday, 17 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 16 June 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Sunday, 15 August 2027</span>
+<span class="time opens">Opens Wednesday, 16 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 15 June 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Sat 14 Aug – Tue 17 Aug<span class="lw-gap">. </span><span class="lw-sub">Take Mon 16 Aug off · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted" id="h-2027-08-25">
 <td data-label="Holiday">Wednesday, 25 August 2027</td>
 <td data-label="Name">Janmashtami<br>Janmashtami (Smarta)</td>
 <td data-label="Type">Gazetted Holiday<br>Observance</td>
 <td data-label="IRCTC opens">Saturday, 26 June 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 25 June 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 25 June 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 24 August 2027</span>
+<span class="time opens">Opens Friday, 25 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 24 June 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 23 August 2027</span>
+<span class="time opens">Opens Thursday, 24 June 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 23 June 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-09-04">
 <td data-label="Holiday">Saturday, 4 September 2027</td>
 <td data-label="Name">Ganesh Chaturthi</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 6 July 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 5 July 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 5 July 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 3 September 2027</span>
+<span class="time opens">Opens Monday, 5 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 4 July 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 2 September 2027</span>
+<span class="time opens">Opens Sunday, 4 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 3 July 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 3 Sep – Sun 5 Sep<span class="lw-gap">. </span><span class="lw-sub">Take Fri 3 Sep off</span></span><span class="lw-badge">Sat 4 Sep – Mon 6 Sep<span class="lw-gap">. </span><span class="lw-sub">Take Mon 6 Sep off</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-09-12">
 <td data-label="Holiday">Sunday, 12 September 2027</td>
 <td data-label="Name">Onam</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 14 July 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 13 July 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 13 July 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 11 September 2027</span>
+<span class="time opens">Opens Tuesday, 13 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 12 July 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 10 September 2027</span>
+<span class="time opens">Opens Monday, 12 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 11 July 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 10 Sep – Sun 12 Sep<span class="lw-gap">. </span><span class="lw-sub">Take Fri 10 Sep off</span></span><span class="lw-badge">Sat 11 Sep – Mon 13 Sep<span class="lw-gap">. </span><span class="lw-sub">Take Mon 13 Sep off</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-09-23">
 <td data-label="Holiday">Thursday, 23 September 2027</td>
 <td data-label="Name">September Equinox</td>
 <td data-label="Type">Season</td>
 <td data-label="IRCTC opens">Sunday, 25 July 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 24 July 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 24 July 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 22 September 2027</span>
+<span class="time opens">Opens Saturday, 24 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 23 July 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 21 September 2027</span>
+<span class="time opens">Opens Friday, 23 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 22 July 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-09-30">
 <td data-label="Holiday">Thursday, 30 September 2027</td>
 <td data-label="Name">First Day of Sharad Navratri</td>
 <td data-label="Type">Observance, Hindu</td>
 <td data-label="IRCTC opens">Sunday, 1 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 31 July 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 31 July 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 29 September 2027</span>
+<span class="time opens">Opens Saturday, 31 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 30 July 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 28 September 2027</span>
+<span class="time opens">Opens Friday, 30 July 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 29 July 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-10-02">
 <td data-label="Holiday">Saturday, 2 October 2027</td>
 <td data-label="Name">Mahatma Gandhi Jayanti</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 3 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 2 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 2 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 1 October 2027</span>
+<span class="time opens">Opens Monday, 2 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 1 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 30 September 2027</span>
+<span class="time opens">Opens Sunday, 1 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 31 July 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 1 Oct – Sun 3 Oct<span class="lw-gap">. </span><span class="lw-sub">Take Fri 1 Oct off</span></span><span class="lw-badge">Sat 2 Oct – Mon 4 Oct<span class="lw-gap">. </span><span class="lw-sub">Take Mon 4 Oct off</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-10-05">
 <td data-label="Holiday">Tuesday, 5 October 2027</td>
 <td data-label="Name">First Day of Durga Puja Festivities</td>
 <td data-label="Type">Observance, Hindu</td>
 <td data-label="IRCTC opens">Friday, 6 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Thursday, 5 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Thursday, 5 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Monday, 4 October 2027</span>
+<span class="time opens">Opens Thursday, 5 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 4 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Sunday, 3 October 2027</span>
+<span class="time opens">Opens Wednesday, 4 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 3 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-06">
 <td data-label="Holiday">Wednesday, 6 October 2027</td>
 <td data-label="Name">Maha Saptami</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Saturday, 7 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 6 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 6 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 5 October 2027</span>
+<span class="time opens">Opens Friday, 6 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 5 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 4 October 2027</span>
+<span class="time opens">Opens Thursday, 5 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 4 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Wed 6 Oct – Sun 10 Oct<span class="lw-gap">. </span><span class="lw-sub">5-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-07">
 <td data-label="Holiday">Thursday, 7 October 2027</td>
 <td data-label="Name">Maha Ashtami</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 8 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 7 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 7 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 6 October 2027</span>
+<span class="time opens">Opens Saturday, 7 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 6 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 5 October 2027</span>
+<span class="time opens">Opens Friday, 6 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 5 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Wed 6 Oct – Sun 10 Oct<span class="lw-gap">. </span><span class="lw-sub">5-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-08">
 <td data-label="Holiday">Friday, 8 October 2027</td>
 <td data-label="Name">Maha Navami</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 9 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 8 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 8 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 7 October 2027</span>
+<span class="time opens">Opens Sunday, 8 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 7 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 6 October 2027</span>
+<span class="time opens">Opens Saturday, 7 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 6 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Wed 6 Oct – Sun 10 Oct<span class="lw-gap">. </span><span class="lw-sub">5-day weekend · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-10-09">
 <td data-label="Holiday">Saturday, 9 October 2027</td>
 <td data-label="Name">Dussehra</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 10 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 9 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 9 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 8 October 2027</span>
+<span class="time opens">Opens Monday, 9 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 8 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 7 October 2027</span>
+<span class="time opens">Opens Sunday, 8 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 7 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Wed 6 Oct – Sun 10 Oct<span class="lw-gap">. </span><span class="lw-sub">5-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-15">
 <td data-label="Holiday">Friday, 15 October 2027</td>
 <td data-label="Name">Maharishi Valmiki Jayanti</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 16 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 15 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 15 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 14 October 2027</span>
+<span class="time opens">Opens Sunday, 15 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 14 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 13 October 2027</span>
+<span class="time opens">Opens Saturday, 14 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 13 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 15 Oct – Mon 18 Oct<span class="lw-gap">. </span><span class="lw-sub">4-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-18">
 <td data-label="Holiday">Monday, 18 October 2027</td>
 <td data-label="Name">Karaka Chaturthi</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Thursday, 19 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Wednesday, 18 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Wednesday, 18 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Sunday, 17 October 2027</span>
+<span class="time opens">Opens Wednesday, 18 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Tuesday, 17 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Saturday, 16 October 2027</span>
+<span class="time opens">Opens Tuesday, 17 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 16 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 15 Oct – Mon 18 Oct<span class="lw-gap">. </span><span class="lw-sub">4-day weekend · if observed</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-28">
 <td data-label="Holiday">Thursday, 28 October 2027</td>
 <td data-label="Name">Naraka Chaturdasi</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 29 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 28 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 28 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 27 October 2027</span>
+<span class="time opens">Opens Saturday, 28 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 27 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 26 October 2027</span>
+<span class="time opens">Opens Friday, 27 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 26 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 28 Oct – Sun 31 Oct<span class="lw-gap">. </span><span class="lw-sub">4-day weekend · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-10-29">
 <td data-label="Holiday">Friday, 29 October 2027</td>
 <td data-label="Name">Diwali/Deepavali</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Monday, 30 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 29 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 29 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 28 October 2027</span>
+<span class="time opens">Opens Sunday, 29 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 28 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 27 October 2027</span>
+<span class="time opens">Opens Saturday, 28 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 27 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 29 Oct – Sun 31 Oct<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-30">
 <td data-label="Holiday">Saturday, 30 October 2027</td>
 <td data-label="Name">Govardhan Puja</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 31 August 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 30 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 30 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 29 October 2027</span>
+<span class="time opens">Opens Monday, 30 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 29 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 28 October 2027</span>
+<span class="time opens">Opens Sunday, 29 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 28 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 29 Oct – Sun 31 Oct<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-10-31">
 <td data-label="Holiday">Sunday, 31 October 2027</td>
 <td data-label="Name">Halloween<br>Bhai Duj</td>
 <td data-label="Type">Observance<br>Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 1 September 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 31 August 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 31 August 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 30 October 2027</span>
+<span class="time opens">Opens Tuesday, 31 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 30 August 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 29 October 2027</span>
+<span class="time opens">Opens Monday, 30 August 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 29 August 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 29 Oct – Sun 31 Oct<span class="lw-gap">. </span><span class="lw-sub">3-day weekend</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-11-04">
 <td data-label="Holiday">Thursday, 4 November 2027</td>
 <td data-label="Name">Chhat Puja (Pratihar Sashthi/Surya Sashthi)</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Sunday, 5 September 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Saturday, 4 September 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Saturday, 4 September 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Wednesday, 3 November 2027</span>
+<span class="time opens">Opens Saturday, 4 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 3 September 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Tuesday, 2 November 2027</span>
+<span class="time opens">Opens Friday, 3 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 2 September 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Thu 4 Nov – Sun 7 Nov<span class="lw-gap">. </span><span class="lw-sub">Take Fri 5 Nov off · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-11-14">
 <td data-label="Holiday">Sunday, 14 November 2027</td>
 <td data-label="Name">Guru Nanak Jayanti</td>
 <td data-label="Type">Gazetted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 15 September 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 14 September 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 14 September 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 13 November 2027</span>
+<span class="time opens">Opens Tuesday, 14 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 13 September 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 12 November 2027</span>
+<span class="time opens">Opens Monday, 13 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 12 September 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 12 Nov – Sun 14 Nov<span class="lw-gap">. </span><span class="lw-sub">Take Fri 12 Nov off</span></span><span class="lw-badge">Sat 13 Nov – Mon 15 Nov<span class="lw-gap">. </span><span class="lw-sub">Take Mon 15 Nov off</span></span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted" id="h-2027-11-24">
 <td data-label="Holiday">Wednesday, 24 November 2027</td>
 <td data-label="Name">Guru Tegh Bahadur's Martyrdom Day</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Saturday, 25 September 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 24 September 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 24 September 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 23 November 2027</span>
+<span class="time opens">Opens Friday, 24 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 23 September 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 22 November 2027</span>
+<span class="time opens">Opens Thursday, 23 September 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 22 September 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-12-12">
 <td data-label="Holiday">Sunday, 12 December 2027</td>
 <td data-label="Name">Hazarat Ali's Birthday</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Wednesday, 13 October 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Tuesday, 12 October 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Tuesday, 12 October 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Saturday, 11 December 2027</span>
+<span class="time opens">Opens Tuesday, 12 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Monday, 11 October 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Friday, 10 December 2027</span>
+<span class="time opens">Opens Monday, 11 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 10 October 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 10 Dec – Sun 12 Dec<span class="lw-gap">. </span><span class="lw-sub">Take Fri 10 Dec off</span></span><span class="lw-badge">Sat 11 Dec – Mon 13 Dec<span class="lw-gap">. </span><span class="lw-sub">Take Mon 13 Dec off</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-12-22">
 <td data-label="Holiday">Wednesday, 22 December 2027</td>
 <td data-label="Name">December Solstice</td>
 <td data-label="Type">Season</td>
 <td data-label="IRCTC opens">Saturday, 23 October 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Friday, 22 October 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Friday, 22 October 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Tuesday, 21 December 2027</span>
+<span class="time opens">Opens Friday, 22 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Thursday, 21 October 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Monday, 20 December 2027</span>
+<span class="time opens">Opens Thursday, 21 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Wednesday, 20 October 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
-<tr class="restricted">
+<tr class="restricted long-weekend" id="h-2027-12-24">
 <td data-label="Holiday">Friday, 24 December 2027</td>
 <td data-label="Name">Christmas Eve</td>
 <td data-label="Type">Restricted Holiday</td>
 <td data-label="IRCTC opens">Monday, 25 October 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 24 October 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 24 October 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 23 December 2027</span>
+<span class="time opens">Opens Sunday, 24 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 23 October 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 22 December 2027</span>
+<span class="time opens">Opens Saturday, 23 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 22 October 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 24 Dec – Sun 26 Dec<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="gazetted">
+<tr class="gazetted long-weekend" id="h-2027-12-25">
 <td data-label="Holiday">Saturday, 25 December 2027</td>
 <td data-label="Name">First Day of Hanukkah<br>Christmas</td>
 <td data-label="Type">Observance<br>Gazetted Holiday</td>
 <td data-label="IRCTC opens">Tuesday, 26 October 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Monday, 25 October 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Monday, 25 October 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Friday, 24 December 2027</span>
+<span class="time opens">Opens Monday, 25 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Sunday, 24 October 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Thursday, 23 December 2027</span>
+<span class="time opens">Opens Sunday, 24 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 23 October 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-badge">Fri 24 Dec – Sun 26 Dec<span class="lw-gap">. </span><span class="lw-sub">3-day weekend · if observed</span></span></td>
 </tr>
-<tr class="other">
+<tr class="other" id="h-2027-12-31">
 <td data-label="Holiday">Friday, 31 December 2027</td>
 <td data-label="Name">New Year's Eve</td>
 <td data-label="Type">Observance</td>
 <td data-label="IRCTC opens">Monday, 1 November 2027<span class="time">8:00 AM</span></td>
-<td class="earlier" data-label="1 day earlier">Sunday, 31 October 2027<span class="time">Be ready this day</span></td>
+<td class="earlier" data-label="Be ready">Sunday, 31 October 2027<span class="time">Be ready this day</span></td>
+<td class="board" data-label="Board 1 day before">
+<span class="board-date">Thursday, 30 December 2027</span>
+<span class="time opens">Opens Sunday, 31 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Saturday, 30 October 2027</span>
+</td>
+<td class="board" data-label="Board 2 days before">
+<span class="board-date">Wednesday, 29 December 2027</span>
+<span class="time opens">Opens Saturday, 30 October 2027 at 8:00 AM</span>
+<span class="time ready">Be ready Friday, 29 October 2027</span>
+</td>
+<td class="lw" data-label="Long weekend"><span class="lw-none">—</span></td>
 </tr>
                 </tbody>
             </table>
@@ -610,23 +1547,34 @@
                 return copy.textContent.replace(/\s+/g, ' ').trim();
             }
 
+            function line(cell, selector) {
+                const node = cell.querySelector(selector);
+                return node ? node.textContent.replace(/\s+/g, ' ').trim() : '';
+            }
+
             function showTip(row) {
                 const cells = row.querySelectorAll('td');
                 const holiday = plain(cells[0]);
                 const name = plain(cells[1]);
                 const opens = plain(cells[3]);
                 const earlier = plain(cells[4]);
+                const before = cells[5];
+                const twoBefore = cells[6];
+                const weekend = plain(cells[7]);
+                const weekendLine = weekend === '—' ? '' : '<p><strong>Long weekend:</strong> ' + weekend + '</p>';
                 tip.innerHTML =
-                    '<strong>Why 1 day earlier is preferred</strong>' +
-                    '<p>Holiday trains often sell out within minutes of 8:00 AM. The earlier date is for preparation, not for buying the ticket. Log in, save passengers, and keep payment ready so you can book the moment the window opens.</p>' +
-                    '<p><strong>Example for ' + name + ':</strong> You want to travel on ' + holiday + '. IRCTC opens on ' + opens + ' at 8:00 AM. Be ready on ' + earlier + ', then book at 8:00 AM on ' + opens + '.</p>';
+                    '<strong>' + name + '</strong>' +
+                    '<p>Holiday trains often sell out within minutes of 8:00 AM. Be ready the day before the window opens, then book at 8:00 AM.</p>' +
+                    '<p><strong>Board on ' + holiday + '.</strong> IRCTC opens on ' + opens + ' at 8:00 AM. Be ready on ' + earlier + '.</p>' +
+                    '<p><strong>Board one day before, ' + line(before, '.board-date') + '.</strong> ' + line(before, '.opens') + '. ' + line(before, '.ready') + '.</p>' +
+                    '<p><strong>Board two days before, ' + line(twoBefore, '.board-date') + '.</strong> ' + line(twoBefore, '.opens') + '. ' + line(twoBefore, '.ready') + '.</p>' +
+                    weekendLine;
                 tip.classList.add('show');
 
-                const cell = row.querySelector('td.earlier');
-                const rect = cell.getBoundingClientRect();
+                const rect = row.getBoundingClientRect();
                 const tipRect = tip.getBoundingClientRect();
-                let top = rect.bottom + 8;
-                let left = Math.min(rect.left, window.innerWidth - tipRect.width - 12);
+                let top = Math.max(12, Math.min(rect.top, window.innerHeight - tipRect.height - 12));
+                let left = Math.min(Math.max(12, rect.left + 24), window.innerWidth - tipRect.width - 12);
                 if (left < 12) left = 12;
                 if (top + tipRect.height > window.innerHeight - 12) {
                     top = Math.max(12, rect.top - tipRect.height - 8);
