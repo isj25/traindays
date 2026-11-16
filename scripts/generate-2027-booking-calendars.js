@@ -94,6 +94,8 @@ function page(monthIndex) {
 <html lang="en-IN">
 
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5018644317959743"
+        crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${month} ${YEAR} Train Ticket Booking Dates - IRCTC Calendar</title>
