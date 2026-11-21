@@ -3,7 +3,7 @@
 // Stale-While-Revalidate Strategy
 // ==========================================
 
-const CACHE_NAME = 'railbookingdate-v9';
+const CACHE_NAME = 'railbookingdate-v11';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -20,6 +20,7 @@ const STATIC_ASSETS = [
     './pages/news.html',
     './pages/tatkal.html',
     './pages/holidays-2027.html',
+    './pages/festivals-2027.html',
     './pages/videos.html',
     './pages/disclaimer.html',
     './pages/indian-railway-blogs.html',
