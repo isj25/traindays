@@ -1262,6 +1262,18 @@
             background-color: var(--accent-closed);
         }
 
+        .weekend-dot {
+            background-color: #3b82f6;
+        }
+
+        .holiday-dot {
+            background-color: #fbbf24;
+        }
+
+        .long-weekend-dot {
+            background-color: #ec4899;
+        }
+
         /* ==========================================
    Booking Partners
    ========================================== */
@@ -2159,6 +2171,44 @@
             background-color: #ec4899;
             /* Pink */
         }
+
+        /* Saturday and Sunday, same marker style as holidays */
+        .day-header.weekend-header {
+            color: #3b82f6;
+        }
+
+        .weekend-date {
+            background-color: rgba(59, 130, 246, 0.14);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #1d4ed8;
+        }
+
+        .day-cell.next-60-days.weekend-date {
+            background: linear-gradient(135deg, var(--accent-open-light) 60%, rgba(59, 130, 246, 0.32));
+            color: #1e3a8a;
+        }
+
+        [data-theme="dark"] .weekend-date {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(96, 165, 250, 0.45);
+            color: #93c5fd;
+        }
+
+        [data-theme="dark"] .day-cell.next-60-days.weekend-date {
+            color: var(--accent-open);
+        }
+
+        .weekend-date::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        }
     </style>
 
     <!-- Apply dark mode immediately to prevent flash -->
@@ -2407,6 +2457,9 @@
                 <div class="legend-item"><span class="dot tatkal-dot"></span> Tatkal Only</div>
                 <div class="legend-item"><span class="dot open-dot"></span> Booking Open</div>
                 <div class="legend-item"><span class="dot closed-dot"></span> Not Yet Open</div>
+                <div class="legend-item"><span class="dot weekend-dot"></span> Weekend</div>
+                <div class="legend-item"><span class="dot holiday-dot"></span> Public Holiday</div>
+                <div class="legend-item"><span class="dot long-weekend-dot"></span> Long Weekend</div>
             </div>
 
             <section aria-labelledby="calendar-title">
@@ -2418,10 +2471,15 @@
             </section>
 
             <section class="holidays-section" aria-labelledby="holidays-title">
-                <h2 id="holidays-title" class="section-title">2026 Holiday Train Booking Dates</h2>
+                <h2 id="holidays-title" class="section-title">2027 Holiday Train Booking Dates</h2>
                 <p style="margin: 0 0 1rem;">
+                    General reservation opens at 8:00 AM, 60 days before the holiday.
                     <a href="pages/holidays-2027.html"
-                        style="color: var(--primary); font-weight: 700; text-decoration: none;">2027 holiday booking dates — shown 1 day earlier</a>
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">Full 2027 holiday calendar</a>
+                    also shows the day before tickets open.
+                    <a href="pages/festivals-2027.html"
+                        style="color: var(--primary); font-weight: 700; text-decoration: none;">2027 festival calendar</a>
+                    lists every festival with its booking morning. Lunar dates (Id, Bakrid, Muharram, Milad-un-Nabi) are tentative.
                 </p>
                 <div class="holidays-card">
                     <table class="holidays-table" itemscope itemtype="https://schema.org/Table">
@@ -2435,161 +2493,165 @@
                         <tbody>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/holi-holiday-march-04-2026.html"
-                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Holi
-                                        Holidays</a></td>
-                                <td data-label="Holiday Date">Mar 4 - Mar 7, 2026 (Wed-Sat)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jan 3, 2026 (Sat)</td>
-                            </tr>
-                            <tr>
-                                <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/id-ul-fitr-march-21-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-03-10"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Id-ul-Fitr</a>
                                 </td>
-                                <td data-label="Holiday Date">Mar 21, 2026 (Sat)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jan 20, 2026 (Tue)</td>
+                                <td data-label="Holiday Date">Mar 10, 2027 (Wed)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 9, 2027 (Sat)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/ram-navami-march-26-2026.html"
-                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Ram
-                                        Navami</a></td>
-                                <td data-label="Holiday Date">Mar 26, 2026 (Thu)<span class="long-weekend-tag">Long
+                                        href="pages/holidays-2027.html#h-2027-03-22"
+                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Holi</a>
+                                </td>
+                                <td data-label="Holiday Date">Mar 22, 2027 (Mon)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jan 25, 2026 (Sun)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 21, 2027 (Thu)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/mahavir-jayanti-march-31-2026.html"
-                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Mahavir
-                                        Jayanti</a></td>
-                                <td data-label="Holiday Date">Mar 31, 2026 (Tue)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jan 30, 2026 (Fri)</td>
-                            </tr>
-                            <tr>
-                                <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/good-friday-april-03-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-03-26"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Good
                                         Friday</a></td>
-                                <td data-label="Holiday Date">Apr 3, 2026 (Fri)<span class="long-weekend-tag">Long
+                                <td data-label="Holiday Date">Mar 26, 2027 (Fri)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Feb 2, 2026 (Mon)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jan 25, 2027 (Mon)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/budha-purnima-may-01-2026.html"
-                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Budha
-                                        Purnima</a></td>
-                                <td data-label="Holiday Date">May 1, 2026 (Fri)<span class="long-weekend-tag">Long
+                                        href="pages/holidays-2027.html#h-2027-04-15"
+                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Ram
+                                        Navami</a></td>
+                                <td data-label="Holiday Date">Apr 15, 2027 (Thu)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Mar 2, 2026 (Mon)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Feb 14, 2027 (Sun)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/id-ul-zuha-bakrid--may-27-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-04-19"
+                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Mahavir
+                                        Jayanti</a></td>
+                                <td data-label="Holiday Date">Apr 19, 2027 (Mon)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Feb 18, 2027 (Thu)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name" data-label="Holiday Name"><a
+                                        href="pages/holidays-2027.html#h-2027-05-17"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Id-ul-Zuha
                                         (Bakrid)</a></td>
-                                <td data-label="Holiday Date">May 27, 2026 (Wed)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Mar 28, 2026 (Sat)</td>
+                                <td data-label="Holiday Date">May 17, 2027 (Mon)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Mar 18, 2027 (Thu)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/muharram-june-26-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-05-20"
+                                        style="color:var(--primary); text-decoration:none; font-weight:600;">Buddha
+                                        Purnima</a></td>
+                                <td data-label="Holiday Date">May 20, 2027 (Thu)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Mar 21, 2027 (Sun)</td>
+                            </tr>
+                            <tr>
+                                <td class="holiday-name" data-label="Holiday Name"><a
+                                        href="pages/holidays-2027.html#h-2027-06-16"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Muharram</a>
                                 </td>
-                                <td data-label="Holiday Date">Jun 26, 2026 (Fri)<span class="long-weekend-tag">Long
-                                        Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Apr 27, 2026 (Mon)</td>
+                                <td data-label="Holiday Date">Jun 16, 2027 (Wed)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Apr 17, 2027 (Sat)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/independence-day-august-15-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-08-15"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Independence
                                         Day</a></td>
-                                <td data-label="Holiday Date">Aug 15, 2026 (Sat)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jun 16, 2026 (Tue)</td>
+                                <td data-label="Holiday Date">Aug 15, 2027 (Sun)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 16, 2027 (Wed)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/milad-un-nabi-august-26-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-08-15"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Milad-un-Nabi</a>
                                 </td>
-                                <td data-label="Holiday Date">Aug 26, 2026 (Wed)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jun 27, 2026 (Sat)</td>
+                                <td data-label="Holiday Date">Aug 15, 2027 (Sun)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 16, 2027 (Wed)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/raksha-bandhan-august-28-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-08-17"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Raksha
                                         Bandhan</a></td>
-                                <td data-label="Holiday Date">Aug 28, 2026 (Fri)<span class="long-weekend-tag">Long
+                                <td data-label="Holiday Date">Aug 17, 2027 (Tue)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jun 29, 2026 (Mon)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 18, 2027 (Fri)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/janmashtami-september-04-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-08-25"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Janmashtami</a>
                                 </td>
-                                <td data-label="Holiday Date">Sep 4, 2026 (Fri)<span class="long-weekend-tag">Long
-                                        Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jul 6, 2026 (Mon)</td>
+                                <td data-label="Holiday Date">Aug 25, 2027 (Wed)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jun 26, 2027 (Sat)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/ganesh-chaturthi-september-14-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-09-04"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Ganesh
                                         Chaturthi</a></td>
-                                <td data-label="Holiday Date">Sep 14, 2026 (Mon)<span class="long-weekend-tag">Long
+                                <td data-label="Holiday Date">Sep 4, 2027 (Sat)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Jul 16, 2026 (Thu)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Jul 6, 2027 (Tue)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/mahatma-gandhi-birthday-october-02-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-10-02"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Mahatma
                                         Gandhi's Birthday</a></td>
-                                <td data-label="Holiday Date">Oct 2, 2026 (Fri)<span class="long-weekend-tag">Long
+                                <td data-label="Holiday Date">Oct 2, 2027 (Sat)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Aug 3, 2026 (Mon)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Aug 3, 2027 (Tue)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/dussehra-holiday-october-19-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-10-09"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Dussehra
                                         Holidays</a></td>
-                                <td data-label="Holiday Date">Oct 19 - Oct 24, 2026 (Mon-Sat)<span
+                                <td data-label="Holiday Date">Oct 6 - Oct 9, 2027 (Wed-Sat)<span
                                         class="long-weekend-tag">Long
                                         Weekend</span>
                                 </td>
-                                <td class="booking-open-date" data-label="Booking Opens">Aug 20, 2026 (Thu)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Aug 7, 2027 (Sat)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/diwali-holiday-november-09-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-10-29"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Diwali
                                         Holidays</a></td>
-                                <td data-label="Holiday Date">Nov 9 - Nov 14, 2026 (Mon-Sat)<span
+                                <td data-label="Holiday Date">Oct 28 - Oct 31, 2027 (Thu-Sun)<span
                                         class="long-weekend-tag">Long Weekend</span>
                                 </td>
-                                <td class="booking-open-date" data-label="Booking Opens">Sep 10, 2026 (Thu)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Aug 29, 2027 (Sun)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/guru-nanak-birthday-november-24-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-11-14"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Guru
                                         Nanak's Birthday</a></td>
-                                <td data-label="Holiday Date">Nov 24, 2026 (Tue)</td>
-                                <td class="booking-open-date" data-label="Booking Opens">Sep 25, 2026 (Fri)</td>
+                                <td data-label="Holiday Date">Nov 14, 2027 (Sun)<span class="long-weekend-tag">Long
+                                        Weekend</span></td>
+                                <td class="booking-open-date" data-label="Booking Opens">Sep 15, 2027 (Wed)</td>
                             </tr>
                             <tr>
                                 <td class="holiday-name" data-label="Holiday Name"><a
-                                        href="pages/blogs/christmas-december-25-2026.html"
+                                        href="pages/holidays-2027.html#h-2027-12-25"
                                         style="color:var(--primary); text-decoration:none; font-weight:600;">Christmas</a>
                                 </td>
-                                <td data-label="Holiday Date">Dec 25, 2026 (Fri)<span class="long-weekend-tag">Long
+                                <td data-label="Holiday Date">Dec 25, 2027 (Sat)<span class="long-weekend-tag">Long
                                         Weekend</span></td>
-                                <td class="booking-open-date" data-label="Booking Opens">Oct 26, 2026 (Mon)</td>
+                                <td class="booking-open-date" data-label="Booking Opens">Oct 26, 2027 (Tue)</td>
                             </tr>
                         </tbody>
                     </table>

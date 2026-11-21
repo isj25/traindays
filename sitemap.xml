@@ -374,6 +374,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://railbookingdate.com/pages/festivals-2027.html</loc>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- 2027 Booking Date Pages -->
     <url>
         <loc>https://railbookingdate.com/pages/bookingdate/2027/january-booking-date.html</loc>

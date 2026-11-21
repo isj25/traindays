@@ -320,6 +320,43 @@ const HOLIDAYS_2026 = [
     { date: '2026-12-25', name: 'Christmas', type: 'long-weekend' }
 ];
 
+// Gazetted public holidays for 2027, marked the same way as 2026
+const HOLIDAYS_2027 = [
+    { date: '2027-01-26', name: 'Republic Day', type: 'long-weekend' },
+    { date: '2027-03-10', name: 'Ramzan Id' },
+    { date: '2027-03-22', name: 'Holi', type: 'long-weekend' },
+    { date: '2027-03-26', name: 'Good Friday', type: 'long-weekend' },
+    { date: '2027-04-15', name: 'Rama Navami', type: 'long-weekend' },
+    { date: '2027-04-19', name: 'Mahavir Jayanti', type: 'long-weekend' },
+    { date: '2027-05-17', name: 'Bakrid', type: 'long-weekend' },
+    { date: '2027-05-20', name: 'Buddha Purnima', type: 'long-weekend' },
+    { date: '2027-06-16', name: 'Muharram' },
+    { date: '2027-08-15', name: 'Independence Day', type: 'long-weekend' },
+    { date: '2027-08-25', name: 'Janmashtami' },
+    { date: '2027-10-02', name: 'Mahatma Gandhi Jayanti', type: 'long-weekend' },
+    { date: '2027-10-09', name: 'Dussehra', type: 'long-weekend' },
+    { date: '2027-10-29', name: 'Diwali', type: 'long-weekend' },
+    { date: '2027-11-14', name: 'Guru Nanak Jayanti', type: 'long-weekend' },
+    { date: '2027-12-25', name: 'Christmas', type: 'long-weekend' }
+];
+
+const HOLIDAY_BY_DATE = {};
+HOLIDAYS_2026.concat(HOLIDAYS_2027).forEach(holiday => {
+    HOLIDAY_BY_DATE[holiday.date] = holiday;
+});
+
+function holidayTooltipHtml(dayData) {
+    if (dayData.holiday) {
+        const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
+        const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308';
+        return `<div style="margin-bottom:4px; font-weight:700; color:${labelColor}; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">🎉 ${dayData.holiday.name} (${typeLabel})</div>`;
+    }
+    if (dayData.isWeekend) {
+        return '<div style="margin-bottom:4px; font-weight:700; color:#60a5fa; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Weekend</div>';
+    }
+    return '';
+}
+
 function generate2026Calendar() {
     const elements = getElements();
     const container = elements.calendarContainer;
@@ -372,12 +409,14 @@ function generate2026Calendar() {
             String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
             String(currentDate.getDate()).padStart(2, '0');
 
-        const holiday = HOLIDAYS_2026.find(h => h.date === dateString);
+        const holiday = HOLIDAY_BY_DATE[dateString];
+        const dayOfWeek = currentDate.getDay();
 
         monthData.days.push({
             date: currentDate.getDate(),
             time: currentTime,
-            dayOfWeek: currentDate.getDay(),
+            dayOfWeek: dayOfWeek,
+            isWeekend: dayOfWeek === 0 || dayOfWeek === 6,
             holiday: holiday
         });
 
@@ -438,6 +477,7 @@ function generate2026Calendar() {
         for (let i = 0; i < 7; i++) {
             const headerCell = document.createElement('div');
             headerCell.className = 'day-header';
+            if (i === 0 || i === 6) headerCell.className += ' weekend-header';
             headerCell.textContent = dayHeaders[i];
             calendarGrid.appendChild(headerCell);
         }
@@ -455,12 +495,17 @@ function generate2026Calendar() {
             const dayDiv = document.createElement('div');
             dayDiv.className = 'day-cell';
 
-            // Holiday styling
+            // Holiday styling matches the 2026 calendar: yellow for a public
+            // holiday, pink when that holiday makes a long weekend.
+            // Weekends use a separate blue tint and stay unmarked when a holiday
+            // already colors the cell.
             if (dayData.holiday) {
                 dayDiv.className += ' holiday-date';
                 if (dayData.holiday.type === 'long-weekend') {
                     dayDiv.className += ' long-weekend-date';
                 }
+            } else if (dayData.isWeekend) {
+                dayDiv.className += ' weekend-date';
             }
 
             const dayNumber = document.createElement('span');
@@ -484,12 +529,7 @@ function generate2026Calendar() {
             dayDiv.addEventListener('mouseenter', (e) => {
                 let tooltipText = '';
 
-                // Add holiday info first if present
-                if (dayData.holiday) {
-                    const typeLabel = dayData.holiday.type === 'long-weekend' ? 'Long Weekend' : 'Holiday';
-                    const labelColor = dayData.holiday.type === 'long-weekend' ? '#ec4899' : '#eab308';
-                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:${labelColor}; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">🎉 ${dayData.holiday.name} (${typeLabel})</div>`;
-                }
+                tooltipText += holidayTooltipHtml(dayData);
 
                 if (status === 'past') {
                     tooltipText += '<strong>Travel Date Passed 🕰️</strong>';
@@ -511,10 +551,7 @@ function generate2026Calendar() {
             // Touch support for mobile tooltips
             dayDiv.addEventListener('touchstart', (e) => {
                 // ... mobile logic same as mouseenter ...
-                let tooltipText = '';
-                if (dayData.holiday) {
-                    tooltipText += `<div style="margin-bottom:4px; font-weight:700; color:#eab308;">🎉 ${dayData.holiday.name}</div>`;
-                }
+                let tooltipText = holidayTooltipHtml(dayData);
 
                 if (status === 'past') {
                     tooltipText += '<strong>Travel Date Passed 🕰️</strong>';
